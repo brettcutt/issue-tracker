@@ -1,0 +1,99 @@
+body {
+    background-image: url("../img/home-office.jpg");
+    background-position: top;
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: 'Archivo Black', sans-serif;
+}
+
+/* DEFAULT */
+
+.inline {
+    display: inline-block;
+}
+
+/* HEADINGS */
+
+h1 {
+    color: white;
+}
+/* BASE.HTML */ 
+/* NAV */
+
+nav {
+    width: 100%;
+    position: absolute;
+    padding: 20px;
+}
+
+nav ul {
+    float: right;
+    list-style: none;
+    text-align: center;
+}
+
+nav li {
+    display: inline-block;
+    width: 120px;
+}
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* SOCIAL MEDIA */
+
+.icon-container {
+    position: absolute;
+    bottom: 50px;
+}
+.icon-container ul{
+    list-style: none;
+}
+
+.icon-container a {
+    color: white;
+    font-size: 20px;
+}
+
+/* INDEX  */
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.inner1, .inner2 {
+    height: 100vh;
+    display: grid;
+}
+
+.inner1 {
+    background-color: rgba(0,0,0,.3);
+    justify-content:center;
+}
+.inner2 {
+    background-color: rgba(255,255,255,.2);
+    justify-content:center;
+}
+
+.circle {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 1000px;
+    background-color: rgba(255,255,255,.2);
+    bottom: -200px;
+    left: -200px;
+}
+
+.inner1 .line {
+    width: 200px;
+    height: 5px;
+    background-color: #fff;
+}
+.inner2 .line {
+    width: 300px;
+    height: 5px;
+    background-color: #fff;
+}

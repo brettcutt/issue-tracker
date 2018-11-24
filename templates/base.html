@@ -12,13 +12,51 @@
     <link rel="stylesheet" href=" {% static 'font-awesome/css/font-awesome.min.css' %}">
     <link rel="stylesheet" href=" {% static 'bootstrap/bootstrap.min.css' %}">
     <link rel="stylesheet" href=" {% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Archivo+Black" rel="stylesheet">
 
 </head>
 
 <body>
+    <nav>
+        <a href="#">
+            <h4 class='inline'>Unicorn Attractor</h4>
+        </a>
+
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Bugs</a></li>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">Sign In</a></li>
+            <li><a href="#">Register</a></li>
+            <!--
+            <li><a href="#">Cart</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Log out</a></li>-->
+
+        </ul>
+    </nav>
 
     {% block content %}
     {% endblock %}
+
+    <div class="icon-container">
+        <ul>
+            <li>
+                <a href="#"><i class="fa fa-facebook-f"></i></a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-github"></i></a>
+            </li>
+
+        </ul>
+    </div>
+
     <script src="{% static 'js/jquery-3.3.1.slim.min.js' %}"></script>
     <script src="{% static 'js/popper.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
