@@ -13,28 +13,36 @@
     <link rel="stylesheet" href=" {% static 'bootstrap/bootstrap.min.css' %}">
     <link rel="stylesheet" href=" {% static 'css/style.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Archivo+Black" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=BenchNine" rel="stylesheet">
+
 
 </head>
 
 <body>
-    <nav>
-        <a href="#">
-            <h4 class='inline'>Unicorn Attractor</h4>
-        </a>
+    <a class="logo " href="#">
+        <h4 class='inline'>Unicorn Attractor</h4>
+    </a>
+    <i id="menu-bars" class="fa fa-bars d-block d-sm-none" aria-hidden="true"></i>
+    <nav id="collapse">
 
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Bugs</a></li>
-            <li><a href="#">Features</a></li>
-            <li><a href="#">Sign In</a></li>
-            <li><a href="#">Register</a></li>
-            <!--
+        <ul class="">
+            <li><a href="/">Home</a></li>
+            <li><a href="{% url 'bugs_features' %}">Bugs/Features</a></li>
+            {% if user.is_authenticated %}
             <li><a href="#">Cart</a></li>
             <li><a href="#">Profile</a></li>
-            <li><a href="#">Log out</a></li>-->
+            <li><a href="{% url 'logout' %}">Log out</a></li>
+            {% else %}
+
+            <li><a href="{% url 'login' %}">Login</a></li>
+            <li><a href="{% url 'registration' %}">Register</a></li>
+            <li><a href="/admin">Admin</a></li>
+            {% endif %}
 
         </ul>
     </nav>
+    {% block messages %}
+    {% endblock %}
 
     {% block content %}
     {% endblock %}
@@ -55,11 +63,17 @@
             </li>
 
         </ul>
+        <br class='d-none'>
+        <p>Unicorn Attractor | by Brett Cutting</p>
     </div>
+    <div class="circle"></div>
 
     <script src="{% static 'js/jquery-3.3.1.slim.min.js' %}"></script>
     <script src="{% static 'js/popper.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'jquery/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'jquery/jquery-ui.js' %}"></script>
+    <script src="{% static 'jquery/jquery.js' %}"></script>
 </body>
 
 </html>
