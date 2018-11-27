@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="wrapper">
+    <div class="inner-wrapper-black">
+        <div>
+            <h1 class="center margin-top-100 margin-bottom-20">Bugs</h1>
+            {% if user.is_authenticated %}
+            <div class='center'>
+                <a class='btn btn-primary inline margin-bottom-20' href="{% url 'add_bug' %}">Add Bug</a>
+            </div>
+            {% endif %}
+        </div>
+
+        <div>
+            <div class="inner-content center">
+                {% for bug_ticket in bugs_tickets %}
+                <div>
+                    <h4>{{ bug_ticket.name }}</h4>
+                    <p>{{ bug_ticket.created_date }}</p>
+                    <p>{{ bug_ticket.description | truncatechars:60 }}</p>
+                    <form method='get' action="{% url 'bug_detail' bug_ticket.id %}">
+                        <div>
+                            <button type='submit' class='btn btn-primary inline'>View Ticket</button>
+                        </div>
+
+                    </form>
+                </div>
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="inner-wrapper inner-wrapper-white">
+
+        <div>
+            <h1 class="center margin-top-100 margin-bottom-20">Features</h1>
+            {% if user.is_authenticated %}
+            <div class='center'>
+                <a class='btn btn-primary inline margin-bottom-20' href="{% url 'add_feature' %}">Add Feature</a>
+            </div>
+            {% endif %}
+        </div>
+
+        <div>
+            <div class="inner-content center">
+                {% for feature_ticket in features_tickets %}
+                <div>
+                    <h4>{{ feature_ticket.name }}</h4>
+                    <p>{{ feature_ticket.created_date }}</p>
+                    <p>{{ feature_ticket.description | truncatechars:60 }}</p>
+                    <form method='get' action="{% url 'feature_detail' feature_ticket.id %}">
+                        <div>
+                            <button type='submit' class='btn btn-primary inline'>View Ticket</button>
+                        </div>
+
+                    </form>
+                </div>
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}

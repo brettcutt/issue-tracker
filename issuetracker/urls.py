@@ -16,9 +16,13 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from home.views import index
+from accounts import urls as urls_accounts
+from bugs_features import urls as urls_bugs_features
 from .settings import MEDIA_ROOT
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index, name="index"),
+    url(r'^accounts/', include(urls_accounts)),
+    url(r'^bugs-features/', include(urls_bugs_features)),
 ]
