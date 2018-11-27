@@ -1,7 +1,51 @@
 {% extends 'base.html' %}
-
+{% load bootstrap_tags %}
 {% block content %}
-{{ profile }}
-{{ profile.email }}
+<div class="overlay-black"></div>
+<div class=' margin-top-100 center'>
+    <h1>Profile</h1>
+    <table class='center inline'>
+        <tr>
+            <td>
+                Username
+            </td>
+            <td>{{ profile }}</td>
+        </tr>
+        <tr>
+            <td>
+                ID
+            </td>
+            <td>{{ profile.id }}</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>{{ profile.email}}</td>
+        </tr>
+        <tr>
+            <td>Last Login</td>
+            <td>{{ profile.last_login}}</td>
+        </tr>
+        <tr>
+            <td>Member since</td>
+            <td>{{ profile.date_joined}}</td>
+        </tr>
+        <tr>
+            <td>Profile Picture</td>
+            {% for item in picture %}
+            <td>{{item.id}}
+                <img src=" {{ MEDIA_URL }}{{ item.picture }}"></img>
+                {% endfor %}
+                <form enctype="multipart/form-data" method='post' action="">
+                    {% csrf_token %}
+                    {{pic_form}}
+                    <button type='submit'>Save</button>
+                </form>
+            </td>
+        </tr>
 
+    </table>
+
+
+
+</div>
 {% endblock %}

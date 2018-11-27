@@ -14,6 +14,7 @@
     <link rel="stylesheet" href=" {% static 'css/style.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Archivo+Black" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=BenchNine" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
 
 
 </head>
@@ -30,13 +31,13 @@
             <li><a href="{% url 'bugs_features' %}">Bugs/Features</a></li>
             {% if user.is_authenticated %}
             <li><a href="#">Cart</a></li>
-            <li><a href="#">Profile</a></li>
+            <li><a href="{% url 'profile' %}">Profile</a></li>
             <li><a href="{% url 'logout' %}">Log out</a></li>
+            <li><a href="/admin">Admin</a></li>
             {% else %}
 
             <li><a href="{% url 'login' %}">Login</a></li>
             <li><a href="{% url 'registration' %}">Register</a></li>
-            <li><a href="/admin">Admin</a></li>
             {% endif %}
 
         </ul>
@@ -47,26 +48,6 @@
     {% block content %}
     {% endblock %}
 
-    <div class="icon-container">
-        <ul>
-            <li>
-                <a href="#"><i class="fa fa-facebook-f"></i></a>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-instagram"></i></a>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-github"></i></a>
-            </li>
-
-        </ul>
-        <br class='d-none'>
-        <p>Unicorn Attractor | by Brett Cutting</p>
-    </div>
-    <div class="circle"></div>
 
     <script src="{% static 'js/jquery-3.3.1.slim.min.js' %}"></script>
     <script src="{% static 'js/popper.min.js' %}"></script>

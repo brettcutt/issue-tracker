@@ -6,7 +6,7 @@
     <div class="col-sm-6 offset-sm-3 login-form">
         <h1>Registration</h1>
         <p>If you already have an account, you can <a href="{% url 'login' %}">Sign in</a></p>
-        <form method="post">
+        <form enctype="multipart/form-data" method="post">
             {% csrf_token %}
             {{ registration_form | as_bootstrap}}
             <button class="btn btn-primary" type='submit'>Register</button>
