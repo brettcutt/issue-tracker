@@ -30,9 +30,10 @@
 
             <ul class="">
                 <li><a href="/">Home</a></li>
-                <li><a href="{% url 'bugs_features' %}">Bugs/Features</a></li>
+                <li><a href="{% url 'bugs' %}">Bugs</a></li>
+                <li><a href="">Features</a></li>
                 {% if user.is_authenticated %}
-                <li><a href="#">Cart</a></li>
+                <li><a href="{% url 'view_cart' %}">Cart</a></li>
                 <li><a href="{% url 'profile' %}">Profile</a></li>
                 <li><a href="{% url 'logout' %}">Log out</a></li>
                 <li><a href="/admin">Admin</a></li>

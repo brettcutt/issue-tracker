@@ -17,7 +17,8 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from home.views import index
 from accounts import urls as urls_accounts
-from bugs_features import urls as urls_bugs_features
+from bugs import urls as urls_bugs
+from cart import urls as urls_cart
 from django.views import static
 from .settings import MEDIA_ROOT
 
@@ -25,6 +26,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index, name="index"),
     url(r'^accounts/', include(urls_accounts)),
-    url(r'^bugs-features/', include(urls_bugs_features)),
+    url(r'^bugs/', include(urls_bugs)),
+    url(r'^cart/', include(urls_cart)),
     url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT}),
 ]
