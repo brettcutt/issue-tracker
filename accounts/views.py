@@ -1,9 +1,11 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import auth, messages
 # @login_required:  if the user trys to access logout through the endpoint this redirects them to the login page
 from django.contrib.auth.decorators import login_required
 from .forms import UserLoginForm, UserRegistrationForm
 from django.contrib.auth.models import User
+from .forms import ProfilePicForm
+from .models import ProfilePicture
 
 
 def index(request):
@@ -54,7 +56,6 @@ def registration(request):
 
     if request.method == 'POST':
         registration_form = UserRegistrationForm(request.POST)
-
         if registration_form.is_valid():
             registration_form.save()
             user = auth.authenticate(username=request.POST['username'],
@@ -62,6 +63,7 @@ def registration(request):
 
             if user:
                 auth.login(user=user, request=request)
+
                 messages.success(
                     request, "You have been successfully registered!")
                 return redirect(reverse('index'))
@@ -75,7 +77,21 @@ def registration(request):
     return render(request, "registration.html", {'registration_form': registration_form})
 
 
-def user_profile(request):
+def user_profile(request, id=None):
     """The user's profile page"""
+
     user = User.objects.get(email=request.user.email)
-    return render(request, 'profile.html', {'profile': user})
+    picture = ProfilePicture.objects.filter(user=request.user)
+    image = get_object_or_404(
+        ProfilePicture, id=id) if id else None
+    if request.method == 'POST':
+        pic_form = ProfilePicForm(request.POST, request.FILES, instance=image)
+
+        if pic_form.is_valid():
+            pic_form = pic_form.save(commit=False)
+            pic_form.user = request.user
+            pic_form.save()
+            return redirect(reverse('profile'))
+    else:
+        pic_form = ProfilePicForm(instance=image)
+    return render(request, 'profile.html', {'profile': user, 'pic_form': pic_form, 'picture': picture})

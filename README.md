@@ -24,3 +24,6 @@ In the terminal command line:
   - CC0 Creative Commons
   - Free for commercial use 
   - No attribution required
+
+- missing profile picture
+   - https://pixabay.com/en/avatar-person-neutral-man-blank-159236/
