@@ -3,23 +3,27 @@ from .forms import BugsForm, CommentForm, FeaturesForm
 from .models import Comments, Bugs, Features
 from accounts.models import ProfilePicture
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 
 def bugs_features(request):
     """Renders a view with all bug and feature tickets"""
     bugs_tickets = Bugs.objects.all()
+
     features_tickets = Features.objects.all()
     return render(request, 'bugs-features.html', {'bugs_tickets': bugs_tickets, 'features_tickets': features_tickets})
 
 
 def bug_detail(request, id):
     """Renders a view of an individual ticket"""
+    user = User.objects.get(username=request.user)
+    print(user)
     bug = get_object_or_404(Bugs, id=id)
     comments = Comments.objects.filter(ticket=bug).order_by('-created_date')
     comment_form = CommentForm()
     bug.views += 1
     bug.save()
-    return render(request, "bug_detail.html", {'items': bug, 'comment_form': comment_form, 'comments': comments})
+    return render(request, "bug_detail.html", {'user': user, 'items': bug, 'comment_form': comment_form, 'comments': comments})
 
 
 def feature_detail(request, id):

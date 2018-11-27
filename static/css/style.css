@@ -43,6 +43,13 @@ h4 {
     color: #fff;
 } 
 /* BASE.HTML */ 
+header {
+    top:0;
+    position: fixed;
+    width: 100%;
+    height: 80px;
+    background-image: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,.1))
+}
 /* NAV */
 .logo {
     position: fixed;
@@ -65,7 +72,6 @@ nav {
     position: fixed;
     padding: 20px;
     z-index: 0;
-    background-image: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,.1))
 }
 
 nav ul {
@@ -241,23 +247,42 @@ nav a {
 .inner-wrapper-black {
     background-color: rgba(0,0,0,.3);
     padding: 0 5px;
-    
-    
+
 }
 .inner-wrapper-white {
     background-color: rgba(255,255,255,.2);
     padding: 0 5px;
+
 }
 .inner-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-auto-rows: minmax(220px,auto)
+    grid-auto-rows: minmax(250px,auto)
 }
 
 .inner-content > div {
     border: 1px solid #fff;
     padding: 10px;
     margin: 0 7px 14px 7px;
+    position: relative;
+}
+
+.button-bottom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.button-bottom-btn {
+margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    .inner-content {
+        grid-template-columns: 1fr;
+        grid-auto-rows: minmax(250px,auto)
+    }
     
 }
 
@@ -276,7 +301,7 @@ nav a {
 }
 
 .creator-and-date {
-    text-decoration: underline;
+    font-size: 14px;
 }
 
 .views, .upvotes {
@@ -292,6 +317,8 @@ nav a {
     margin-top: 20px;
 }
 
+
+
 .user-comment {
     padding: 10px;
     display: grid;
@@ -303,7 +330,21 @@ nav a {
 .comment-profile-pic {
     display: inline-block;
 }
-
+@media (max-width: 768px) {
+    .comments {
+        width:100%;
+        border: none;
+        padding: 0;
+    }
+    .comment-profile-pic {
+        width: 50px;
+        height: 50px;
+    }
+    .ticket-description {
+        padding: 5px;
+    }
+    
+}
 
 
 /* PROFILE */

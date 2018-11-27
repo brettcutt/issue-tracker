@@ -4,18 +4,21 @@
 <div class="overlay-black"></div>
 <div class="container margin-top-100 center ">
     <h1>{{items.name}}</h1>
+    {% if user.username == 'admin' %}
+    <button class='btn btn-primary'>Edit</button>
+    {% endif %}
     <p class='inline views'>Views: {{items.views}}</p>
     <p class='inline upvotes'>Upvotes: {{items.upvotes}}</p>
     <p>Status: {{items.status}}</p>
     <div class='center comments'>
-        <div class="ticket-description inline wrapper">
+        <div class="ticket-description inline">
             <div>
                 <img class='comment-profile-pic' src="{{MEDIA_URL}}{{items.picture}}" onerror="src='{{MEDIA_URL}}images/missing-profile-pic.png'"
                     alt="profile pic">
 
             </div>
             <div>
-                <p class="creator-and-date inline">Posted by {{items.username}} on {{items.created_date}}</p>
+                <p class="creator-and-date inline"><b>{{items.username}}</b> {{items.created_date}}</p>
                 <p class='description'>{{items.description}}</p>
 
             </div>
@@ -33,14 +36,14 @@
         </div>
 
         {% for comment in comments %}
-        <div class="user-comment inline wrapper">
+        <div class="user-comment inline">
             <div>
                 <img class='comment-profile-pic' src="{{MEDIA_URL}}{{comment.picture}}" onerror="src='{{MEDIA_URL}}images/missing-profile-pic.png'"
                     alt="profile pic">
 
             </div>
             <div>
-                <p class="creator-and-date inline">Posted by {{comment.username}} on {{comment.created_date}}</p>
+                <p class="creator-and-date inline"><b>{{comment.username}}</b> {{comment.created_date}}</p>
                 <p class='description'>{{comment.comment}}</p>
 
             </div>

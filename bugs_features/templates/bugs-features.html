@@ -17,11 +17,12 @@
                 {% for bug_ticket in bugs_tickets %}
                 <div>
                     <h4>{{ bug_ticket.name }}</h4>
+                    <p><b>Status:</b> {{ bug_ticket.status }}</p>
                     <p>{{ bug_ticket.created_date }}</p>
                     <p>{{ bug_ticket.description | truncatechars:60 }}</p>
                     <form method='get' action="{% url 'bug_detail' bug_ticket.id %}">
-                        <div>
-                            <button type='submit' class='btn btn-primary inline'>View Ticket</button>
+                        <div class='button-bottom'>
+                            <button type='submit' class='button-bottom-btn btn btn-primary inline'>View Ticket</button>
                         </div>
 
                     </form>
@@ -48,11 +49,12 @@
                 {% for feature_ticket in features_tickets %}
                 <div>
                     <h4>{{ feature_ticket.name }}</h4>
+                    <p><b>Status:</b> {{ feature_ticket.status }}</p>
                     <p>{{ feature_ticket.created_date }}</p>
                     <p>{{ feature_ticket.description | truncatechars:60 }}</p>
                     <form method='get' action="{% url 'feature_detail' feature_ticket.id %}">
-                        <div>
-                            <button type='submit' class='btn btn-primary inline'>View Ticket</button>
+                        <div class="button-bottom">
+                            <button type='submit' class='button-bottom-btn btn btn-primary'>View Ticket</button>
                         </div>
 
                     </form>

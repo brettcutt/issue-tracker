@@ -20,28 +20,31 @@
 </head>
 
 <body>
-    <a class="logo " href="#">
-        <h4 class='inline'>Unicorn Attractor</h4>
-    </a>
-    <i id="menu-bars" class="fa fa-bars d-block d-sm-none" aria-hidden="true"></i>
-    <nav id="collapse">
+    <header>
 
-        <ul class="">
-            <li><a href="/">Home</a></li>
-            <li><a href="{% url 'bugs_features' %}">Bugs/Features</a></li>
-            {% if user.is_authenticated %}
-            <li><a href="#">Cart</a></li>
-            <li><a href="{% url 'profile' %}">Profile</a></li>
-            <li><a href="{% url 'logout' %}">Log out</a></li>
-            <li><a href="/admin">Admin</a></li>
-            {% else %}
+        <a class="logo " href="#">
+            <h4 class='inline'>Unicorn Attractor</h4>
+        </a>
+        <i id="menu-bars" class="fa fa-bars d-block d-sm-none" aria-hidden="true"></i>
+        <nav id="collapse">
 
-            <li><a href="{% url 'login' %}">Login</a></li>
-            <li><a href="{% url 'registration' %}">Register</a></li>
-            {% endif %}
+            <ul class="">
+                <li><a href="/">Home</a></li>
+                <li><a href="{% url 'bugs_features' %}">Bugs/Features</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="#">Cart</a></li>
+                <li><a href="{% url 'profile' %}">Profile</a></li>
+                <li><a href="{% url 'logout' %}">Log out</a></li>
+                <li><a href="/admin">Admin</a></li>
+                {% else %}
 
-        </ul>
-    </nav>
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'registration' %}">Register</a></li>
+                {% endif %}
+
+            </ul>
+        </nav>
+    </header>
     {% block messages %}
     {% endblock %}
 
