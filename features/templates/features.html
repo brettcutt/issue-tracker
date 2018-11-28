@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="overlay-black"></div>
+<div class="wrapper">
+    <div>
+        <h1 class="center margin-top-100 margin-bottom-20">Features</h1>
+        {% if user.is_authenticated %}
+        <div class='center'>
+            <a class='btn btn-primary inline margin-bottom-20' href="{% url 'add_feature' %}">Add Bug</a>
+        </div>
+        {% endif %}
+    </div>
+
+    <div>
+        <div class="ticket-content center">
+            {% for ticket in tickets %}
+            <div class="ticket">
+                <div class="ticket-header">
+                    <h4>{{ ticket.name }}</h4>
+
+                </div>
+                <div class="header-line"></div>
+                <p class=' inline'><b>Status:</b></p>
+                {% if ticket.status == 'To Do' %}
+                <p class='inline status-todo'>{{ ticket.status }}</p>
+                {% elif ticket.status == 'Doing' %}
+                <p class='inline status-doing'>{{ ticket.status }}</p>
+                {% elif ticket.status == 'Done' %}
+                <p class='inline status-done'>{{ ticket.status }}</p>
+                {% endif %}
+                <div class="short-line"></div>
+                <p><b>Issued:</b> {{ ticket.created_date }}</p>
+                <div class="short-line"></div>
+                <p>{{ ticket.description | truncatechars:40 }}</p>
+                <div class="ticket-bottom">
+                    <form method='get' class='inline' action="{% url 'feature_detail' ticket.id %}">
+                        <div class=''>
+                            <button type='submit' class=' btn btn-primary inline'>View Ticket</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
