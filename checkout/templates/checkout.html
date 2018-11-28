@@ -9,75 +9,75 @@
     //]]>
 </script>
 <script type='text/javascript' src="{% static 'js/stripe.js' %}"></script>
-{% endblock %}
+{% endblock head_js %}
 {% block content %}
-<div class="wrapper">
-    {% for item in cart_items %}
-    <div class="inner">
-        <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
-            <div class="card-header">{{ item.product.name }}</div>
-            <img style="margin: 0 auto; width: 200px; height: 200px;" src=" {{ MEDIA_URL }}{{ item.product.image }}"></img>
-            <div class="card-body">
-                <p class="card-text">{{ item.product.description }}</p>
-                <p class="card-text">{{ item.product.price }}</p>
-                <p class="card-text">{{ item.quantity }}</p>
-            </div>
-        </div>
 
+<div class="test">
+    <div class="wrapper margin-top-100">
+        <div class="messages-status-success center">
+
+            {% if messages %}
+            {% for message in messages %}
+            <p class='center'>{{ message }}</p>
+            {% endfor %}
+            {% endif %}
+        </div>
+        <form role="form" method="post" id="payment-form" action="{% url 'checkout' %}">
+            {% csrf_token %}
+            <legend>Payment Details</legend>
+            <div style="color: red;" id="credit-card-errors" style="display:none">
+                <div class="alert-message block-message error" id="stripe-error-message"></div>
+            </div>
+            <div class="row">
+
+                <div class="form-group col">
+                    {{payment_form | as_bootstrap}}
+
+
+                    <div class="summary">
+                        <div class="card " style="max-width: 100%;">
+                            <div class="card-header bg-dark center">
+                                <h4>Summary</h4>
+                            </div>
+                            <div class="card-body center">
+                                <table class='summary-table inline'>
+                                    <tr class='bottom-border'>
+                                        <th style="width: 66%">Feature Ticket</th>
+                                        <th style="width: 66%">Price</th>
+                                    </tr>
+                                    {% for item in cart_items %}
+                                    <tr>
+                                        <td>{{ item.ticket.name }}</td>
+                                        <td><i class="fa fa-eur"></i>{{item.price}}</td>
+                                    </tr>
+
+                                    {% endfor %}
+                                </table>
+                                <hr class="mobile-hr">
+                                <p class="card-text"><b>Total: </b><i class="fa fa-eur"></i>{{ total }}</p>
+                            </div>
+                            {% if total == 0 %}
+                            <div class="form-group bg-dark center">
+                                <button class="inline btn " role="button">Checkout</button>
+                            </div>
+                            {% else %}
+                            <div class="form-group bg-dark center">
+                                <button name='commit' type='submit' class="inline btn btn-success" id='submit_payment_btn'>Pay
+                                    Now</button>
+
+                            </div>
+                            {% endif %}
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
     </div>
-    {% endfor %}
+
+
+
+    </form>
 </div>
-
-
-<form role="form" method="post" id="payment-form" action="{% url 'checkout' %}">
-    {% csrf_token %}
-    <legend>Payment Details</legend>
-    <div class="row">
-        <div class="form-group col">
-            {{ order_form | as_bootstrap}}
-        </div>
-
-        <div class="form-group col">
-            {{payment_form | as_bootstrap}}
-
-
-            <div class="card bg-light mb-3" style="max-width: 100%;">
-                <div class="card-header">Payment Summary</div>
-                <div class="card-body">
-                    <table>
-                        <tr>
-                            <th style="width: 33%">Quantity</th>
-                            <th style="width: 33%">Item</th>
-                            <th style="width: 33%">Price</th>
-                        </tr>
-                        {% for item in cart_items %}
-                        <tr>
-                            <td>{{ item.quantity }}</td>
-                            <td>{{ item.product.name }}</td>
-                            <td><i class="fa fa-eur"></i>{{item.product.price}}</td>
-                        </tr>
-
-                        {% endfor %}
-                    </table>
-                    <hr>
-                    <p class="card-text"><i class="fa fa-eur"></i>{{ total }}</p>
-                </div>
-                <div class="form-group">
-                    <button name='commit' type='submit' class="btn primary-btn" id='submit_payment_btn'>Pay Now</button>
-                </div>
-            </div>
-
-
-
-
-
-
-        </div>
-    </div>
-    <div style="color: red;" id="credit-card-errors" style="display:none">
-        <div class="alert-message block-message error" id="stripe-error-message"></div>
-    </div>
-
-
-</form>
+</div>
 {% endblock %}
