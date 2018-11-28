@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, reverse
+from features.views import feature_detail
 
 # Create your views here.
 
@@ -15,12 +16,12 @@ def add_to_cart(request, id):
     cart = request.session.get('cart', {})
     cart[id] = cart.get(id, quantity)
     cart[id] = quantity
-
+    print(cart)
     request.session['cart'] = cart
-    return redirect(reverse('index'))
+    return redirect(feature_detail, id)
 
 
-def adjust_cart(request, id):
+def remove_ticket(request, id):
     """Adjust the quantity of the specified product to the specified amount"""
     quantity = int(request.POST.get('quantity'))
     cart = request.session.get('cart', {})
