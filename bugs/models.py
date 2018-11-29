@@ -35,3 +35,11 @@ class Comments(models.Model):
 
     def __str__(self):
         return self.comment
+
+
+class BugUpvote(models.Model):
+    upvoted_bug = models.ForeignKey(Bugs, default=None)
+    user = models.ForeignKey(User, default=None)
+
+    def __str__(self):
+        return str(self.user)
