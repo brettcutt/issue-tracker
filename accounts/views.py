@@ -3,6 +3,7 @@ from django.contrib import auth, messages
 # @login_required:  if the user trys to access logout through the endpoint this redirects them to the login page
 from django.contrib.auth.decorators import login_required
 from .forms import UserLoginForm, UserRegistrationForm
+from bugs.models import Comments
 from django.contrib.auth.models import User
 from .forms import ProfilePicForm
 from .models import ProfilePicture
@@ -77,21 +78,33 @@ def registration(request):
     return render(request, "registration.html", {'registration_form': registration_form})
 
 
-def user_profile(request, id=None):
+def user_profile(request):
     """The user's profile page"""
 
     user = User.objects.get(email=request.user.email)
-    picture = ProfilePicture.objects.filter(user=request.user)
-    image = get_object_or_404(
-        ProfilePicture, id=id) if id else None
+
+    try:
+        picture = get_object_or_404(ProfilePicture, user=request.user)
+    except:
+        picture = ProfilePicture()
+    print(picture)
     if request.method == 'POST':
-        pic_form = ProfilePicForm(request.POST, request.FILES, instance=image)
+        pic_form = ProfilePicForm(
+            request.POST, request.FILES, instance=picture)
 
         if pic_form.is_valid():
             pic_form = pic_form.save(commit=False)
             pic_form.user = request.user
             pic_form.save()
+
+            try:
+                comment_pic = get_object_or_404(Comments, user=request.user)
+                comment_pic.picture = picture
+                comment_pic.save()
+            except:
+                comment_pic = Comments()
+
             return redirect(reverse('profile'))
     else:
-        pic_form = ProfilePicForm(instance=image)
+        pic_form = ProfilePicForm(instance=picture)
     return render(request, 'profile.html', {'profile': user, 'pic_form': pic_form, 'picture': picture})

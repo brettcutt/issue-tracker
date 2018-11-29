@@ -31,10 +31,9 @@
         </tr>
         <tr>
             <td>Profile Picture</td>
-            {% for item in picture %}
             <td>{{item.id}}
-                <img src=" {{ MEDIA_URL }}{{ item.picture }}"></img>
-                {% endfor %}
+                <img src=" {{ MEDIA_URL }}{{ picture }}"></img>
+
                 <form enctype="multipart/form-data" method='post' action="">
                     {% csrf_token %}
                     {{pic_form}}
