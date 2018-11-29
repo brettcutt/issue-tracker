@@ -28,7 +28,6 @@ def feature_detail(request, id):
         item = str(item)
         if item == user:
             upvoted = True
-
     comments = Comments.objects.filter(
         feature_ticket=id).order_by('-created_date')
     comment_form = CommentForm()
@@ -60,7 +59,8 @@ def add_comment_features(request, id=id):
     return redirect(feature_detail, id)
 
 
-def add_feature(request):
+def add_edit_feature(request, id=None):
+    feature = get_object_or_404(Features, id=id) if id else None
     pic = ProfilePicture.objects.filter(user=request.user)
     image = ''
     for item in pic:
@@ -68,7 +68,7 @@ def add_feature(request):
         print(item)
 
     if request.method == "POST":
-        form = FeaturesForm(request.POST, request.FILES)
+        form = FeaturesForm(request.POST, request.FILES, instance=feature)
         if form.is_valid():
             form = form.save(commit=False)
             form.username = request.user
@@ -79,6 +79,6 @@ def add_feature(request):
             form.save()
             return redirect(reverse(features))
     else:
-        form = FeaturesForm()
+        form = FeaturesForm(instance=feature)
 
     return render(request, 'add_ticket.html', {'form': form})

@@ -49,7 +49,8 @@ def add_comment_bugs(request, id=id):
     return redirect(bug_detail, id)
 
 
-def add_bug(request):
+def add_edit_bug(request, id=None):
+    bug = get_object_or_404(Bugs, id=id) if id else None
     pic = ProfilePicture.objects.filter(user=request.user)
     image = ''
     for item in pic:
@@ -57,7 +58,7 @@ def add_bug(request):
         print(item)
 
     if request.method == "POST":
-        form = BugsForm(request.POST, request.FILES)
+        form = BugsForm(request.POST, request.FILES, instance=bug)
         if form.is_valid():
             form = form.save(commit=False)
             form.username = request.user
@@ -68,6 +69,6 @@ def add_bug(request):
             form.save()
             return redirect(reverse(bugs))
     else:
-        form = BugsForm()
+        form = BugsForm(instance=bug)
 
     return render(request, 'add_ticket.html', {'form': form})

@@ -4,6 +4,9 @@
 <div class="overlay-black"></div>
 <div class="container margin-top-100 center ">
     <h1>{{items.name}}</h1>
+    {% if user.username == 'admin' %}
+    <a href="{% url 'edit_bug' items.id %}" class='btn btn-primary'>Edit</a>
+    {% endif %}
 
     <p class='inline views'>Views: {{items.views}}</p>
     <p class='inline upvotes'>Upvotes: {{items.upvotes}}</p>
