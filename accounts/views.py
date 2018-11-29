@@ -67,7 +67,7 @@ def registration(request):
 
                 messages.success(
                     request, "You have been successfully registered!")
-                return redirect(reverse('index'))
+                return redirect(reverse('profile'))
             else:
                 messages.error(
                     request, "Unable to register your account at this time!")
@@ -87,7 +87,9 @@ def user_profile(request):
         picture = get_object_or_404(ProfilePicture, user=request.user)
     except:
         picture = ProfilePicture()
-    print(picture)
+        picture.user = user
+        picture.picture = 'images/missing-profile-pic.png'
+        picture.save()
     if request.method == 'POST':
         pic_form = ProfilePicForm(
             request.POST, request.FILES, instance=picture)
