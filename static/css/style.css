@@ -11,7 +11,9 @@ width: 100px;
 }
 
 /* DEFAULT */
-
+.pos-r {
+    position: relative;
+}
 .container {
 }
 
@@ -252,6 +254,33 @@ nav a {
 }
 
 /* BUGS AND FEATURES */
+.upvoted-wrapper {
+    position: relative;
+}
+.upvote-btn-hidden {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    text-align: center;
+    z-index: 3;
+    display: none;
+}
+
+.upvote-confirm {
+    position: absolute;
+    color: #000;
+    display: inline-block;
+    background-color: rgba(255,255,255,.9);
+    padding: 3px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 5px;
+}
+
 .inner-wrapper-black {
     background-color: rgba(0,0,0,.3);
     padding: 0 5px;
