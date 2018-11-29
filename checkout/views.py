@@ -5,6 +5,7 @@ from .forms import MakePaymentForm
 from django.conf import settings
 from django.utils import timezone
 from features.models import Features
+from .models import Upvote
 import stripe
 
 
@@ -22,8 +23,10 @@ def checkout(request):
             print('test2')
             cart = request.session.get('cart', {})
             total = 0
+            upvote_list = []
             for id, quantity in cart.items():
                 feature = get_object_or_404(Features, pk=id)
+                upvote_list.append(feature.name)
                 total += quantity * 10
             print(total)
             try:
@@ -38,6 +41,26 @@ def checkout(request):
 
             if customer.paid:
                 messages.success(request, "You have successfully paid")
+
+                print(upvote_list)
+
+                for feature_name in upvote_list:
+
+                    feature_name = get_object_or_404(
+                        Features, name=feature_name)
+
+                    try:
+                        upvote = get_object_or_404(
+                            Upvote, user=request.user, upvoted_feature=feature_name)
+                    except:
+                        upvote = Upvote()
+
+                    upvote.user = request.user
+                    upvote.upvoted_feature = feature_name
+                    feature_name.upvotes += 1
+                    feature_name.save()
+                    upvote.save()
+
                 request.session['cart'] = {}
                 return redirect(reverse('index'))
             else:

@@ -3,6 +3,7 @@ from .forms import FeaturesForm
 from bugs.forms import CommentForm
 from .models import Features
 from bugs.models import Comments
+from checkout.models import Upvote
 from accounts.models import ProfilePicture
 from django.utils import timezone
 from django.contrib.auth.models import User
@@ -18,12 +19,22 @@ def features(request):
 def feature_detail(request, id):
     """Renders a view of an individual ticket"""
     feature = get_object_or_404(Features, id=id)
+
+    upvotes = Upvote.objects.filter(upvoted_feature=feature)
+
+    upvoted = False
+    user = str(request.user)
+    for item in upvotes:
+        item = str(item)
+        if item == user:
+            upvoted = True
+
     comments = Comments.objects.filter(
         feature_ticket=id).order_by('-created_date')
     comment_form = CommentForm()
     feature.views += 1
     feature.save()
-    return render(request, "feature_detail.html", {'items': feature, 'comment_form': comment_form, 'comments': comments})
+    return render(request, "feature_detail.html", {'upvoted': upvoted, 'items': feature, 'comment_form': comment_form, 'comments': comments})
 
 
 def add_comment_features(request, id=id):

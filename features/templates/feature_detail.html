@@ -3,34 +3,56 @@
 {% block content%}
 <div class="overlay-black"></div>
 <div class="container margin-top-100 center ">
-    <h1>{{items.name}}</h1>
-    {% if user.username == 'admin' %}
-    <button class='btn btn-primary'>Edit</button>
-    {% endif %}
-    {% if user.is_authenticated %}
 
-    {% if items.name not in upvote_list %}
-    <form method="post" action="{% url 'add_to_cart' items.id %}">
-        {% csrf_token %}
-        <input type="hidden" name="quantity" value="1">
-        <button type='submit' class='btn btn-primary'>Upvote</button>
-    </form>
-    {% else %}
-    <button class='btn'>Upvoted</button>
-    {% endif %}
-    <br>
-    {% endif %}
-    <p class='inline views'><b>Views:</b> {{items.views}}</p>
-    <p class='inline upvotes'><b>Upvotes:</b> {{items.upvotes}}</p>
-    <br>
-    <p class=' inline'><b>Status:</b></p>
-    {% if items.status == 'To Do' %}
-    <p class='inline status-todo'>{{ items.status }}</p>
-    {% elif items.status == 'Doing' %}
-    <p class='inline status-doing'>{{ items.status }}</p>
-    {% elif items.status == 'Done' %}
-    <p class='inline status-done'>{{ items.status }}</p>
-    {% endif %}
+
+
+    <div class='inline pos-r'>
+
+        <h1>{{items.name}}</h1>
+        {% if user.username == 'admin' %}
+        <button class='btn btn-primary'>Edit</button>
+        {% endif %}
+
+        {% if user.is_authenticated %}
+
+        {% if items.name not in upvote_list %}
+        <form class='inline' method="post" action="{% url 'add_to_cart' items.id %}">
+            {% csrf_token %}
+            <input type="hidden" name="quantity" value="1">
+
+            {% if upvoted %}
+            <div id="repeated-upvote-btn" class='btn btn-primary'>Upvote</div>
+            <div class="upvote-btn-hidden">
+                <div class="upvote-confirm">
+                    <p><b>You have upvoted this feature before, are you sure you would like to add this to the cart again?</b></p>
+                    <button type='submit' class='btn btn-primary'>Yes</button>
+                    <div id='upvote-no' class='btn btn-primary'>No</div>
+                </div>
+            </div>
+
+            {% else %}
+            <button  type='submit' class='btn btn-primary'>Upvote</button>
+
+            {% endif %}
+        
+        </form>
+        {% else %}
+        <button class='btn btn-primary'><b>In Cart</b></button>
+        {% endif %}
+        <br>
+        {% endif %}
+        <p class='inline views'><b>Views:</b> {{items.views}}</p>
+        <p class='inline upvotes'><b>Upvotes:</b> {{items.upvotes}}</p>
+        <br>
+        <p class=' inline'><b>Status:</b></p>
+        {% if items.status == 'To Do' %}
+        <p class='inline status-todo'>{{ items.status }}</p>
+        {% elif items.status == 'Doing' %}
+        <p class='inline status-doing'>{{ items.status }}</p>
+        {% elif items.status == 'Done' %}
+        <p class='inline status-done'>{{ items.status }}</p>
+        {% endif %}
+    </div>
     <div class='center comments'>
         <div class="ticket-description inline">
             <div>
