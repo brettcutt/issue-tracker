@@ -14,7 +14,10 @@ def bugs(request):
 
 def bug_detail(request, id):
     """Renders a view of an individual ticket"""
-    user = User.objects.get(username=request.user)
+    try:
+        user = User.objects.get(username=request.user)
+    except:
+        user = None
 
     bug = get_object_or_404(Bugs, id=id)
     upvote = BugUpvote.objects.filter(upvoted_bug=bug)

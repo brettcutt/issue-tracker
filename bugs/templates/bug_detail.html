@@ -4,6 +4,7 @@
 <div class="overlay-black"></div>
 <div class="container margin-top-100 center ">
     <h1>{{items.name}}</h1>
+    {% if user != None %}
     {% if user.username == 'admin' or user.username == items.username|slugify %}
     <a href="{% url 'edit_bug' items.id %}" class='btn btn-primary'>Edit</a>
     {% endif %}
@@ -11,6 +12,9 @@
     <div class='btn btn-secondary'>Upvoted</div>
     {% else %}
     <a class='btn btn-primary' href="{% url 'upvote_bug' items.id %}">Upvote</a>
+    {% endif %}
+    {% else %}
+    <div class='btn btn-secondary'>Upvote</div>
     {% endif %}
     <br>
     <p class='inline views'>Views: {{items.views}}</p>
@@ -33,13 +37,16 @@
 
 
     <div class="comments ">
+        {% if user != None %}
         <div>
             <form method='post' class="center" action="{% url 'add_comment_bugs' items.id %}">
                 {% csrf_token %}
                 {{ comment_form | as_bootstrap }}
                 <button class='btn btn-primary inline' type='submit'>Post</button>
+
             </form>
         </div>
+        {% endif %}
 
         {% for comment in comments %}
         <div class="user-comment inline">
