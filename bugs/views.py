@@ -4,6 +4,7 @@ from .models import Comments, Bugs, BugUpvote
 from accounts.models import ProfilePicture
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 
 def bugs(request):
@@ -35,6 +36,7 @@ def bug_detail(request, id):
     return render(request, "bug_detail.html", {'upvoted': upvoted, 'user': user, 'items': bug, 'comment_form': comment_form, 'comments': comments})
 
 
+@login_required
 def add_comment_bugs(request, id=id):
     bug = get_object_or_404(Bugs, id=id)
     pic = ProfilePicture.objects.filter(user=request.user)
@@ -60,34 +62,42 @@ def add_comment_bugs(request, id=id):
     return redirect(bug_detail, id)
 
 
+@login_required
 def add_edit_bug(request, id=None):
     bug = get_object_or_404(Bugs, id=id) if id else None
-    pic = ProfilePicture.objects.filter(user=request.user)
-    image = ''
-    for item in pic:
-        image = item
-        print(item)
-
+    pic = get_object_or_404(ProfilePicture, user=request.user)
+    user = str(request.user)
+    add_edit = True
+    if bug == None:
+        add_edit = False
     if request.method == "POST":
         form = BugsForm(request.POST, request.FILES, instance=bug)
+
         if form.is_valid():
             form = form.save(commit=False)
-            form.username = request.user
-            if image == "":
-                form.picture = ProfilePicture.objects.get(user="missing")
+            if user == 'admin':
+                form.status = request.POST.get('status')
+            if bug == None:
+                form.username = request.user
+                form.picture = pic
+                form.views = -1
+                form.save()
+                return redirect(reverse(bugs))
             else:
-                form.picture = image
-            form.save()
-            return redirect(reverse(bugs))
+                form.username = bug.username
+                form.picture = bug.picture
+                form.views -= 1
+                form.save()
+                return redirect(bug_detail, id)
     else:
         form = BugsForm(instance=bug)
 
-    return render(request, 'add_ticket.html', {'form': form})
+    return render(request, 'add_ticket.html', {'add_edit': add_edit, 'form': form})
 
 
+@login_required
 def upvote_bug(request, id=id):
     bug = get_object_or_404(Bugs, id=id)
-    print("here", bug)
     bug.upvotes += 1
     bug.views -= 1
     bug.save()

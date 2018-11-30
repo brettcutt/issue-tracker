@@ -7,6 +7,7 @@ from checkout.models import Upvote
 from accounts.models import ProfilePicture
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 
 def features(request):
@@ -36,6 +37,7 @@ def feature_detail(request, id):
     return render(request, "feature_detail.html", {'upvoted': upvoted, 'items': feature, 'comment_form': comment_form, 'comments': comments})
 
 
+@login_required
 def add_comment_features(request, id=id):
     feature = get_object_or_404(Features, id=id)
     pic = ProfilePicture.objects.filter(user=request.user)
@@ -59,26 +61,36 @@ def add_comment_features(request, id=id):
     return redirect(feature_detail, id)
 
 
+@login_required
 def add_edit_feature(request, id=None):
     feature = get_object_or_404(Features, id=id) if id else None
-    pic = ProfilePicture.objects.filter(user=request.user)
-    image = ''
-    for item in pic:
-        image = item
-        print(item)
+    print('f', feature)
+    pic = get_object_or_404(ProfilePicture, user=request.user)
+    user = str(request.user)
+    add_edit = True
+    if feature == None:
+        add_edit = False
 
     if request.method == "POST":
         form = FeaturesForm(request.POST, request.FILES, instance=feature)
+
         if form.is_valid():
             form = form.save(commit=False)
-            form.username = request.user
-            if image == "":
-                form.picture = ProfilePicture.objects.get(user="missing")
+            if user == 'admin':
+                form.status = request.POST.get('status')
+            if feature == None:
+                form.username = request.user
+                form.picture = pic
+                form.views = -1
+                form.save()
+                return redirect(reverse(features))
             else:
-                form.picture = image
-            form.save()
-            return redirect(reverse(features))
+                form.username = feature.username
+                form.picture = feature.picture
+                form.views -= 1
+                form.save()
+                return redirect(feature_detail, id)
     else:
         form = FeaturesForm(instance=feature)
 
-    return render(request, 'add_ticket.html', {'form': form})
+    return render(request, 'add_ticket.html', {'add_edit': add_edit, 'form': form})
