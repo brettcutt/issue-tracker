@@ -5,6 +5,7 @@
     <div class='inline pos-r'>
 
         <h1>{{items.name}}</h1>
+        <div class="line "></div>
         {% if user.username == 'admin' or user.username == items.username|slugify %}
         <a href="{% url 'edit_feature' items.id %}" class='btn btn-primary'>Edit</a>
         {% endif %}
@@ -20,7 +21,10 @@
             <div id="repeated-upvote-btn" class='btn btn-primary'>Upvote</div>
             <div class="upvote-btn-hidden">
                 <div class="upvote-confirm">
-                    <p><b>You have upvoted this feature before, are you sure you would like to add this to the cart
+                    <div class="card-header bg-dark center">
+                        <h5>Add to Cart?</h5>
+                    </div>
+                    <p><b>You have upvoted this feature before. Are you sure you would like to add this to the cart
                             again?</b></p>
                     <button type='submit' class='btn btn-primary'>Yes</button>
                     <div id='upvote-no' class='btn btn-primary'>No</div>
@@ -68,15 +72,24 @@
     </div>
 
     <div class="comments ">
-        {% if user.is_authenticated %}
         <div>
-            <form method='post' class="center" action="{% url 'add_comment_features' items.id %}">
-                {% csrf_token %}
-                {{ comment_form | as_bootstrap }}
-                <button class='btn btn-primary inline' type='submit'>Post</button>
+            <form method="post" class="center" action="/features/add_comment_features/5/">
+                <input type="hidden" name="csrfmiddlewaretoken" value="87COzCUNHVKuxAB7zU3lDzWze0kACyoEm3Nz3v2ELT5P3fFL3dTzaGD0YHT8W375">
+                <div id="div_id_comment" class="form-group  ">
+                    <label for="id_comment" class="control-label required-field ">
+                        <b>Comments</b>
+                    </label>
+                    <div class="">
+                        <textarea name="comment" cols="5" rows="4" class=" form-control" required="" id="id_comment"></textarea>
+                    </div>
+                </div>
+                {% if user.is_authenticated %}
+                <button class="btn btn-primary inline" type="submit">Post</button>
+                {% else %}
+                <div class="btn btn-secondary inline">Post</div>
+                {% endif %}
             </form>
         </div>
-        {% endif %}
 
         {% for comment in comments %}
         <div class="user-comment inline">

@@ -13,35 +13,62 @@
 
 {% block content %}
 
-<div class="wrapper">
-    <div class="inner1">
+<div class="home-wrapper">
 
-        <div></div>
-        <div>
-            <h1 class=center>Unicorn Attractor</h1>
-            <div class="line"></div>
+    <div class="main-page center">
+
+        <div class="home-content">
+            <div class='title center'>
+                <p class="center">Unicorn Attractor</p>
+            </div>
+            <div class="tagline center">
+                <p>Register and let up help you with your bug issues or feature ideas!</p>
+
+            </div>
+            <div class="register-btn inline">
+                <a class="btn btn-success center" href="{% url 'registration' %}">Register</a>
+            </div>
         </div>
+        <div id='arrow-down' class="arrow-down center">
+            <div class='inline'>
 
-        <div></div>
+                <a href='#charts'><i class="fa fa-arrow-down inline" aria-hidden="true"></i></a>
+            </div>
+            <span id="charts"></span>
+        </div>
+    </div>
+    <div class='graphs-page'>
 
-
-
+        <div class='home-bugs'>
+            <h1 class='center test1'>Bugs</h1>
+            <div class="line test2"></div>
+            <div class=" chart-description center test3">
+                <p><b>We spent 50% of our time fixing up bugs for free.
+                        If you see a bug that looks all too familiar and would like that issue fixed, than upvote,
+                        as we prioritized our work around the most upvotes</b></p>
+                <a href="{% url 'bugs' %}" class="btn btn-primary"><b>See Bugs</b></a>
+            </div>
+        </div>
+        <div class="">
+            <h1 class='center test1'>Features</h2>
+                <div class="line test2"></div>
+                <div class=" chart-description center test3">
+                    <p><b>The other 50% of the time is developing the most upvoted Feature. If there is a
+                            feature
+                            you
+                            would also like to have, than you can add that feature to your cart and checkout at a
+                            cost of $10 per upvote.
+                        </b></p>
+                    <a href="{% url 'features' %}" class="btn btn-primary"><b>See Features</b></a>
+                </div>
+        </div>
     </div>
 
-    <div class="inner2 ">
-
-        <div class="d-none sm-block"></div>
-
-        <div></div>
-
-        <div>
-            <h1>Features</h2>
-                <div class="line"></div>
-        </div>
-        <div class="d-block sm-none"></div>
-
-
-    </div>
 </div>
-{% include 'footer-home.html' %}
+<div class='d-none d-sm-block'>
+    {% include 'footer-home.html' %}
+</div>
+<div class='d-block d-sm-none'>
+    {% include 'footer.html' %}
+</div>
 {% endblock %}

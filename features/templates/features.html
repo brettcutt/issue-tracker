@@ -4,6 +4,15 @@
 <div class="wrapper">
     <div>
         <h1 class="center margin-bottom-20">Features</h1>
+        <div class="line"></div>
+        <div class=" chart-description center">
+            <p class='margin-b-50'><b>We spent 50% of the time developing the most upvoted Features. If there is a
+                    feature
+                    you would like to have and see developed, than you can add that feature to your cart, then checkout
+                    at a
+                    cost of $10 per upvote.</b>
+            </p>
+        </div>
         {% if user.is_authenticated %}
         <div class='center'>
             <a class='btn btn-primary inline margin-bottom-20' href="{% url 'add_feature' %}">Add Feature</a>
@@ -11,7 +20,7 @@
         {% endif %}
     </div>
 
-    <div>
+    <div class='container'>
         <div class="ticket-content center">
             {% for ticket in tickets %}
             <div class="ticket">
