@@ -2,49 +2,80 @@
 {% load bootstrap_tags %}
 {% block content %}
 <div class="overlay-black"></div>
-<div class=' margin-top-100 center'>
-    <h1>Profile</h1>
-    <table class='center inline'>
-        <tr>
-            <td>
-                Username
-            </td>
-            <td>{{ profile }}</td>
-        </tr>
-        <tr>
-            <td>
-                ID
-            </td>
-            <td>{{ profile.id }}</td>
-        </tr>
-        <tr>
-            <td>Email</td>
-            <td>{{ profile.email}}</td>
-        </tr>
-        <tr>
-            <td>Last Login</td>
-            <td>{{ profile.last_login}}</td>
-        </tr>
-        <tr>
-            <td>Member since</td>
-            <td>{{ profile.date_joined}}</td>
-        </tr>
-        <tr>
-            <td>Profile Picture</td>
-            <td>{{item.id}}
-                <img src=" {{ MEDIA_URL }}{{ picture }}"></img>
+<div class='center margin-t-50'>
 
-                <form enctype="multipart/form-data" method='post' action="">
-                    {% csrf_token %}
-                    {{pic_form}}
-                    <button type='submit'>Save</button>
-                </form>
-            </td>
-        </tr>
+    <div class="profile-card">
+        <div class="card " style="max-width: 100%;">
+            <div class="card-header bg-dark center">
+                <h2>Profile</h2>
+            </div>
+            <div class="card-body center">
+                <table class='center inline'>
+                    <tr>
+                        <td>
+                            <B>Username:</B>
+                        </td>
+                        <td>{{ profile }}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <B>ID:</B>
+                        </td>
+                        <td>{{ profile.id }}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <B>Email:</B>
+                        </td>
+                        <td>{{ profile.email}}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <B>Last Login:</B>
+                        </td>
+                        <td>{{ profile.last_login}}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <B>Member since:</B>
+                        </td>
+                        <td>{{ profile.date_joined}}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <B>Bugs upvoted</B>
+                        </td>
+                        <td>{{ bug_upvotes}}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <B>Features upvoted</B>
+                        </td>
+                        <td>{{ features_upvoted}}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <B>Profile Picture:</B>
+                        </td>
+                        <td>{{item.id}}
+                            <div class='pic-container'>
+                                <img class="profile-picture" src=" {{ MEDIA_URL }}{{ picture }}"></img>
+                            </div>
 
-    </table>
-
-
-
+                            <form enctype="multipart/form-data" method='post' action="">
+                                {% csrf_token %}
+                                <label class="picture-label btn btn-primary" for="id_picture">Choose a file</label>
+                                <input class="inputfile" style='width:100px;' type="file" id='id_picture' value='{{ picture }}'
+                                    name='picture'>
+                                <button class="btn btn-primary" type='submit'>Save</button>
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
+<div class="block"></div>
+{% include 'footer.html' %}
 {% endblock %}

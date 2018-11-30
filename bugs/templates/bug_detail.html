@@ -1,8 +1,7 @@
 {% extends 'base.html' %}
 {% load bootstrap_tags %}
 {% block content%}
-<div class="overlay-black"></div>
-<div class="container margin-top-100 center ">
+<div class="container center ">
     <h1>{{items.name}}</h1>
     {% if user != None %}
     {% if user.username == 'admin' or user.username == items.username|slugify %}
@@ -62,11 +61,8 @@
             </div>
         </div>
         {% endfor %}
-
-
     </div>
-
-
 </div>
-</div>
+<div class="block"></div>
+{% include 'footer.html' %}
 {% endblock %}

@@ -13,7 +13,9 @@
 {% block content %}
 
 <div class="test">
-    <div class="wrapper margin-top-100">
+    <div class="block d-sm-none"></div>
+    <div class="wrapper ">
+        <h1 class="center  margin-b-50">Payment Details</h1>
         <div class="messages-status-success center">
 
             {% if messages %}
@@ -22,16 +24,15 @@
             {% endfor %}
             {% endif %}
         </div>
-        <form role="form" method="post" id="payment-form" action="{% url 'checkout' %}">
-            {% csrf_token %}
-            <legend>Payment Details</legend>
-            <div style="color: red;" id="credit-card-errors" style="display:none">
-                <div class="alert-message block-message error" id="stripe-error-message"></div>
-            </div>
-            <div class="row">
+        <div class="col-sm-6 offset-sm-3 ">
+            <form role="form" method="post" id="payment-form" action="{% url 'checkout' %}">
+                {% csrf_token %}
 
                 <div class="form-group col">
-                    {{payment_form | as_bootstrap}}
+                    <div class='margin-b-30'>
+                        {{payment_form | as_bootstrap}}
+
+                    </div>
 
 
                     <div class="summary">
@@ -55,6 +56,9 @@
                                 </table>
                                 <hr class="mobile-hr">
                                 <p class="card-text"><b>Total: </b><i class="fa fa-eur"></i>{{ total }}</p>
+                                <div style="color: red;" id="credit-card-errors" style="display:none">
+                                    <div class="alert-message block-message error" id="stripe-error-message"></div>
+                                </div>
                             </div>
                             {% if total == 0 %}
                             <div class="form-group bg-dark center">
@@ -71,13 +75,13 @@
 
                     </div>
                 </div>
-
-            </div>
+            </form>
+        </div>
     </div>
-
-
-
-    </form>
 </div>
+<div class="block"></div>
+<div class="d-none d-sm-block">
+
+    {% include 'footer.html' %}
 </div>
 {% endblock %}

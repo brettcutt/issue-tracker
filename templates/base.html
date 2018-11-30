@@ -20,39 +20,50 @@
 </head>
 
 <body>
-    <header>
+    <div class="overlay-black"></div>
+    <div class="main-outer">
+        <header>
+            <a class="logo " href="#">
+                <h4 class='inline'>Unicorn Attractor</h4>
+            </a>
+            <i id="menu-bars" class="fa fa-bars d-block d-sm-none" aria-hidden="true"></i>
+            <nav id="collapse">
 
-        <a class="logo " href="#">
-            <h4 class='inline'>Unicorn Attractor</h4>
-        </a>
-        <i id="menu-bars" class="fa fa-bars d-block d-sm-none" aria-hidden="true"></i>
-        <nav id="collapse">
+                <ul class="">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="{% url 'bugs' %}">Bugs</a></li>
+                    <li><a href="{% url 'features' %}">Features</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'view_cart' %}">Cart</a>
+                        {% if ticket_count > 0 %}
+                        <label for="" class="badge badge-light">{{ ticket_count }}</label>
+                        {% endif %}
 
-            <ul class="">
-                <li><a href="/">Home</a></li>
-                <li><a href="{% url 'bugs' %}">Bugs</a></li>
-                <li><a href="{% url 'features' %}">Features</a></li>
-                {% if user.is_authenticated %}
-                <li><a href="{% url 'view_cart' %}">Cart</a></li>
-                <li><a href="{% url 'profile' %}">Profile</a></li>
-                <li><a href="{% url 'logout' %}">Log out</a></li>
-                <li><a href="/admin">Admin</a></li>
-                {% else %}
+                    </li>
+                    <li><a href="{% url 'profile' %}">Profile</a></li>
+                    <li><a href="{% url 'logout' %}">Log out</a></li>
+                    {% if user|slugify == 'admin' %}
+                    <li><a href="/admin">Admin</a></li>
+                    {% endif %}
+                    {% else %}
 
-                <li><a href="{% url 'login' %}">Login</a></li>
-                <li><a href="{% url 'registration' %}">Register</a></li>
-                {% endif %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'registration' %}">Register</a></li>
+                    {% endif %}
 
-            </ul>
-        </nav>
-    </header>
-    {% block messages %}
-    {% endblock %}
+                </ul>
+            </nav>
+        </header>
 
-    {% block content %}
-    {% endblock %}
+        <div class="main-inner">
+            <div class="block"></div>
+            {% block messages %}
+            {% endblock %}
 
-
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
     <script src="{% static 'js/jquery-3.3.1.slim.min.js' %}"></script>
     <script src="{% static 'js/popper.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>

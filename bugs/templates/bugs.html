@@ -1,10 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="overlay-black"></div>
 <div class="wrapper">
     <div>
-        <h1 class="center margin-top-100 margin-bottom-20">Bugs</h1>
+        <h1 class="center margin-bottom-20">Bugs</h1>
         {% if user.is_authenticated %}
         <div class='center'>
             <a class='btn btn-primary inline margin-bottom-20' href="{% url 'add_bug' %}">Add Bug</a>
@@ -46,4 +45,6 @@
         </div>
     </div>
 </div>
+<div class="block"></div>
+{% include 'footer.html' %}
 {% endblock %}

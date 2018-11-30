@@ -1,11 +1,7 @@
 {% extends 'base.html' %}
 {% load bootstrap_tags %}
 {% block content%}
-<div class="overlay-black"></div>
-<div class="container margin-top-100 center ">
-
-
-
+<div class="container center ">
     <div class='inline pos-r'>
 
         <h1>{{items.name}}</h1>
@@ -96,11 +92,8 @@
             </div>
         </div>
         {% endfor %}
-
-
     </div>
-
-
 </div>
-</div>
-{% endblock %}
+<div class="block"></div>
+{% include 'footer.html' %}
+{% endblock %}}

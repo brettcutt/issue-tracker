@@ -1,13 +1,32 @@
 {% extends 'base.html' %}
 {% load bootstrap_tags %}
 {% block content%}
-<div class="overlay-black"></div>
-<div class="container margin-top-100 center">
-    <div class="col-sm-6 offset-sm-3 login-form">
+<div class="center">
+    <div class="col-sm-6 offset-sm-3 ">
+        {% if add_edit %}
+        <h1>Edit Ticket</h1>
+        {% else %}
         <h1>Add Ticket</h1>
+
+        {% endif %}
         <form enctype="multipart/form-data" method="post" action="">
             {% csrf_token %}
             {{ form | as_bootstrap}}
+            {% if user|slugify == 'admin' %}
+            <div id="div_id_status" class="form-group  ">
+                <label for="id_status" class="control-label required-field ">
+                    Status
+                </label>
+                <div class="">
+                    <select name="status" class=" form-control" id="id_status">
+                        <option value="To Do" selected>To do</option>
+                        <option value="Doing">Doing</option>
+                        <option value="Done">Done</option>
+
+                    </select>
+                </div>
+            </div>
+            {% endif %}
             <button class="btn btn-primary" type='submit'>Add</button>
         </form>
         <div class="messages-status-error">
@@ -21,4 +40,6 @@
 
     </div>
 </div>
+<div class="block"></div>
+{% include 'footer.html' %}
 {% endblock %}

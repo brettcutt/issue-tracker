@@ -2,13 +2,10 @@
 {% load static from staticfiles %}
 {% load bootstrap_tags %}
 {% block content %}
-
-
-
-
 <div class="test">
-    <div class="wrapper margin-top-100">
-        <h1 class="center margin-top-100 margin-bottom-20">Your Cart</h1>
+    <div class="block d-sm-none"></div>
+    <div class="wrapper margin-b-30">
+        <h1 class="center  margin-b-50">Your Cart</h1>
         <div class="ticket-content center">
             {% for item in cart_items %}
             <div class="ticket">
@@ -47,41 +44,46 @@
             {% endfor %}
         </div>
     </div>
-    <div class="summary">
-        <div class="card " style="max-width: 100%;">
-            <div class="card-header bg-dark center">
-                <h4>Summary</h4>
-            </div>
-            <div class="card-body center">
-                <table class='summary-table inline'>
-                    <tr class='bottom-border'>
-                        <th style="width: 66%">Feature Ticket</th>
-                        <th style="width: 66%">Price</th>
-                    </tr>
-                    {% for item in cart_items %}
-                    <tr>
-                        <td>{{ item.ticket.name }}</td>
-                        <td><i class="fa fa-eur"></i>{{item.price}}</td>
-                    </tr>
+    <div class="summary-checkout">
+        <div class="summary">
+            <div class="card " style="max-width: 100%;">
+                <div class="card-header bg-dark center">
+                    <h4>Summary</h4>
+                </div>
+                <div class="card-body center">
+                    <table class='summary-table inline'>
+                        <tr class='bottom-border'>
+                            <th style="width: 66%">Feature Ticket</th>
+                            <th style="width: 66%">Price</th>
+                        </tr>
+                        {% for item in cart_items %}
+                        <tr>
+                            <td>{{ item.ticket.name }}</td>
+                            <td><i class="fa fa-eur"></i>{{item.price}}</td>
+                        </tr>
 
-                    {% endfor %}
-                </table>
-                <hr class="mobile-hr">
-                <p class="card-text"><b>Total: </b><i class="fa fa-eur"></i>{{ total }}</p>
+                        {% endfor %}
+                    </table>
+                    <hr class="mobile-hr">
+                    <p class="card-text"><b>Total: </b><i class="fa fa-eur"></i>{{ total }}</p>
+                </div>
+                {% if total == 0 %}
+                <div class="form-group bg-dark center">
+                    <button class="inline btn " role="button">Checkout</button>
+                </div>
+                {% else %}
+                <div class="form-group bg-dark center">
+                    <a href="{% url 'checkout' %}" class="inline btn btn-success" role="button">Checkout</a>
+                </div>
+                {% endif %}
             </div>
-            {% if total == 0 %}
-            <div class="form-group bg-dark center">
-                <button class="inline btn " role="button">Checkout</button>
-            </div>
-            {% else %}
-            <div class="form-group bg-dark center">
-                <a href="{% url 'checkout' %}" class="inline btn btn-success" role="button">Checkout</a>
-            </div>
-            {% endif %}
+
         </div>
-
     </div>
 </div>
+<div class="block"></div>
+<div class="d-none d-sm-block">
 
-
+    {% include 'footer.html' %}
+</div>
 {% endblock %}
