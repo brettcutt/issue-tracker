@@ -3,7 +3,8 @@ from django.contrib import auth, messages
 # @login_required:  if the user trys to access logout through the endpoint this redirects them to the login page
 from django.contrib.auth.decorators import login_required
 from .forms import UserLoginForm, UserRegistrationForm
-from bugs.models import Comments
+from bugs.models import Comments, BugUpvote
+from checkout.models import Upvote
 from django.contrib.auth.models import User
 from .forms import ProfilePicForm
 from .models import ProfilePicture
@@ -82,6 +83,8 @@ def user_profile(request):
     """The user's profile page"""
 
     user = User.objects.get(email=request.user.email)
+    bug_upvotes = BugUpvote.objects.filter(user=user).count()
+    features_upvoted = Upvote.objects.filter(user=user).count()
 
     try:
         picture = get_object_or_404(ProfilePicture, user=request.user)
@@ -109,4 +112,4 @@ def user_profile(request):
             return redirect(reverse('profile'))
     else:
         pic_form = ProfilePicForm(instance=picture)
-    return render(request, 'profile.html', {'profile': user, 'pic_form': pic_form, 'picture': picture})
+    return render(request, 'profile.html', {'features_upvoted': features_upvoted, 'bug_upvotes': bug_upvotes, 'profile': user, 'pic_form': pic_form, 'picture': picture})
