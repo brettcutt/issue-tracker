@@ -30,19 +30,43 @@ $(document).ready(function () {
         var y = $(this).scrollTop();
         if (y > 250) {
 
-            $('.test1').show('fade', 1000);
+            $('.fade1').show('fade', 1000);
             setTimeout(function () {
 
                 // your stuff here
-                $('.test2').show('fade', 1000);
+                $('.fade2').show('fade', 1000);
 
             }, 1000);
             setTimeout(function () {
 
                 // your stuff here
-                $('.test3').show('fade', 1000);
+                $('.fade3').show('fade', 1000);
 
-            }, 2000);
+            }, 1800);
+            setTimeout(function () {
+
+                // your stuff here
+                $('.fade4').show('fade', 1000);
+
+            }, 2600);
+            setTimeout(function () {
+
+                // your stuff here
+                $('.fade5').show('fade', 1000);
+
+            }, 3400);
+            setTimeout(function () {
+
+                // your stuff here
+                $('.fade6').show('fade', 1000);
+
+            }, 4200);
+            setTimeout(function () {
+
+                // your stuff here
+                $('.fade7').show('fade', 1000);
+
+            }, 5000);
 
         }
     });

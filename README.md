@@ -27,3 +27,6 @@ In the terminal command line:
 
 - missing profile picture
    - https://pixabay.com/en/avatar-person-neutral-man-blank-159236/
+
+- Searching daily, weekly and monthly
+https://stackoverflow.com/questions/7217811/query-datetime-by-todays-date-in-django 
