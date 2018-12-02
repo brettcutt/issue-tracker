@@ -15,6 +15,7 @@ body {
     padding: 0;
 }
 
+
 .main-outer {
     position: relative;
     min-height: 100%;
@@ -143,7 +144,7 @@ nav a:hover {
     text-decoration: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     nav {
         display: none;
         text-align: center;
@@ -163,11 +164,13 @@ nav a:hover {
         width: 100px;
     }
 }
-@media (min-width: 769px) {
+@media (min-width: 768px) and (max-width: 991px) {
     nav {
         display: block;
     }
-    
+    nav li {
+        width: 60px;
+    }
 }
 
 /* SOCIAL MEDIA */
@@ -291,6 +294,14 @@ color: #fff;
 .fade1, .fade2, .fade3, .fade4, .fade5, .fade6, .fade7 {
     display: none;
 }
+@media (min-width: 768px) and (max-width: 991px){
+    .fade1, .fade2, .fade3, .fade4, .fade5, .fade6, .fade7 {
+        display: block;
+    }
+    .fade4 {
+        display: inline-block;
+    }
+}
 .fa-arrow-down {
     color: #fff;
     font-size: 50px;
@@ -317,8 +328,9 @@ color: #fff;
     
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 991px) {
     .graphs-page {
+        display: block;
     }
     
 }
@@ -326,12 +338,18 @@ color: #fff;
     border-right: 1px solid #fff;
 }
 
+@media (min-width: 768px) and (max-width: 991px) {
+    .home-features {
+margin-top: 100px;
+    }
+    
+}
 .chart-description {
     
     width: 60%;
     margin: 30px auto;
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .chart-description {
     
         width: 90%;
@@ -362,7 +380,7 @@ color: #fff;
 
 
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .wrapper {
         grid-template-rows: 1fr 1fr;
         grid-auto-rows: minmax(100px,auto)
@@ -381,7 +399,7 @@ color: #fff;
     height: 5px;
     background-color: #fff;
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .inner2 .line, .inner1 .line {
         display: none;
     }
@@ -573,7 +591,7 @@ margin-bottom: 10px;
 .comment-profile-pic {
     display: inline-block;
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .comments {
         width:100%;
         border: none;
@@ -779,6 +797,21 @@ g.legends {
     stroke: none !important;
 }
 
-title {
+.bug-chart, .feature-chart {
     display: none;
 }
+
+@media (min-width: 768px) and (max-width: 991px){
+    .bugs-chart, .features-chart {
+        display: block;
+    }
+}
+
+.bug-btn, .feature-btn {
+    width: 90px;
+}
+
+.btn-selected, .btn-selected:hover {
+    background-color: #343a40;
+}
+

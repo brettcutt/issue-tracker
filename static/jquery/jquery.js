@@ -30,46 +30,60 @@ $(document).ready(function () {
         var y = $(this).scrollTop();
         if (y > 250) {
 
-            $('.fade1').show('fade', 1000);
+            $('.fade1').show('fade', 700);
             setTimeout(function () {
 
                 // your stuff here
-                $('.fade2').show('fade', 1000);
+                $('.fade2').show('fade', 700);
+
+            }, 500);
+            setTimeout(function () {
+
+                // your stuff here
+                $('.fade3').show('fade', 700);
 
             }, 1000);
             setTimeout(function () {
 
                 // your stuff here
-                $('.fade3').show('fade', 1000);
+                $('.fade4').show('fade', 700);
 
-            }, 1800);
+            }, 1500);
             setTimeout(function () {
 
                 // your stuff here
-                $('.fade4').show('fade', 1000);
+                $('.fade5').show('fade', 700);
 
-            }, 2600);
+            }, 2000);
             setTimeout(function () {
 
                 // your stuff here
-                $('.fade5').show('fade', 1000);
+                $('.fade6').show('fade', 700);
 
-            }, 3400);
+            }, 2500);
             setTimeout(function () {
 
                 // your stuff here
-                $('.fade6').show('fade', 1000);
+                $('.fade7').show('fade', 700);
 
-            }, 4200);
-            setTimeout(function () {
-
-                // your stuff here
-                $('.fade7').show('fade', 1000);
-
-            }, 5000);
+            }, 3000);
 
         }
     });
+
+    $(".bug-btn").click(function () {
+        $(".bug-chart-container").hide()
+        $(".bug-btn").removeClass('btn-selected')
+        $(this).addClass('btn-selected')
+        $(this).next().next().next().next().show('fade', 200)
+    })
+
+    $(".feature-btn").click(function () {
+        $(".features-chart-container").hide()
+        $(".feature-btn").removeClass('btn-selected')
+        $(this).addClass('btn-selected')
+        $(this).next().next().next().next().show('fade', 200)
+    })
 
 
 })

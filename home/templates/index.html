@@ -25,8 +25,14 @@
                 <p>Register and let up help you with your bug issues or feature ideas!</p>
 
             </div>
+
             <div class="register-btn inline">
+                {% if user.is_authenticated %}
+                <a class="btn btn-success center" href="{% url 'bugs' %}">Bugs</a>
+                <a class="btn btn-success center" href="{% url 'features' %}">Features</a>
+                {% else %}
                 <a class="btn btn-success center" href="{% url 'registration' %}">Register</a>
+                {% endif %}
             </div>
         </div>
         <div id='arrow-down' class="arrow-down center">
@@ -41,33 +47,31 @@
 
         <div class='home-bugs'>
             <h1 class='center fade1'>Bugs</h1>
-            <div class="line fade2"></div>
-            <div class=" chart-description center fade3">
+            <div class=" chart-description center fade2">
                 <p class="margin-bottom-20"><b>We spent 50% of our time fixing up bugs for free.
                         If you see a bug that looks all too familiar and would like that issue fixed, than upvote,
                         as we prioritized our work around the most upvotes</b></p>
-                <a href="{% url 'bugs' %}" class="btn btn-primary fade4"><b>See Bugs</b></a>
+                <a href="{% url 'bugs' %}" class="btn btn-primary fade3"><b>See Bugs</b></a>
             </div>
-            <div class="line fade5"></div>
+            <div class="line fade4"></div>
+            <h3 class='center fade5 margin-bottom-20'>Summary</h3>
             {% include 'bug-graphs.html' %}
         </div>
-        <div class="">
+        <div class="home-features">
             <h1 class='center fade1'>Features</h2>
-                <div class="line fade2"></div>
-                <div class=" chart-description center fade3">
+                <div class=" chart-description center fade2">
                     <p><b>The other 50% of the time is developing the most upvoted Feature. If there is a
                             feature
                             you
                             would also like to have, than you can add that feature to your cart and checkout at a
                             cost of $10 per upvote.
                         </b></p>
-                    <a href="{% url 'features' %}" class="fade4 btn btn-primary margin-bottom-20"><b>See Features</b></a>
+                    <a href="{% url 'features' %}" class="fade3 btn btn-primary margin-bottom-20"><b>See Features</b></a>
                 </div>
-                <div class="line fade5"></div>
-                <h3 class='center fade6 margin-bottom-20'>Progress on Features</h3>
-                <div class="chart fade7">
-                    {{ features_status_chart|safe }}
-                </div>
+                <div class="line fade4"></div>
+                <h3 class='center fade5 margin-bottom-20'>Summary</h3>
+
+                {% include 'features-graphs.html' %}
         </div>
     </div>
 
