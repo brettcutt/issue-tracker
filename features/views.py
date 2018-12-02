@@ -77,13 +77,17 @@ def add_edit_feature(request, id=None):
             if user == 'admin':
                 form.status = request.POST.get('status')
                 if str(form.status) == 'In Progress':
+                    form.waiting_date = None
                     form.in_progress_date = timezone.now()
                 elif str(form.status) == 'Completed':
+                    form.in_progress_date = None
                     form.completion_date = timezone.now()
             if feature == None:
                 form.username = request.user
                 form.picture = pic
                 form.views = -1
+                form.created_date = timezone.now()
+                form.waiting_date = timezone.now()
                 form.save()
                 return redirect(reverse(features))
             else:

@@ -15,8 +15,10 @@ class Bugs(models.Model):
     name = models.CharField(max_length=40, blank=False)
     description = models.TextField(blank=False)
     username = models.ForeignKey(User, default=None)
-    created_date = models.DateTimeField(default=timezone.now)
-    in_progress_date = models.DateTimeField(blank=True, default=None, null=True)
+    created_date = models.DateTimeField(blank=True, default=None, null=True)
+    waiting_date = models.DateTimeField(blank=True, default=None, null=True)
+    in_progress_date = models.DateTimeField(
+        blank=True, default=None, null=True)
     completion_date = models.DateTimeField(blank=True, default=None, null=True)
     views = models.IntegerField(default=0)
     upvotes = models.IntegerField(default=0)
