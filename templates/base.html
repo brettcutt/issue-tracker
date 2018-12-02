@@ -55,9 +55,9 @@
             </nav>
         </header>
 
+        {% block messages %}
+        {% endblock %}
         <div class="main-inner">
-            {% block messages %}
-            {% endblock %}
 
             {% block content %}
             {% endblock %}

@@ -1,15 +1,30 @@
-<div class="bug-chart">
-    <div class="bug-chart-1">
-        <h3 class='center fade6 margin-bottom-20'>Progress on bugs</h3>
-        <div class="chart fade7">
-            {{ bugs_status_chart|safe }}
+<div class="bugs-chart center fade6">
+    <div class="btn btn-selected btn-primary inline bug-btn">Total</div>
+    <div class="btn btn-primary inline bug-btn">Daily</div>
+    <div class="btn btn-primary inline bug-btn">Weekly</div>
+    <div class="btn btn-primary inline bug-btn">Monthly</div>
+
+    <div class="bug-chart-container  margin-t-30 ">
+        <div class="chart ">
+            {{ bugs_status_total|safe }}
         </div>
     </div>
-    <div class="bug-chart-2">
-        <h3 class='center margin-bottom-20'>Daily Summary</h3>
-        <div class="chart ">
-            {{ BugsDailyStatus|safe }}
-        </div>
 
+    <div class="bug-chart-container bug-chart margin-t-30">
+        <div class="chart ">
+            {{ bugs_status_daily|safe }}
+        </div>
+    </div>
+
+    <div class="bug-chart-container bug-chart margin-t-30">
+        <div class="chart ">
+            {{ bugs_status_weekly|safe }}
+        </div>
+    </div>
+
+    <div class="bug-chart-container bug-chart margin-t-30">
+        <div class="chart ">
+            {{ bugs_status_monthly|safe }}
+        </div>
     </div>
 </div>

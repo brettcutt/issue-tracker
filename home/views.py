@@ -1,13 +1,25 @@
 import pygal
 from django.shortcuts import render
 from bugs.models import Bugs
-from graphs.graphs import BugsPieChart, BugsDailyStatus, FeaturesPieChart
+from graphs.graphs import BugsPieChart, BugsDailyStatus, BugsWeeklyStatus, BugsMonthlyStatus, FeaturesPieChart, FeaturesDailyStatus, FeaturesWeeklyStatus, FeaturesMonthlyStatus
 
 
 def index(request):
     """ A view that displays the index page"""
-    bugs_status_chart = BugsPieChart()
-    features_status_chart = FeaturesPieChart()
-    bugs_daily_status = BugsDailyStatus()
-    return render(request, 'index.html', {'bugs_status_chart': bugs_status_chart, 'BugsDailyStatus':BugsDailyStatus,
-                                          'features_status_chart': features_status_chart})
+    bugs_status_total = BugsPieChart()
+    bugs_status_daily = BugsDailyStatus()
+    bugs_status_weekly = BugsWeeklyStatus()
+    bugs_status_monthly = BugsMonthlyStatus()
+    features_status_total = FeaturesPieChart()
+    features_status_daily = FeaturesDailyStatus()
+    features_status_weekly = FeaturesWeeklyStatus()
+    features_status_monthly = FeaturesMonthlyStatus()
+
+    return render(request, 'index.html', {'bugs_status_total': bugs_status_total,
+                                          'bugs_status_daily': bugs_status_daily,
+                                          'bugs_status_weekly': bugs_status_weekly,
+                                          'bugs_status_monthly': bugs_status_monthly,
+                                          'features_status_total': features_status_total,
+                                          'features_status_daily': features_status_daily,
+                                          'features_status_weekly': features_status_weekly,
+                                          'features_status_monthly': features_status_monthly})
