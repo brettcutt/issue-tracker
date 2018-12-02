@@ -10,17 +10,12 @@ from .forms import ProfilePicForm
 from .models import ProfilePicture
 
 
-def index(request):
-    """ Return the index.html file """
-    return render(request, 'index.html')
-
-
 @login_required
 def logout(request):
     """ Log the user out """
     auth.logout(request)
     messages.success(request, "You have successfully logged out")
-    return redirect(reverse('index'))
+    return redirect(reverse('login'))
 
 
 def login(request):
