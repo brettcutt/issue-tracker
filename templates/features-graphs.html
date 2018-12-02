@@ -1,0 +1,30 @@
+<div class="features-chart center fade6">
+    <div class="btn btn-selected btn-primary inline feature-btn">Total</div>
+    <div class="btn btn-primary inline feature-btn">Daily</div>
+    <div class="btn btn-primary inline feature-btn">Weekly</div>
+    <div class="btn btn-primary inline feature-btn">Monthly</div>
+
+    <div class="features-chart-container margin-t-30 ">
+        <div class="chart ">
+            {{ features_status_total|safe }}
+        </div>
+    </div>
+
+    <div class="features-chart-container feature-chart margin-t-30">
+        <div class="chart ">
+            {{ features_status_daily|safe }}
+        </div>
+    </div>
+
+    <div class="features-chart-container feature-chart margin-t-30">
+        <div class="chart ">
+            {{ features_status_weekly|safe }}
+        </div>
+    </div>
+
+    <div class="features-chart-container feature-chart margin-t-30">
+        <div class="chart ">
+            {{ features_status_monthly|safe }}
+        </div>
+    </div>
+</div>
