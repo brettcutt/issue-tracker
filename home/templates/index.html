@@ -49,11 +49,7 @@
                 <a href="{% url 'bugs' %}" class="btn btn-primary fade4"><b>See Bugs</b></a>
             </div>
             <div class="line fade5"></div>
-            <h3 class='center fade6 margin-bottom-20'>Progress on bugs</h3>
-            <div class="chart fade7">
-                {{ bugs_status_chart|safe }}
-                {{ BugsDailyStatus|safe }}
-            </div>
+            {% include 'bug-graphs.html' %}
         </div>
         <div class="">
             <h1 class='center fade1'>Features</h2>

@@ -30,11 +30,11 @@
                 </div>
                 <div class="header-line"></div>
                 <p class=' inline'><b>Status:</b></p>
-                {% if ticket.status == 'To Do' %}
+                {% if ticket.status == 'Waiting' %}
                 <p class='inline status-todo'>{{ ticket.status }}</p>
-                {% elif ticket.status == 'Doing' %}
+                {% elif ticket.status == 'In Progress' %}
                 <p class='inline status-doing'>{{ ticket.status }}</p>
-                {% elif ticket.status == 'Done' %}
+                {% elif ticket.status == 'Completed' %}
                 <p class='inline status-done'>{{ ticket.status }}</p>
                 {% endif %}
                 <div class="short-line"></div>

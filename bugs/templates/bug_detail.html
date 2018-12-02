@@ -20,11 +20,11 @@
     <p class='inline views'><b>Views:</b> {{items.views}}</p>
     <p class='inline upvotes'><b>Upvotes:</b> {{items.upvotes}}</p><br>
     <p class='inline'><b>Status:</b> </p>
-    {% if items.status == 'To Do' %}
+    {% if items.status == 'Waiting' %}
     <p class='inline status-todo'>{{ items.status }}</p>
-    {% elif items.status == 'Doing' %}
+    {% elif items.status == 'In Progress' %}
     <p class='inline status-doing'>{{ items.status }}</p>
-    {% elif items.status == 'Done' %}
+    {% elif items.status == 'Completed' %}
     <p class='inline status-done'>{{ items.status }}</p>
     {% endif %}
     <div class='center comments'>
@@ -45,8 +45,8 @@
 
     <div class="comments ">
         <div>
-            <form method="post" class="center" action="/bugs/add_comment_bugs/15/">
-                <input type="hidden" name="csrfmiddlewaretoken" value="hNfjWgY6mWqMsxrk2klF5srdVSYiVOXXfqNLcr0WcPxASxlu0lYyIROW5h7OCch4">
+            <form method="post" class="center" action="{% url 'add_comment_bugs' items.id %}">
+                {% csrf_token %}
 
                 <div id="div_id_comment" class="form-group  ">
                     <label for="id_comment" class="control-label required-field ">

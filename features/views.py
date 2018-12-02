@@ -41,7 +41,6 @@ def feature_detail(request, id):
 def add_comment_features(request, id=id):
     feature = get_object_or_404(Features, id=id)
     pic = ProfilePicture.objects.filter(user=request.user)
-    print(feature)
     image = ''
     for item in pic:
         image = item
@@ -64,7 +63,6 @@ def add_comment_features(request, id=id):
 @login_required
 def add_edit_feature(request, id=None):
     feature = get_object_or_404(Features, id=id) if id else None
-    print('f', feature)
     pic = get_object_or_404(ProfilePicture, user=request.user)
     user = str(request.user)
     add_edit = True
@@ -78,6 +76,10 @@ def add_edit_feature(request, id=None):
             form = form.save(commit=False)
             if user == 'admin':
                 form.status = request.POST.get('status')
+                if str(form.status) == 'In Progress':
+                    form.in_progress_date = timezone.now()
+                elif str(form.status) == 'Completed':
+                    form.completion_date = timezone.now()
             if feature == None:
                 form.username = request.user
                 form.picture = pic

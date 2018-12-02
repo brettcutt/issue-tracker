@@ -1,0 +1,15 @@
+<div class="bug-chart">
+    <div class="bug-chart-1">
+        <h3 class='center fade6 margin-bottom-20'>Progress on bugs</h3>
+        <div class="chart fade7">
+            {{ bugs_status_chart|safe }}
+        </div>
+    </div>
+    <div class="bug-chart-2">
+        <h3 class='center margin-bottom-20'>Daily Summary</h3>
+        <div class="chart ">
+            {{ BugsDailyStatus|safe }}
+        </div>
+
+    </div>
+</div>

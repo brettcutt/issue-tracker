@@ -10,11 +10,14 @@ from django.contrib.auth.decorators import login_required
 def bugs(request):
     """Renders a view with all bug tickets"""
     tickets = Bugs.objects.all()
+
     return render(request, 'bugs.html', {'tickets': tickets})
 
 
 def bug_detail(request, id):
     """Renders a view of an individual ticket"""
+    test = Bugs.objects.get(id=id)
+
     try:
         user = User.objects.get(username=request.user)
     except:
@@ -27,8 +30,6 @@ def bug_detail(request, id):
     for item in upvote:
         if str(item) == str(user):
             upvoted = True
-    print(upvoted)
-    print(user)
     comments = Comments.objects.filter(ticket=id).order_by('-created_date')
     comment_form = CommentForm()
     bug.views += 1
@@ -77,6 +78,11 @@ def add_edit_bug(request, id=None):
             form = form.save(commit=False)
             if user == 'admin':
                 form.status = request.POST.get('status')
+                if str(form.status) == 'In Progress':
+                    form.in_progress_date = timezone.now()
+                elif str(form.status) == 'Completed':
+                    form.completion_date = timezone.now()
+
             if bug == None:
                 form.username = request.user
                 form.picture = pic
