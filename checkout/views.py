@@ -26,9 +26,9 @@ def checkout(request):
             upvote_list = []
             for id, quantity in cart.items():
                 feature = get_object_or_404(Features, pk=id)
-                upvote_list.append(feature.name)
+                upvote_list.append(id)
                 total += quantity * 10
-            print(total)
+            print(upvote_list)
             try:
                 customer = stripe.Charge.create(
                     amount=int(total * 100),
@@ -44,11 +44,9 @@ def checkout(request):
 
                 print(upvote_list)
 
-                for feature_name in upvote_list:
-
+                for id in upvote_list:
                     feature_name = get_object_or_404(
-                        Features, name=feature_name)
-
+                        Features, id=id)
                     try:
                         upvote = get_object_or_404(
                             Upvote, user=request.user, upvoted_feature=feature_name)

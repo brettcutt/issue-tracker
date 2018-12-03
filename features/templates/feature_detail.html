@@ -11,8 +11,7 @@
         {% endif %}
 
         {% if user.is_authenticated %}
-
-        {% if items.name not in upvote_list %}
+        {% if items.id|slugify not in upvote_list %}
         <form class='inline' method="post" action="{% url 'add_to_cart' items.id %}">
             {% csrf_token %}
             <input type="hidden" name="quantity" value="1">
@@ -65,6 +64,9 @@
             </div>
             <div>
                 <p class="creator-and-date inline"><b>{{items.username}}</b> {{items.created_date}}</p>
+                {% if user.is_active and items.username == user %}
+                <p class='inline active'> Online </p>
+                {% endif %}
                 <p class='description'>{{items.description}}</p>
 
             </div>
@@ -100,6 +102,9 @@
             </div>
             <div>
                 <p class="creator-and-date inline"><b>{{comment.username}}</b> {{comment.created_date}}</p>
+                {% if user.is_active and comment.username == user %}
+                <p class='inline active'> Online </p>
+                {% endif %}
                 <p class='description'>{{comment.comment}}</p>
 
             </div>
