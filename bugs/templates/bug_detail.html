@@ -33,9 +33,15 @@
                 <img class='comment-profile-pic' src="{{MEDIA_URL}}{{items.picture}}" onerror="src='{{MEDIA_URL}}images/missing-profile-pic.png'"
                     alt="profile pic">
 
+
             </div>
             <div>
-                <p class="creator-and-date inline"><b>{{items.username}}</b> {{items.created_date}}</p>
+                <p class="creator-and-date inline"><b>{{items.username}}
+                    </b> {{items.created_date}}</p>
+                {% if user.is_active and items.username == user %}
+                <p class='inline active'> Online </p>
+                {% endif %}
+
                 <p class='description'>{{items.description}}</p>
 
             </div>
@@ -73,6 +79,9 @@
             </div>
             <div>
                 <p class="creator-and-date inline"><b>{{comment.username}}</b> {{comment.created_date}}</p>
+                {% if user.is_active and comment.username == user %}
+                <p class='inline active'> Online </p>
+                {% endif %}
                 <p class='description'>{{comment.comment}}</p>
 
             </div>
