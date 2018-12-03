@@ -9,8 +9,7 @@ from django.contrib.auth.decorators import login_required
 
 def bugs(request):
     """Renders a view with all bug tickets"""
-    tickets = Bugs.objects.all()
-
+    tickets = Bugs.objects.all()   
     return render(request, 'bugs.html', {'tickets': tickets})
 
 
@@ -40,11 +39,7 @@ def bug_detail(request, id):
 @login_required
 def add_comment_bugs(request, id=id):
     bug = get_object_or_404(Bugs, id=id)
-    pic = ProfilePicture.objects.filter(user=request.user)
-
-    image = ''
-    for item in pic:
-        image = item
+    pic = get_object_or_404(ProfilePicture, user=request.user)
 
     comment_form = CommentForm(request.POST, request.FILES)
 
@@ -52,11 +47,7 @@ def add_comment_bugs(request, id=id):
         instance = comment_form.save(commit=False)
         instance.username = request.user
         instance.ticket = bug
-
-        if image == "":
-            instance.picture = ProfilePicture.objects.get(user="missing")
-        else:
-            instance.picture = image
+        instance.picture = pic
 
         comment_form.save()
 
@@ -67,6 +58,7 @@ def add_comment_bugs(request, id=id):
 def add_edit_bug(request, id=None):
     bug = get_object_or_404(Bugs, id=id) if id else None
     pic = get_object_or_404(ProfilePicture, user=request.user)
+    
     user = str(request.user)
     add_edit = True
     if bug == None:
