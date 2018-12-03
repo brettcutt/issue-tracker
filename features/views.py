@@ -12,7 +12,7 @@ from django.contrib.auth.decorators import login_required
 
 def features(request):
     """Renders a view with feature tickets"""
-
+    item = 1
     tickets = Features.objects.all()
     return render(request, 'features.html', {'tickets': tickets})
 
