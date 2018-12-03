@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from .views import features, add_comment_features, add_edit_feature, feature_detail
+from .views import features, add_comment_features, add_edit_feature, feature_detail, upvote_feature
 
 urlpatterns = [
     url(r'^$', features, name='features'),
@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^add_feature/$', add_edit_feature, name='add_feature'),
     url(r'^add_comment_features/(?P<id>\d+)/$',
         add_comment_features, name='add_comment_features'),
+    url(r'^upvote_feature/$', upvote_feature, name='upvote_feature'),
 ]

@@ -27,3 +27,10 @@ class Features(models.Model):
 
     def __str__(self):
         return self.name
+
+class UpvoteFeature(models.Model):
+    upvoted_feature = models.ForeignKey(Features, default=None)
+    user = models.ForeignKey(User, default=None)
+
+    def __str__(self):
+        return str(self.user)

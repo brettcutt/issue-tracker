@@ -4,7 +4,7 @@ from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from .forms import UserLoginForm, UserRegistrationForm
 from bugs.models import Comments, BugUpvote
-from checkout.models import Upvote
+from features.models import UpvoteFeature
 from django.contrib.auth.models import User
 from .forms import ProfilePicForm
 from .models import ProfilePicture
@@ -79,7 +79,7 @@ def user_profile(request):
 
     user = User.objects.get(email=request.user.email)
     bug_upvotes = BugUpvote.objects.filter(user=user).count()
-    features_upvoted = Upvote.objects.filter(user=user).count()
+    features_upvoted = UpvoteFeature.objects.filter(user=user).count()
 
     try:
         picture = get_object_or_404(ProfilePicture, user=request.user)

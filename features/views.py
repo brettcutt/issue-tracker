@@ -1,9 +1,8 @@
 from django.shortcuts import render, reverse, redirect, get_object_or_404
 from .forms import FeaturesForm
 from bugs.forms import CommentForm
-from .models import Features
+from .models import Features, UpvoteFeature
 from bugs.models import Comments
-from checkout.models import Upvote
 from accounts.models import ProfilePicture
 from django.utils import timezone
 from django.contrib.auth.models import User
@@ -21,7 +20,7 @@ def feature_detail(request, id):
     """Renders a view of an individual ticket"""
     feature = get_object_or_404(Features, id=id)
 
-    upvotes = Upvote.objects.filter(upvoted_feature=feature)
+    upvotes = UpvoteFeature.objects.filter(upvoted_feature=feature)
 
     upvoted = False
     user = str(request.user)
@@ -100,3 +99,28 @@ def add_edit_feature(request, id=None):
         form = FeaturesForm(instance=feature)
 
     return render(request, 'add_ticket.html', {'add_edit': add_edit, 'form': form})
+
+@login_required
+def upvote_feature(request):
+    cart = request.session.get('cart', {})
+    upvote_list = []
+
+    for id, quantity in cart.items():
+        feature = get_object_or_404(Features, pk=id)
+        upvote_list.append(id)
+
+    for id in upvote_list:
+        feature_name = get_object_or_404(
+            Features, id=id)
+        try:
+            upvote = get_object_or_404(
+                UpvoteFeature, user=request.user, upvoted_feature=feature_name)
+        except:
+            upvote = UpvoteFeature()
+        upvote.user = request.user
+        upvote.upvoted_feature = feature_name
+        feature_name.upvotes += 1
+        feature_name.save()
+        upvote.save()
+    request.session['cart'] = {}
+    return redirect(reverse('index'))

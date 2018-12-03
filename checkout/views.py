@@ -5,7 +5,6 @@ from .forms import MakePaymentForm
 from django.conf import settings
 from django.utils import timezone
 from features.models import Features
-from .models import Upvote
 import stripe
 
 
@@ -18,17 +17,14 @@ stripe.api_key = settings.STRIPE_SECRET
 def checkout(request):
     if request.method == "POST":
         payment_form = MakePaymentForm(request.POST)
-        print("test1")
+
         if payment_form.is_valid():
-            print('test2')
             cart = request.session.get('cart', {})
             total = 0
-            upvote_list = []
+
             for id, quantity in cart.items():
                 feature = get_object_or_404(Features, pk=id)
-                upvote_list.append(id)
                 total += quantity * 10
-            print(upvote_list)
             try:
                 customer = stripe.Charge.create(
                     amount=int(total * 100),
@@ -41,26 +37,7 @@ def checkout(request):
 
             if customer.paid:
                 messages.success(request, "You have successfully paid")
-
-                print(upvote_list)
-
-                for id in upvote_list:
-                    feature_name = get_object_or_404(
-                        Features, id=id)
-                    try:
-                        upvote = get_object_or_404(
-                            Upvote, user=request.user, upvoted_feature=feature_name)
-                    except:
-                        upvote = Upvote()
-
-                    upvote.user = request.user
-                    upvote.upvoted_feature = feature_name
-                    feature_name.upvotes += 1
-                    feature_name.save()
-                    upvote.save()
-
-                request.session['cart'] = {}
-                return redirect(reverse('index'))
+                return redirect(reverse('upvote_feature'))
             else:
                 messages.error(request, "Unable to take payment")
         else:
