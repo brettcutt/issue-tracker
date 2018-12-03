@@ -85,5 +85,9 @@ $(document).ready(function () {
         $(this).next().next().next().next().show('fade', 200)
     })
 
+    setTimeout(function () {
+        $('.message-success').hide('fade', 1000);
+
+    }, 3000);
 
 })

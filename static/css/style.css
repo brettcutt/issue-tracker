@@ -29,6 +29,12 @@ body {
 width: 120px;
 }
 
+@media (max-width: 767px) {
+    .register-btn .btn {
+        width: 90px;
+        }
+}
+
 /* DEFAULT */
 .pos-r {
     position: relative;
@@ -262,14 +268,18 @@ color: #fff;
 }
 
 @media (max-width: 767px) {
+    .main-page {
+        padding-top: 80px;
+    }
     .title p {
         font-size: 50px;
+        margin-bottom: 0;
     }
     .home-content {
         padding-top: 0;
     }
     .tagline p {
-        margin-bottom: 10px;
+        margin-bottom: 0px;
     }
 
     .register-btn {
@@ -294,11 +304,11 @@ color: #fff;
 .fade1, .fade2, .fade3, .fade4, .fade5, .fade6, .fade7 {
     display: none;
 }
-@media (min-width: 768px) and (max-width: 991px){
+@media (max-width: 991px){
     .fade1, .fade2, .fade3, .fade4, .fade5, .fade6, .fade7 {
         display: block;
     }
-    .fade4 {
+    .fade3 {
         display: inline-block;
     }
 }
@@ -607,6 +617,10 @@ margin-bottom: 10px;
     
 }
 
+.active {
+    color: green;
+}
+
 
 /* PROFILE */
 
@@ -801,16 +815,20 @@ g.legends {
     display: none;
 }
 
+
+.bug-btn, .feature-btn {
+    width: 90px;
+    margin-top: 3px;
+}
+
 @media (min-width: 768px) and (max-width: 991px){
     .bugs-chart, .features-chart {
         display: block;
     }
+    .bug-btn, .feature-btn {
+        margin-top: 3px;
+    }
 }
-
-.bug-btn, .feature-btn {
-    width: 90px;
-}
-
 .btn-selected, .btn-selected:hover {
     background-color: #343a40;
 }
