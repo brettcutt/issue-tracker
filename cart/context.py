@@ -20,7 +20,6 @@ def cart_contents(request):
         total += quantity * price
         cart_items.append({'id': id, 'quantity': quantity,
                            'ticket': ticket, 'price': price})
-    print(upvote_list)
 
     return {'ticket_count': ticket_count,
             'cart_items': cart_items,

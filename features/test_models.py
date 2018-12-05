@@ -1,6 +1,6 @@
 from django.test import TestCase, Client
 from bugs.models import Comments
-from .models import Features
+from .models import Features, UpvoteFeature
 from django.contrib.auth.models import User
 from accounts.models import ProfilePicture
 from django.utils import timezone
@@ -59,14 +59,13 @@ class TestBugModels(TestCase):
         self.assertEqual(comment.comment, "This is the comment")
 
     
-#    def test_bug_upvote_form(self):
-#        bug = Bugs.objects.get(id=self.bug.id)
-#
-#        upvote = BugUpvote.objects.create(upvoted_bug=bug,
-#                                          user=self.user)
-#
-#        self.assertEqual(str(upvote.user), str('testuser'))
-#        self.assertEqual(str(upvote.upvoted_bug), 'test')
-#
-#
-#
+    def test_feature_upvote(self):
+        feature = Features.objects.get(id=self.feature.id)
+
+        upvote = UpvoteFeature.objects.create(upvoted_feature=feature,
+                                          user=self.user)
+
+        self.assertEqual(str(upvote.user), str('testuser'))
+        self.assertEqual(str(upvote.upvoted_feature), 'test')
+
+

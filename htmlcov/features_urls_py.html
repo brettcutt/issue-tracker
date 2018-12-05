@@ -78,11 +78,12 @@
 <p id="n9" class="pln"><a href="#n9">9</a></p>
 <p id="n10" class="pln"><a href="#n10">10</a></p>
 <p id="n11" class="pln"><a href="#n11">11</a></p>
+<p id="n12" class="pln"><a href="#n12">12</a></p>
 
             </td>
             <td class="text">
 <p id="t1" class="stm run hide_run"><span class="key">from</span> <span class="nam">django</span><span class="op">.</span><span class="nam">conf</span><span class="op">.</span><span class="nam">urls</span> <span class="key">import</span> <span class="nam">url</span><span class="strut">&nbsp;</span></p>
-<p id="t2" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">views</span> <span class="key">import</span> <span class="nam">features</span><span class="op">,</span> <span class="nam">add_comment_features</span><span class="op">,</span> <span class="nam">add_edit_feature</span><span class="op">,</span> <span class="nam">feature_detail</span><span class="strut">&nbsp;</span></p>
+<p id="t2" class="stm run hide_run"><span class="key">from</span> <span class="op">.</span><span class="nam">views</span> <span class="key">import</span> <span class="nam">features</span><span class="op">,</span> <span class="nam">add_comment_features</span><span class="op">,</span> <span class="nam">add_edit_feature</span><span class="op">,</span> <span class="nam">feature_detail</span><span class="op">,</span> <span class="nam">upvote_feature</span><span class="strut">&nbsp;</span></p>
 <p id="t3" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t4" class="stm run hide_run"><span class="nam">urlpatterns</span> <span class="op">=</span> <span class="op">[</span><span class="strut">&nbsp;</span></p>
 <p id="t5" class="pln">    <span class="nam">url</span><span class="op">(</span><span class="str">r'^$'</span><span class="op">,</span> <span class="nam">features</span><span class="op">,</span> <span class="nam">name</span><span class="op">=</span><span class="str">'features'</span><span class="op">)</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
@@ -91,7 +92,8 @@
 <p id="t8" class="pln">    <span class="nam">url</span><span class="op">(</span><span class="str">r'^add_feature/$'</span><span class="op">,</span> <span class="nam">add_edit_feature</span><span class="op">,</span> <span class="nam">name</span><span class="op">=</span><span class="str">'add_feature'</span><span class="op">)</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
 <p id="t9" class="pln">    <span class="nam">url</span><span class="op">(</span><span class="str">r'^add_comment_features/(?P&lt;id>\d+)/$'</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
 <p id="t10" class="pln">        <span class="nam">add_comment_features</span><span class="op">,</span> <span class="nam">name</span><span class="op">=</span><span class="str">'add_comment_features'</span><span class="op">)</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
-<p id="t11" class="pln"><span class="op">]</span><span class="strut">&nbsp;</span></p>
+<p id="t11" class="pln">    <span class="nam">url</span><span class="op">(</span><span class="str">r'^upvote_feature/$'</span><span class="op">,</span> <span class="nam">upvote_feature</span><span class="op">,</span> <span class="nam">name</span><span class="op">=</span><span class="str">'upvote_feature'</span><span class="op">)</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
+<p id="t12" class="pln"><span class="op">]</span><span class="strut">&nbsp;</span></p>
 
             </td>
         </tr>
@@ -102,7 +104,7 @@
     <div class="content">
         <p>
             <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v4.5.2</a>,
-            created at 2018-12-03 21:50
+            created at 2018-12-04 09:44
         </p>
     </div>
 </div>

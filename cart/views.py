@@ -23,8 +23,8 @@ def add_to_cart(request, id):
     cart = request.session.get('cart', {})
     cart[id] = cart.get(id, quantity)
     cart[id] = quantity
-    print(cart)
     request.session['cart'] = cart
+    print(cart)
     return redirect(feature_detail, id)
 
 

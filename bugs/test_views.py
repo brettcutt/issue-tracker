@@ -78,11 +78,6 @@ class TestViews(TestCase):
         self.assertEqual(item.username, self.user)
         self.assertEqual(response.status_code, 302)
 
-
-
-
-
-
     def test_get_edit_page_for_item_that_does_not_exist(self):
         response = self.client.get('/bugs/edit_bug/99/')
         self.assertEqual(response.status_code, 404)

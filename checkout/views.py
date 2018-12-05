@@ -16,12 +16,13 @@ stripe.api_key = settings.STRIPE_SECRET
 @login_required()
 def checkout(request):
     if request.method == "POST":
+
         payment_form = MakePaymentForm(request.POST)
 
         if payment_form.is_valid():
             cart = request.session.get('cart', {})
             total = 0
-
+            
             for id, quantity in cart.items():
                 feature = get_object_or_404(Features, pk=id)
                 total += quantity * 10
