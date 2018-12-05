@@ -26,7 +26,6 @@ def login(request):
 
     if request.method == "POST":
         login_form = UserLoginForm(request.POST)
-
         if login_form.is_valid():
             user = auth.authenticate(username=request.POST['username'],
                                      password=request.POST['password'])
@@ -53,7 +52,9 @@ def registration(request):
 
     if request.method == 'POST':
         registration_form = UserRegistrationForm(request.POST)
+        
         if registration_form.is_valid():
+            
             registration_form.save()
             user = auth.authenticate(username=request.POST['username'],
                                      password=request.POST['password1'])
@@ -89,10 +90,12 @@ def user_profile(request):
         picture.picture = 'images/missing-profile-pic.png'
         picture.save()
     if request.method == 'POST':
+        print('#1')
         pic_form = ProfilePicForm(
             request.POST, request.FILES, instance=picture)
 
         if pic_form.is_valid():
+            print('#2')
             pic_form = pic_form.save(commit=False)
             pic_form.user = request.user
             pic_form.save()

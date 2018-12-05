@@ -61,6 +61,7 @@ class TestViews(TestCase):
         self.assertNotIn("Your card was declined!",str(response.content))
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response.url, '/features/upvote_feature/')
+        print(response.content)
 
     def test_make_sure_a_unsuccessful_payment_returns_error_message(self):
         

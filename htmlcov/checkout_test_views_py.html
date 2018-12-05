@@ -30,8 +30,8 @@
         <img id="keyboard_icon" src="keybd_closed.png" alt="Show keyboard shortcuts" />
 
         <h2 class="stats">
-            38 statements &nbsp;
-            <span class="run hide_run shortkey_r button_toggle_run">38 run</span>
+            39 statements &nbsp;
+            <span class="run hide_run shortkey_r button_toggle_run">39 run</span>
             <span class="mis shortkey_m button_toggle_mis">0 missing</span>
             <span class="exc shortkey_x button_toggle_exc">0 excluded</span>
 
@@ -130,15 +130,16 @@
 <p id="n61" class="stm run hide_run"><a href="#n61">61</a></p>
 <p id="n62" class="stm run hide_run"><a href="#n62">62</a></p>
 <p id="n63" class="stm run hide_run"><a href="#n63">63</a></p>
-<p id="n64" class="pln"><a href="#n64">64</a></p>
-<p id="n65" class="stm run hide_run"><a href="#n65">65</a></p>
-<p id="n66" class="pln"><a href="#n66">66</a></p>
-<p id="n67" class="stm run hide_run"><a href="#n67">67</a></p>
-<p id="n68" class="pln"><a href="#n68">68</a></p>
+<p id="n64" class="stm run hide_run"><a href="#n64">64</a></p>
+<p id="n65" class="pln"><a href="#n65">65</a></p>
+<p id="n66" class="stm run hide_run"><a href="#n66">66</a></p>
+<p id="n67" class="pln"><a href="#n67">67</a></p>
+<p id="n68" class="stm run hide_run"><a href="#n68">68</a></p>
 <p id="n69" class="pln"><a href="#n69">69</a></p>
 <p id="n70" class="pln"><a href="#n70">70</a></p>
 <p id="n71" class="pln"><a href="#n71">71</a></p>
-<p id="n72" class="stm run hide_run"><a href="#n72">72</a></p>
+<p id="n72" class="pln"><a href="#n72">72</a></p>
+<p id="n73" class="stm run hide_run"><a href="#n73">73</a></p>
 
             </td>
             <td class="text">
@@ -205,15 +206,16 @@
 <p id="t61" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">assertNotIn</span><span class="op">(</span><span class="str">"Your card was declined!"</span><span class="op">,</span><span class="nam">str</span><span class="op">(</span><span class="nam">response</span><span class="op">.</span><span class="nam">content</span><span class="op">)</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t62" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">assertEqual</span><span class="op">(</span><span class="nam">response</span><span class="op">.</span><span class="nam">status_code</span><span class="op">,</span> <span class="num">302</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t63" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">assertEqual</span><span class="op">(</span><span class="nam">response</span><span class="op">.</span><span class="nam">url</span><span class="op">,</span> <span class="str">'/features/upvote_feature/'</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t64" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t65" class="stm run hide_run">    <span class="key">def</span> <span class="nam">test_make_sure_a_unsuccessful_payment_returns_error_message</span><span class="op">(</span><span class="nam">self</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t66" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t67" class="stm run hide_run">        <span class="nam">response</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">client</span><span class="op">.</span><span class="nam">post</span><span class="op">(</span><span class="str">'/checkout/'</span><span class="op">,</span><span class="op">{</span><span class="str">'number'</span><span class="op">:</span> <span class="str">'4242424242424248'</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
-<p id="t68" class="pln">                <span class="str">'exp_month'</span><span class="op">:</span> <span class="str">'12'</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
-<p id="t69" class="pln">                <span class="str">'exp_year'</span><span class="op">:</span> <span class="str">'2018'</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
-<p id="t70" class="pln">                <span class="str">'cvc'</span><span class="op">:</span> <span class="str">'111'</span><span class="op">,</span><span class="op">}</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t71" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t72" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">assertIn</span><span class="op">(</span><span class="str">"We were unable to take a payment with that card!"</span><span class="op">,</span><span class="nam">str</span><span class="op">(</span><span class="nam">response</span><span class="op">.</span><span class="nam">content</span><span class="op">)</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t64" class="stm run hide_run">        <span class="nam">print</span><span class="op">(</span><span class="nam">response</span><span class="op">.</span><span class="nam">content</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t65" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t66" class="stm run hide_run">    <span class="key">def</span> <span class="nam">test_make_sure_a_unsuccessful_payment_returns_error_message</span><span class="op">(</span><span class="nam">self</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t67" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t68" class="stm run hide_run">        <span class="nam">response</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">client</span><span class="op">.</span><span class="nam">post</span><span class="op">(</span><span class="str">'/checkout/'</span><span class="op">,</span><span class="op">{</span><span class="str">'number'</span><span class="op">:</span> <span class="str">'4242424242424248'</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
+<p id="t69" class="pln">                <span class="str">'exp_month'</span><span class="op">:</span> <span class="str">'12'</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
+<p id="t70" class="pln">                <span class="str">'exp_year'</span><span class="op">:</span> <span class="str">'2018'</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
+<p id="t71" class="pln">                <span class="str">'cvc'</span><span class="op">:</span> <span class="str">'111'</span><span class="op">,</span><span class="op">}</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t72" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t73" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">assertIn</span><span class="op">(</span><span class="str">"We were unable to take a payment with that card!"</span><span class="op">,</span><span class="nam">str</span><span class="op">(</span><span class="nam">response</span><span class="op">.</span><span class="nam">content</span><span class="op">)</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 
             </td>
         </tr>
@@ -224,7 +226,7 @@
     <div class="content">
         <p>
             <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v4.5.2</a>,
-            created at 2018-12-05 11:54
+            created at 2018-12-05 15:46
         </p>
     </div>
 </div>
