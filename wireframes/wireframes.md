@@ -19,4 +19,4 @@
 ![Cart](https://github.com/brettcutt/issue-tracker/blob/master/wireframes/cart.jpg?raw=true "Cart")
 
 ### Profile
-![Profile](https://github.com/brettcutt/issue-tracker/blob/master/wireframes/cart.jpg?raw=true "Profile")
+![Profile](https://github.com/brettcutt/issue-tracker/blob/master/wireframes/profile.jpg?raw=true "Profile")

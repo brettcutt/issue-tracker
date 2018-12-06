@@ -23,25 +23,23 @@ those results.
    - [Strategy](https://github.com/brettcutt/issue-tracker/blob/master/README.md#strategy)
    - [Existing Features](https://github.com/brettcutt/issue-tracker/blob/master/README.md#existing-features)
        - [User registration and login](https://github.com/brettcutt/issue-tracker/blob/master/README.md#user-registration-and-login)
-       - [Header and Footer](https://github.com/brettcutt/issue-tracker/blob/master/README.md#profile)
-       - [Index](https://github.com/brettcutt/issue-tracker/blob/master/README.md#header-and-footer)
-       - [Bugs or Features](https://github.com/brettcutt/issue-tracker/blob/master/README.md#index)
+       - [Profile](https://github.com/brettcutt/issue-tracker/blob/master/README.md#profile)
+       - [Header and Footer](https://github.com/brettcutt/issue-tracker/blob/master/README.md#header-and-footer)
+       - [Index](https://github.com/brettcutt/issue-tracker/blob/master/README.md#index)
+       - [Bugs or Features](https://github.com/brettcutt/issue-tracker/blob/master/README.md#bugs-or-features)
        - [Bug or Feature detail page](https://github.com/brettcutt/issue-tracker/blob/master/README.md#bug-or-feature-detail-page)
        - [Add or Edit pages](https://github.com/brettcutt/issue-tracker/blob/master/README.md#add-or-edit-page)
        - [Cart](https://github.com/brettcutt/issue-tracker/blob/master/README.md#cart)
        - [Checkout](https://github.com/brettcutt/issue-tracker/blob/master/README.md#checkout)
-    - [Features left to implement](https://github.com/brettcutt/issue-tracker/blob/master/README.md#features-left-to-implement)
-    - [Wire Frames](https://github.com/brettcutt/issue-tracker/blob/master/README.md#wire-frames)
+   - [Wireframes](https://github.com/brettcutt/issue-tracker/blob/master/README.md#wireframes)
 - [Technologies, Libraries and Languages](https://github.com/brettcutt/issue-tracker/blob/master/README.md#technologies-libraries-and-languages)
 - [Testing](https://github.com/brettcutt/issue-tracker/blob/master/README.md#testing)
    - [Automated Tests](https://github.com/brettcutt/issue-tracker/blob/master/README.md#automated-tests)
    - [Manual Testing](https://github.com/brettcutt/issue-tracker/blob/master/README.md#manual-testing)
-   - [Testing Issues](https://github.com/brettcutt/issue-tracker/blob/master/README.md#testing-issues)
-   - [Validation](https://github.com/brettcutt/issue-tracker/blob/master/README.md#validation)
 - [Project Set Up](https://github.com/brettcutt/issue-tracker/blob/master/README.md#project-set-up)
 - [Heroku Deployment](https://github.com/brettcutt/issue-tracker/blob/master/README.md#heroku-deployment)
    - [Heroku Start](https://github.com/brettcutt/issue-tracker/blob/master/README.md#heroku-start)
-   - [Setting up the Heroku database](https://github.com/brettcutt/issue-tracker/blob/master/README.md#setting-up the-heroku-database)
+   - [Setting up the Heroku database](https://github.com/brettcutt/issue-tracker/blob/master/README.md#setting-up-the-heroku-database)
    - [Have Heroku host our static files](https://github.com/brettcutt/issue-tracker/blob/master/README.md#have-heroku-host-our-static-files)
    - [Heroku ConfigVars](https://github.com/brettcutt/issue-tracker/blob/master/README.md#heroku-configvars)
    - [Heroku final](https://github.com/brettcutt/issue-tracker/blob/master/README.md#heroku-final)
@@ -49,7 +47,7 @@ those results.
    - [Initial setup](https://github.com/brettcutt/issue-tracker/blob/master/README.md#initial-setup)
    - [Set up stripe for fake payment](https://github.com/brettcutt/issue-tracker/blob/master/README.md#set-up-stripe-for-fake-payment)
    - [Activate google account for password reset](https://github.com/brettcutt/issue-tracker/blob/master/README.md#activate-google-account-for-password-reset)
-   - [Setting up the env.py file](https://github.com/brettcutt/issue-tracker/blob/master/README.md#setting-up-the-env.py-file)
+   - [Setting up the env.py file](https://github.com/brettcutt/issue-tracker/blob/master/README.md#setting-up-the-env-file)
    - [Running the server](https://github.com/brettcutt/issue-tracker/blob/master/README.md#running-the-server)
 - [Credits](https://github.com/brettcutt/issue-tracker/blob/master/README.md#credits)
   - [Media](https://github.com/brettcutt/issue-tracker/blob/master/README.md#media)
@@ -69,6 +67,8 @@ ___
 - As a user, knowing a feature has the be the highest upvoted to be worked on, I'd expect a way to be able to
 pay to upvote.
 - As a user I would like to know if i've paid for a feature upvote previously before upvoting again. 
+
+
 
 ### Existing Features
 ##### User registration and login
@@ -119,7 +119,11 @@ that ticket to the cart, which can later be paid for to add the upvote.
 ##### Checkout
 - The user can enter and submit their credit card details on this page, to finalize the upvote process.
 - Like the cart, a summary of all the tickets being requested is shown.  
+
+### Wireframes
+- See the wire frames [here](https://github.com/brettcutt/issue-tracker/blob/master/wireframes/wireframes.md).
 ___
+
 
 ## Technologies, Libraries and Languages
 - **Python**
@@ -205,17 +209,17 @@ report of all the tests.
 
 ## project set up
 
-In the terminal command line:
-`virtualenv venv`
-`source venv/Scripts/activate`
-`pip install Django==1.11.15`
-`django-admin startproject issuetracker`
+- **In the terminal command line:**
+  - `virtualenv venv`
+  - `source venv/Scripts/activate`
+  - `pip install Django==1.11.15`
+  - `django-admin startproject issuetracker`
 
-settings.py
-`ALLOWED_HOST = ['localhost']`
+- settings.py
+  - `ALLOWED_HOST = ['localhost']`
 
-In the terminal command line:
-`python manage.py runserver localhost:8000`
+- In the terminal command line:
+  - `python manage.py runserver localhost:8000`
 
 ## Heroku Deployment
 #### Heroku start
@@ -255,7 +259,7 @@ In the terminal command line:
 
 - **In settings.py:**
   - `MIDDLEWARE = ['whitenoise.middleware.WhiteNoiseMiddleware',]`
-  - `STATIC_URL = '/static/'
+  - `STATIC_URL = '/static/'`
   - `STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]`
   - `MEDIA_URL = '/media/'`
   - `MEDIA_ROOT = os.path.join(BASE_DIR, 'media')`
@@ -322,7 +326,7 @@ In the terminal command line:
   - sign-in & security > Apps with account access
   - Toggle `Allow less secure apps: ON`
 
-#### Setting up the env.py file
+#### Setting up the env file
 - Create a env.py file and enter the follows with yoor own keys.
   - `import os`
   - `os.environ.setdefault('SECRET_KEY', <'your secret key'>)`
