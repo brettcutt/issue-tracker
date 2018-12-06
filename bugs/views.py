@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 
 def bugs(request):
     """Renders a view with all bug tickets"""
-    tickets = Bugs.objects.all()   
+    tickets = Bugs.objects.all().order_by('-created_date')
     return render(request, 'bugs.html', {'tickets': tickets})
 
 
