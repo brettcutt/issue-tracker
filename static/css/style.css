@@ -175,7 +175,7 @@ nav a:hover {
         display: block;
     }
     nav li {
-        width: 60px;
+        width: 70px;
     }
 }
 
@@ -686,6 +686,13 @@ margin-bottom: 10px;
         margin-top: 5px;
     }
 }
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .profile-card {
+        width: 80%;
+    }
+    
+}
  .picture-label {
     cursor: pointer;
     margin: 0;
@@ -773,12 +780,7 @@ td {
     }
 }
 
-@media (max-width: 991px) {
-    .summary-table {
-        margin: 0 auto;
-        width: 50%;
-    }
-}
+
 
 /* FOOTER */
 
