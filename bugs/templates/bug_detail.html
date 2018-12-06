@@ -2,7 +2,7 @@
 {% load bootstrap_tags %}
 {% block content%}
 <div class="container center ">
-    <h1>{{items.name}}</h1>
+    <h1 class='text-shadow'>{{items.name}}</h1>
     <div class="line"></div>
     {% if user != None %}
     {% if user.username == 'admin' or user.username == items.username|slugify %}
@@ -17,9 +17,9 @@
     <div class='btn btn-secondary'>Upvote</div>
     {% endif %}
     <br>
-    <p class='inline views'><b>Views:</b> {{items.views}}</p>
-    <p class='inline upvotes'><b>Upvotes:</b> {{items.upvotes}}</p><br>
-    <p class='inline'><b>Status:</b> </p>
+    <p class='inline views text-shadow'><b>Views:</b> {{items.views}}</p>
+    <p class='inline upvotes text-shadow'><b>Upvotes:</b> {{items.upvotes}}</p><br>
+    <p class='inline text-shadow'><b>Status:</b> </p>
     {% if items.status == 'Waiting' %}
     <p class='inline status-todo'>{{ items.status }}</p>
     {% elif items.status == 'In Progress' %}
@@ -55,7 +55,7 @@
                 {% csrf_token %}
 
                 <div id="div_id_comment" class="form-group  ">
-                    <label for="id_comment" class="control-label required-field ">
+                    <label for="id_comment" class="text-shadow control-label required-field ">
                         <b>Comments</b>
                     </label>
                     <div class="">

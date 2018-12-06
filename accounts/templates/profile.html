@@ -5,7 +5,7 @@
 <div class='center margin-t-50'>
 
     <div class="profile-card">
-        <div class="card " style="max-width: 100%;">
+        <div class="profile-card-inner " style="max-width: 100%;">
             <div class="card-header bg-dark center">
                 <h2>Profile</h2>
             </div>
@@ -65,9 +65,8 @@
                             <form enctype="multipart/form-data" method='post' action="">
                                 {% csrf_token %}
                                 <label class="picture-label btn btn-primary" for="id_picture">Choose a file</label>
-                                <input class="inputfile" style='width:100px;' type="file" id='id_picture' value='{{ picture }}'
-                                    name='picture'>
-                                <button class="btn btn-primary" type='submit'>Save</button>
+                                <input class="inputfile" type="file" id='id_picture' value='{{ picture }}' name='picture'>
+                                <button class="btn btn-primary mobile-profile-btn" type='submit'>Save</button>
                             </form>
                         </td>
                     </tr>

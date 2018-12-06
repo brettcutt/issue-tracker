@@ -19,17 +19,18 @@
 
         <div class="home-content">
             <div class='title center'>
-                <p class="center">Unicorn Attractor</p>
+                <p class="center text-shadow">Unicorn Attractor</p>
+
             </div>
             <div class="tagline center">
-                <p>Register and let up help you with your bug issues or feature ideas!</p>
+                <p class='text-shadow'>Register and let up help you with your bug issues or feature ideas!</p>
 
             </div>
 
             <div class="register-btn inline">
                 {% if user.is_authenticated %}
-                <a class="btn btn-success center" href="{% url 'bugs' %}">Bugs</a>
-                <a class="btn btn-success center" href="{% url 'features' %}">Features</a>
+                <a class="btn btn-success center" href="{% url 'bugs' %}"><b>Bugs</b></a>
+                <a class="btn btn-success center" href="{% url 'features' %}"><b>Features</b></a>
                 {% else %}
                 <a class="btn btn-success center" href="{% url 'registration' %}">Register</a>
                 {% endif %}
@@ -46,21 +47,30 @@
     <div class='graphs-page'>
 
         <div class='home-bugs'>
-            <h1 class='center fade1'>Bugs</h1>
+            <h1 class='center fade1 text-shadow'>Bugs</h1>
             <div class=" chart-description center fade2">
-                <p class="margin-bottom-20"><b>We spent 50% of our time fixing up bugs for free.
+                <p class="margin-bottom-20 text-shadow"><b>We spent 50% of our time fixing up bugs for free.
                         If you see a bug that looks all too familiar and would like that issue fixed, than upvote,
                         as we prioritized our work around the most upvotes</b></p>
                 <a href="{% url 'bugs' %}" class="btn btn-primary fade3"><b>See Bugs</b></a>
             </div>
             <div class="line fade4"></div>
-            <h3 class='center fade5 margin-bottom-20'>Summary</h3>
+            <h3 class='center fade5 margin-bottom-20 text-shadow'>Summary</h3>
+            <div class='center fade5 margin-b-30'>
+                <div class="most-voted inline">
+                    <p class='text-shadow'><b>Most upvoted Bug:</b></p>
+                    <div class="short-line-white"></div>
+                    <p class='text-shadow'>{{most_upvoted_bug}}</p>
+                </div>
+            </div>
             {% include 'bug-graphs.html' %}
         </div>
+
         <div class="home-features">
-            <h1 class='center fade1'>Features</h2>
+            <h1 class='center fade1 text-shadow'>Features</h2>
                 <div class=" chart-description center fade2">
-                    <p><b>The other 50% of the time is developing the most upvoted Feature. If there is a
+                    <p class='text-shadow'><b>The other 50% of the time is developing the most upvoted Feature. If
+                            there is a
                             feature
                             you
                             would also like to have, than you can add that feature to your cart and checkout at a
@@ -69,7 +79,14 @@
                     <a href="{% url 'features' %}" class="fade3 btn btn-primary margin-bottom-20"><b>See Features</b></a>
                 </div>
                 <div class="line fade4"></div>
-                <h3 class='center fade5 margin-bottom-20'>Summary</h3>
+                <h3 class='center fade5 margin-bottom-20 text-shadow'>Summary</h3>
+                <div class='center fade5 margin-b-30'>
+                    <div class="most-voted inline">
+                        <p class='text-shadow'><b>Most upvoted Feature: </b></p>
+                        <div class="short-line-white"></div>
+                        <p class='text-shadow'>{{most_upvoted_Feature}}</p>
+                    </div>
+                </div>
 
                 {% include 'features-graphs.html' %}
         </div>
