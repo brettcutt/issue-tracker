@@ -16,6 +16,46 @@ those results.
 
 - GitHub repository:
   - https://github.com/brettcutt/issue-tracker
+
+# Table of Contents
+
+- [UX](https://github.com/brettcutt/issue-tracker/blob/master/README.md#ux)
+   - [Strategy](https://github.com/brettcutt/issue-tracker/blob/master/README.md#strategy)
+   - [Existing Features](https://github.com/brettcutt/issue-tracker/blob/master/README.md#existing-features)
+       - [User registration and login](https://github.com/brettcutt/issue-tracker/blob/master/README.md#user-registration-and-login)
+       - [Header and Footer](https://github.com/brettcutt/issue-tracker/blob/master/README.md#profile)
+       - [Index](https://github.com/brettcutt/issue-tracker/blob/master/README.md#header-and-footer)
+       - [Bugs or Features](https://github.com/brettcutt/issue-tracker/blob/master/README.md#index)
+       - [Bug or Feature detail page](https://github.com/brettcutt/issue-tracker/blob/master/README.md#bug-or-feature-detail-page)
+       - [Add or Edit pages](https://github.com/brettcutt/issue-tracker/blob/master/README.md#add-or-edit-page)
+       - [Cart](https://github.com/brettcutt/issue-tracker/blob/master/README.md#cart)
+       - [Checkout](https://github.com/brettcutt/issue-tracker/blob/master/README.md#checkout)
+    - [Features left to implement](https://github.com/brettcutt/issue-tracker/blob/master/README.md#features-left-to-implement)
+    - [Wire Frames](https://github.com/brettcutt/issue-tracker/blob/master/README.md#wire-frames)
+- [Technologies, Libraries and Languages](https://github.com/brettcutt/issue-tracker/blob/master/README.md#technologies-libraries-and-languages)
+- [Testing](https://github.com/brettcutt/issue-tracker/blob/master/README.md#testing)
+   - [Automated Tests](https://github.com/brettcutt/issue-tracker/blob/master/README.md#automated-tests)
+   - [Manual Testing](https://github.com/brettcutt/issue-tracker/blob/master/README.md#manual-testing)
+   - [Testing Issues](https://github.com/brettcutt/issue-tracker/blob/master/README.md#testing-issues)
+   - [Validation](https://github.com/brettcutt/issue-tracker/blob/master/README.md#validation)
+- [Project Set Up](https://github.com/brettcutt/issue-tracker/blob/master/README.md#project-set-up)
+- [Heroku Deployment](https://github.com/brettcutt/issue-tracker/blob/master/README.md#heroku-deployment)
+   - [Heroku Start](https://github.com/brettcutt/issue-tracker/blob/master/README.md#heroku-start)
+   - [Setting up the Heroku database](https://github.com/brettcutt/issue-tracker/blob/master/README.md#setting-up the-heroku-database)
+   - [Have Heroku host our static files](https://github.com/brettcutt/issue-tracker/blob/master/README.md#have-heroku-host-our-static-files)
+   - [Heroku ConfigVars](https://github.com/brettcutt/issue-tracker/blob/master/README.md#heroku-configvars)
+   - [Heroku final](https://github.com/brettcutt/issue-tracker/blob/master/README.md#heroku-final)
+- [Running the code locally](https://github.com/brettcutt/issue-tracker/blob/master/README.md#running-the-code-locally)
+   - [Initial setup](https://github.com/brettcutt/issue-tracker/blob/master/README.md#initial-setup)
+   - [Set up stripe for fake payment](https://github.com/brettcutt/issue-tracker/blob/master/README.md#set-up-stripe-for-fake-payment)
+   - [Activate google account for password reset](https://github.com/brettcutt/issue-tracker/blob/master/README.md#activate-google-account-for-password-reset)
+   - [Setting up the env.py file](https://github.com/brettcutt/issue-tracker/blob/master/README.md#setting-up-the-env.py-file)
+   - [Running the server](https://github.com/brettcutt/issue-tracker/blob/master/README.md#running-the-server)
+- [Credits](https://github.com/brettcutt/issue-tracker/blob/master/README.md#credits)
+  - [Media](https://github.com/brettcutt/issue-tracker/blob/master/README.md#media)
+  - [Resources that helped along the way](https://github.com/brettcutt/issue-tracker/blob/master/README.md#resources-that-helped-along-the-way)
+  - [Acknowledgements](https://github.com/brettcutt/issue-tracker/blob/master/README.md#acknowledgements)
+
 ___
 ## UX
 
@@ -140,20 +180,20 @@ ___
 Alternatively go the `htmlcov` directory, find the `index.html` file and run it. This will give you a coverage
 report of all the tests.
 
-- 1. Accounts
+- Accounts
    - [test_Views.py](https://github.com/brettcutt/issue-tracker/blob/master/accounts/test_views.py)
    - [test_Forms.py](https://github.com/brettcutt/issue-tracker/blob/master/accounts/tests_forms.py)
-- 2. Bugs
+- Bugs
   - [test_Forms.py](https://github.com/brettcutt/issue-tracker/blob/master/bugs/forms.py)
   - [test_Views.py](https://github.com/brettcutt/issue-tracker/blob/master/bugs/test_views.py)
   - [test_models.py](https://github.com/brettcutt/issue-tracker/blob/master/bugs/test_models.py)
-- 3. Features
+- Features
   - [test_Forms.py](https://github.com/brettcutt/issue-tracker/blob/master/features/forms.py)
   - [test_Views.py](https://github.com/brettcutt/issue-tracker/blob/master/features/test_views.py)
   - [test_models.py](https://github.com/brettcutt/issue-tracker/blob/master/features/test_models.py)
-- 4. Cart
+- Cart
   - [test_Views.py](https://github.com/brettcutt/issue-tracker/blob/master/cart/test_views.py)
-- 5. Checkout
+- Checkout
   - [test_Views.py](https://github.com/brettcutt/issue-tracker/blob/master/checkout/test_views.py)
   - [test_models.py](https://github.com/brettcutt/issue-tracker/blob/master/checkout/test_models.py)
 
@@ -245,10 +285,11 @@ In the terminal command line:
   - `git push`
 
 ## Running the code locally
+#### Initial setup
 - **In the terminal command line enter:**
    - `git clone https://github.com/brettcutt/all-django-projects.git`
 
-   -The dependencies required are as follows or install the ones found in [here](https://github.com/brettcutt/issue-tracker/blob/master/requirements.txt).
+   - The dependencies required are as follows or install the ones found in [here](https://github.com/brettcutt/issue-tracker/blob/master/requirements.txt).
      - `pip install Django==1.11.15`
      - `pip install django-forms-bootstrap`
      - `pip install pillow`
@@ -256,8 +297,48 @@ In the terminal command line:
      - `pip install pygal`
      - `pip install stripe`
 
+   - `python manage.py migrate`
+   - `python manage.py createsuperuser`
 
-### Media
+- **In issuertracker > settings.py:**
+  - Uncomment `#import env`. the env.py file is created in steps below. 
+  - `ALLOWED_HOSTS = ['localhost']`
+  - Use this data base.
+    - `DATABASES = {`
+    `'default': {`
+        `'ENGINE': 'django.db.backends.sqlite3',`
+        `'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),`
+    `}`
+`}`
+
+#### Set up stripe for fake payment
+  - go to https://stripe.com/au and create an account.
+  - go to the dashboard > Developers > API keys
+  - Take note of your publishable and secret key which gets entered in the step below.
+
+#### Activate google account for password reset
+  - go to https://myaccount.google.com
+  - Create an account or sign in.
+  - sign-in & security > Apps with account access
+  - Toggle `Allow less secure apps: ON`
+
+#### Setting up the env.py file
+- Create a env.py file and enter the follows with yoor own keys.
+  - `import os`
+  - `os.environ.setdefault('SECRET_KEY', <'your secret key'>)`
+  - `os.environ.setdefault('EMAIL_ADDRESS', <'your google email address'>)`
+  - `os.environ.setdefault('EMAIL_PASSWORD', <'your google email password'>)`
+  - `os.environ.setdefault("STRIPE_PUBLISHABLE", <'your stripe publishable key'>)`
+  - `os.environ.setdefault("STRIPE_SECRET", <'your stripe secret key'>)`
+
+
+#### Running the server
+  - `python manage.py runserver localhost:<your port number>`
+  - For stripe payment use the fake credit card number `4242424242424242` and cvc `111`
+
+
+## Credits
+#### Media
 
 - laptop background
   - https://pixabay.com/en/home-office-workstation-office-336373/
@@ -268,5 +349,11 @@ In the terminal command line:
 - missing profile picture
    - https://pixabay.com/en/avatar-person-neutral-man-blank-159236/
 
+#### Resources that helped along the way
+
 - Searching daily, weekly and monthly
-https://stackoverflow.com/questions/7217811/query-datetime-by-todays-date-in-django 
+   - https://stackoverflow.com/questions/7217811/query-datetime-by-todays-date-in-django 
+
+#### Acknowledgements
+- The slack forum.
+- My mentor Moosa Hassan.
