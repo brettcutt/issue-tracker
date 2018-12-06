@@ -7,7 +7,8 @@
         <h1 class='text-shadow'>{{items.name}}</h1>
         <div class="line "></div>
         {% if user.username == 'admin' or user.username == items.username|slugify %}
-        <a href="{% url 'edit_feature' items.id %}" class='btn btn-primary'>Edit</a>
+        <a href="{% url 'edit_feature' items.id %}" class='btn btn-primary'> Edit <i class="fa fa-pencil-square-o"
+                aria-hidden="true"></i></a>
         {% endif %}
 
         {% if user.is_authenticated %}
@@ -17,7 +18,7 @@
             <input type="hidden" name="quantity" value="1">
 
             {% if upvoted %}
-            <div id="repeated-upvote-btn" class='btn btn-primary'>Upvote</div>
+            <div id="repeated-upvote-btn" class='btn btn-primary'>Upvote <i class="fa fa-star" aria-hidden="true"></i></div>
             <div class="upvote-btn-hidden">
                 <div class="upvote-confirm">
                     <div class="card-header bg-dark center">
@@ -31,7 +32,7 @@
             </div>
 
             {% else %}
-            <button type='submit' class='btn btn-primary'>Upvote</button>
+            <button type='submit' class='btn btn-primary'>Upvote <i class="fa fa-star" aria-hidden="true"></i></button>
 
             {% endif %}
 
@@ -40,10 +41,11 @@
         <button class='btn btn-primary'><b>In Cart</b></button>
         {% endif %}
         {% else %}
-        <div class='btn btn-secondary'>Upvote</div>
+        <div class='btn btn-secondary'><i class="fa fa-star" aria-hidden="true"></i>Upvote <i class="fa fa-star"
+                aria-hidden="true"></i></div>
         {% endif %}
         <br>
-        <p class='inline views text-shadow'><b>Views:</b> {{items.views}}</p>
+        <p class='inline views text-shadow'><b>Views:</b> {{items.views}} </p>
         <p class='inline upvotes text-shadow'><b>Upvotes:</b> {{items.upvotes}}</p>
         <br>
         <p class=' inline text-shadow'><b>Status:</b></p>

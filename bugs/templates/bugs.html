@@ -12,7 +12,8 @@
         </div>
         {% if user.is_authenticated %}
         <div class='center'>
-            <a class='btn btn-primary inline margin-bottom-20' href="{% url 'add_bug' %}">Add Bug</a>
+            <a class='btn btn-primary inline margin-bottom-20' href="{% url 'add_bug' %}">Add Bug <i class="fa fa-pencil-square-o"
+                    aria-hidden="true"></i></a>
         </div>
         {% endif %}
     </div>
@@ -41,7 +42,8 @@
                 <div class="ticket-bottom">
                     <form method='get' class='inline' action="{% url 'bug_detail' ticket.id %}">
                         <div class=''>
-                            <button type='submit' class=' btn btn-primary inline'>View Ticket</button>
+                            <button type='submit' class=' btn btn-primary inline'>View Ticket <i class="fa fa-ticket"
+                                    aria-hidden="true"></i></button>
                         </div>
                     </form>
                 </div>

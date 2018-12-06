@@ -30,24 +30,24 @@
             <nav id="collapse">
 
                 <ul class="">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="{% url 'bugs' %}">Bugs</a></li>
+                    <li><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+                    <li><a href="{% url 'bugs' %}"><i class="fa fa-bug" aria-hidden="true"></i> Bugs</a></li>
                     <li><a href="{% url 'features' %}">Features</a></li>
                     {% if user.is_authenticated %}
-                    <li><a href="{% url 'view_cart' %}">Cart</a>
+                    <li><a href="{% url 'view_cart' %}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart</a>
                         {% if ticket_count > 0 %}
                         <label for="" class="badge badge-light">{{ ticket_count }}</label>
                         {% endif %}
 
                     </li>
-                    <li><a href="{% url 'profile' %}">Profile</a></li>
-                    <li><a href="{% url 'logout' %}">Log out</a></li>
+                    <li><a href="{% url 'profile' %}"><i class="fa fa-user" aria-hidden="true"></i> Profile</a></li>
+                    <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</a></li>
                     {% if user|slugify == 'admin' %}
                     <li><a href="/admin">Admin</a></li>
                     {% endif %}
                     {% else %}
 
-                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'login' %}"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a></li>
                     <li><a href="{% url 'registration' %}">Register</a></li>
                     {% endif %}
 

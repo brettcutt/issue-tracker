@@ -49,13 +49,15 @@
                                     {% for item in cart_items %}
                                     <tr>
                                         <td>{{ item.ticket.name }}</td>
-                                        <td><i class="fa fa-eur"></i>{{item.price}}</td>
+                                        <td><i class="fa fa-usd" aria-hidden="true"></i>{{item.price}}</td>
                                     </tr>
 
                                     {% endfor %}
                                 </table>
                                 <hr class="mobile-hr">
-                                <p class="card-text"><b>Total: </b><i class="fa fa-eur"></i>{{ total }}</p>
+                                <p class="card-text"><b>Total: </b>
+                                    <i class="fa fa-usd" aria-hidden="true"></i>{{total}}
+                                </p>
                                 <div style="color: red;" id="credit-card-errors" style="display:none">
                                     <div class="alert-message block-message error" id="stripe-error-message"></div>
                                 </div>
@@ -67,7 +69,7 @@
                             {% else %}
                             <div class="form-group bg-dark center">
                                 <button name='commit' type='submit' class="inline btn btn-success" id='submit_payment_btn'>Pay
-                                    Now</button>
+                                    Now <i class="fa fa-credit-card" aria-hidden="true"></i></button>
 
                             </div>
                             {% endif %}

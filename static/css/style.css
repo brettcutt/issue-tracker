@@ -448,6 +448,10 @@ margin-top: 100px;
 }
 
 /* BUGS AND FEATURES */
+.add-feature-button {
+    width: auto;
+}
+
 .upvoted-wrapper {
     position: relative;
 }
