@@ -16,7 +16,8 @@ custom_style = Style(
 
     value_font_size=30,
     legend_font_size=20,
-    tooltip_font_size=30
+    tooltip_font_size=30,
+    no_data_font_size=30
 )
 
 
@@ -28,7 +29,8 @@ def chart_total(ticket_type):
                         legend_at_bottom_columns=3,
                         legend_box_size=30,
                         margin=0,
-                        style=custom_style)
+                        style=custom_style,
+                        inner_radius = .5)
 
     p_chart.add('Waiting', status)
     p_chart.add('In Progress', status1)
@@ -48,7 +50,11 @@ def chart_by_time(ticket_type, amount_of_days):
                         legend_at_bottom_columns=3,
                         legend_box_size=30,
                         margin=0,
-                        style=custom_style)
+                        style=custom_style,
+                        inner_radius = .5,
+                        no_data_font_size=30, 
+                        no_data_text = 'No Recorded Data',
+                        no_data_font_family= 'san-sarif')
 
     p_chart.add('Waiting', status)
     p_chart.add('In Progress', status1)
