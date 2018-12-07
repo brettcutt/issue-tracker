@@ -310,6 +310,9 @@ report of all the tests.
 - **In issuertracker > settings.py:**
   - Uncomment `#import env`. the env.py file is created in steps below. 
   - `ALLOWED_HOSTS = ['localhost']`
+  -  There are two comments `PointA` and `PointB` near the bottom of the page. Comment out all variables 
+  inbetween these to points as the server will try to access static and media files from AWS S3.
+  - Uncomment `MEDIA_URL = '/media/'` As this will source the media files locally.
 
 #### Set up stripe for fake payment
   - go to https://stripe.com/au and create an account.
