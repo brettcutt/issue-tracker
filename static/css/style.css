@@ -14,7 +14,7 @@ body {
     margin: 0%;
     padding: 0;
 }
-
+ 
 
 .main-outer {
     position: relative;
@@ -300,15 +300,6 @@ color: #fff;
     font-size: 18px;
 }
 
-
-
-
-.arrow-down {
-    position: absolute;
-    bottom: 20px;
-    left: 0;
-    right: 0;
-}
 .fade1, .fade2, .fade3, .fade4, .fade5, .fade6, .fade7 {
     display: none;
 }
@@ -320,6 +311,14 @@ color: #fff;
         display: inline-block;
     }
 }
+
+.arrow-down {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+}
+
 .fa-arrow-down {
     color: #fff;
     font-size: 50px;
@@ -328,6 +327,13 @@ color: #fff;
 
 .fa-arrow-down:hover {
     font-size: 55px;
+}
+
+@media (max-width: 767px) {
+    .arrow-down {
+        bottom: 0px;
+        margin-top: 5px;
+    }
 }
 
 .graphs-page {
@@ -472,6 +478,7 @@ margin-top: 100px;
     background-color: rgba(255,255,255,.9);
     padding: 3px;
     border-radius: 5px;
+    padding-bottom : 10px;
 }
 
 .upvote-confirm .btn {
@@ -883,4 +890,8 @@ g.legends {
     height: 3px;
     background-color: #fff;
     margin: 5px auto;
+}
+
+.home-star {
+    color: gold;
 }
