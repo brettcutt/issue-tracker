@@ -310,13 +310,6 @@ report of all the tests.
 - **In issuertracker > settings.py:**
   - Uncomment `#import env`. the env.py file is created in steps below. 
   - `ALLOWED_HOSTS = ['localhost']`
-  - Use this data base.
-    - `DATABASES = {`
-    `'default': {`
-        `'ENGINE': 'django.db.backends.sqlite3',`
-        `'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),`
-    `}`
-`}`
 
 #### Set up stripe for fake payment
   - go to https://stripe.com/au and create an account.
@@ -345,6 +338,9 @@ report of all the tests.
 
 
 ## Credits
+#### Bug description content
+- https://meta.stackoverflow.com/questions/tagged/bug
+
 #### Media
 
 - laptop background
