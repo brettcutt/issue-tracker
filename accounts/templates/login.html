@@ -1,7 +1,16 @@
 {% extends 'base.html' %}
 {% load bootstrap_tags %}
+{% block messages %}
+<div class="messages-status-success center">
+
+    {% if messages %}
+    {% for message in messages %}
+    <p class='center'>{{ message }}</p>
+    {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}
 {% block content%}
-<div class="overlay-black"></div>
 <div class="container center">
     <div class="col-sm-10 offset-sm-1 col-md-10 offset-md-1 col-lg-6 offset-lg-3 login-form">
         <h1>Login</h1>
@@ -11,15 +20,6 @@
             <button class="btn btn-primary" type='submit'>Login</button>
         </form>
         <p>Forgot your password? <a href="{% url 'password_reset' %}">Reset Here</a></p>
-        <div class="messages-status-error">
-
-            {% if messages %}
-            {% for message in messages %}
-            <p>{{ message }}</p>
-            {% endfor %}
-            {% endif %}
-        </div>
-
     </div>
 </div>
 {% include 'footer.html' %}

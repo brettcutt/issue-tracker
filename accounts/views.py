@@ -35,10 +35,8 @@ def login(request):
                 auth.login(user=user, request=request)
                 return redirect(reverse('index'))
             else:
-                messages.warning(
-                    request, "Your username or password is incorrect!")
-                # login_form.add_error(
-                # None, "Your username or password is incorrect!")
+                #messages.warning(request, "Your username or password is incorrect!")
+                login_form.add_error(None, "Your username or password is incorrect!")
 
     else:
         login_form = UserLoginForm()

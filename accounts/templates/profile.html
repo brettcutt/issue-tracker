@@ -1,7 +1,16 @@
 {% extends 'base.html' %}
 {% load bootstrap_tags %}
+{% block messages %}
+<div class="messages-status-success center">
+
+    {% if messages %}
+    {% for message in messages %}
+    <p class='center'>{{ message }}</p>
+    {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}
 {% block content %}
-<div class="overlay-black"></div>
 <div class='center margin-t-50'>
 
     <div class="profile-card">
@@ -40,18 +49,6 @@
                             <B>Member since:</B>
                         </td>
                         <td>{{ profile.date_joined}}</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <B>Bugs upvoted</B>
-                        </td>
-                        <td>{{ bug_upvotes}}</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <B>Features upvoted</B>
-                        </td>
-                        <td>{{ features_upvoted}}</td>
                     </tr>
                     <tr>
                         <td>
