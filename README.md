@@ -5,7 +5,7 @@ This is the fifth and last milestone project for the Full-Stack software develop
 I followed the project brief. Students are required to build an app offering their own businesses services. This service includes
 users being able to create tickets for a bug issue they have, which the company will eventually solve for free and will spend 50% of 
 their time working on. The other part of the service is a user can add new tickets for a feature idea, however only the highest paid (upvoted) 
-feature will be worked for the other 50% of the companies time. Tickets will be required to have a status showing what stage in development
+feature will be worked on for the other 50% of the companies time. Tickets will be required to have a status showing what stage in development
 they're up to and also allow users to comment on individual tickets.
 
 To allow the users to see what sort of progress the company makes on a daily, weekly and monthly basis, some graphs should be shown displaying
@@ -64,8 +64,7 @@ ___
 - As a user I would expect to be able to add a bug or feature ticket which describes my issue or idea.
 - As a user I'd except to see the progress of each ticket by it's status and comments.
 - As a user I would expect to be able to upvote a bug ticket, but to keep it fair only once per user.
-- As a user, knowing a feature has the be the highest upvoted to be worked on, I'd expect a way to be able to
-pay to upvote.
+- As a user, knowing a feature has the be the highest upvoted to be worked on, I'd expect to be able to pay more than one time.
 - As a user I would like to know if i've paid for a feature upvote previously before upvoting again. 
 
 
@@ -73,6 +72,10 @@ pay to upvote.
 ### Existing Features
 ##### User registration and login
 - A user can create an account and log into it with their own unique username. 
+- The reason a user would need an account is so:
+  - Data can be stored as to which tickets have been upvoted by the user.
+  - Tickets in the cart don't disappear between sessions.
+  - Added tickets or comments on tickets are assigned to a user.
 
 ##### Profile
 - A user has their own profile page, where they can see details about their own account. Upon registration
@@ -80,17 +83,17 @@ the user is directed here and can visually see a default picture is set which th
 
 ##### Header and Footer
 - The site name is displayed in the upper left hand corner of the page as a clickable logo that redirects to the home page.
-- Navigation buttons are at the upper right hand corner of the page, If admin are logged in an option to go to the admin panel will be avaliable. 
+- Navigation buttons are at the upper right hand corner of the page, If admin are logged in, an option to go to the admin panel will be avaliable. 
 - On mobile the nav menu disappears and a burger menu is there in its place. When clicked the burger icon opens a menu with the navigation buttons.
-- A GitHub icon in the footer redirects to my GitHub repository, and other social media icon redirectly to their homepages.
+- A GitHub icon in the footer redirects to my GitHub repository, and other social media icons redirect to their homepages.
 
 ##### Index
 - This is the home page featuring a larger title for the whole site.
-- There is a short tag line describing that the business can help the user with bugs or features.
+- There is a short tag line describing that the business can help the user with bug issues or features ideas.
 - Guests see a register button, where as logged in users see button to the bugs or feature pages.
 - A downward arrow at the bottom of the page tells the user they can scroll down or when the arrow is clicked, a jquery smooth
 scroll down will trigger.
-- Two different sections describe the idea behind bugs and feature. Also graphs shows the progress of bug and feature tickets by
+- Two different sections describe the idea behind bugs and features. Also graphs shows the progress of bug and feature tickets by
 their status and time.
 
 ##### Bugs or features
@@ -100,25 +103,25 @@ their status and time.
 
 ##### Bug or feature detail page
 - This is the main page to view more details about a ticket.
-- Users are able to comment on the ticket and have that comment displayed on the same page.
-- A upvote button allows the user the add one point to the tickets upvotes. A click of a feature ticket upvote button and send
-that ticket to the cart, which can later be paid for to add the upvote.
-- Each time a user visits a ticket, the view points go up by one.
+- Users are able to comment on a ticket and have that comment displayed on the same page.
+- A upvote button allows the user to add one point to the tickets upvotes. A click on the feature ticket upvote button will send
+that ticket to the cart, which can later be paid for to finalize the upvote.
+- Each time a user visits a ticket, the ticket view points go up by one.
 - If the user is 'admin' or the ticket creator the edit button will show. 
-- The ticket status shows what stage that ticket is in.
+- A ticket status shows what stage that ticket is in.
 
 ##### Add or Edit page
 - These are the forms to add or edit the tickets.
 - If the admin is the one adding or editing the ticket, there will be the option to change the status of that ticket.
 
 ##### Cart
-- This is where all the pre upvoted feature tickets go.
+- This is where upvoted feature tickets go.
 - The user has the option to remove the ticket.
-- There is a summary of tickets being request to be upvoted and the amount it's going to cost.
+- There is a summary of the tickets to be upvoted and the amount it's going to cost.
 
 ##### Checkout
-- The user can enter and submit their credit card details on this page, to finalize the upvote process.
-- Like the cart, a summary of all the tickets being requested is shown.  
+- The user can enter and submit their credit card details on this page to finalize the upvote process.
+- Like the cart, a summary of all the tickets being upvoted is shown.  
 
 ### Wireframes
 - See the wire frames [here](https://github.com/brettcutt/issue-tracker/blob/master/wireframes/wireframes.md).
@@ -152,7 +155,7 @@ ___
   - Styling the HTML elements.
   
 - **Font Awesome**
-  - the GitHub icons on the footer.
+  - the GitHub icons throughout the app.
   - https://fontawesome.com/icons/github?style=brands
   - https://fontawesome.com/license
   
@@ -178,10 +181,10 @@ ___
 
 ### Testing
 #### Automated Tests
-- You can checkout the automated tests below which all pass. 
+- You can check out the automated tests below which all pass. 
 - If the repository is cloned, which you can see how to do locally further down this file
 , in the terminal type `python manage.py test` to run the automated tests.
-Alternatively go the `htmlcov` directory, find the `index.html` file and run it. This will give you a coverage
+- Alternatively go the `htmlcov` directory, find the `index.html` file and run it. This will give you a coverage
 report of all the tests.
 
 - Accounts
@@ -205,7 +208,7 @@ report of all the tests.
 - [manual_tests.md](https://github.com/brettcutt/issue-tracker/blob/master/MANUAL_TESTS.md)
 
 ##### Responsive
--The project is responsive on all different device modes using Chrome and my own personal mobile.
+- The project is responsive on all different device modes using Chrome and my own personal mobile.
 
 ## project set up
 
@@ -236,8 +239,7 @@ report of all the tests.
 
 #### Setting up the Heroku database
 - **In heroku**
-  - `Resources`
-  - `Add-ons` search `Heroku Postgres` and initiate the `hobby Dev - Free`.
+  - `Resources` > `Add-ons` > search `Heroku Postgres` and initiate the `hobby Dev - Free`.
   - `Settings` > `Config Vars` The DATABASE_URL will already be there.
 
 - **In the terminal command line entered:**
@@ -251,11 +253,11 @@ report of all the tests.
 - **In the terminal command line entered:**
   - A new database requires us to migrate out models again and create a new superuser.
   - `python manage.py migrate`
-  - 'python manage.py createsuperuser`
+  - `python manage.py createsuperuser`
 
 #### Have Heroku host our static files
 - **In the terminal command line entered:**
-  - `pip install whitenoise`, 
+  - `pip install whitenoise`
 
 - **In settings.py:**
   - `MIDDLEWARE = ['whitenoise.middleware.WhiteNoiseMiddleware',]`
@@ -281,12 +283,13 @@ report of all the tests.
 
 #### Heroku final
 - **In the terminal command line entered:**
-  - `pip install gunicorn`, this is the package that will run the application on the server.
+  - `pip install gunicorn`, this is the package that will run our application on the server.
   - `pip3 freeze --local > requirements.txt` Creates a .txt file which tells Heroku what dependencies the project is using.
   - `echo web: gunicorn.wsgi:application > Procfile` Tells Heroku that this project is a web app and what to run.
   - `git add`
   - `git commit -m 'message'`
   - `git push`
+  - https://unicorn-bug-tracker.herokuapp.com/
 
 ## Running the code locally
 #### Initial setup
@@ -317,17 +320,17 @@ report of all the tests.
 
 #### Set up stripe for fake payment
   - go to https://stripe.com/au and create an account.
-  - go to the dashboard > Developers > API keys
-  - Take note of your publishable and secret key which gets entered in the step below.
+  - go to `dashboard` > `Developers` > `API keys`
+  - Take note of your `publishable` and `secret key` which gets entered in a step below.
 
 #### Activate google account for password reset
   - go to https://myaccount.google.com
   - Create an account or sign in.
-  - sign-in & security > Apps with account access
+  - `sign-in & security` > `Apps with account access`
   - Toggle `Allow less secure apps: ON`
 
 #### Setting up the env file
-- Create a env.py file and enter the follows with yoor own keys.
+- Create a env.py file and enter the following with your own keys.
   - `import os`
   - `os.environ.setdefault('SECRET_KEY', <'your secret key'>)`
   - `os.environ.setdefault('EMAIL_ADDRESS', <'your google email address'>)`

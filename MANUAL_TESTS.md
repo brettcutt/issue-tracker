@@ -19,7 +19,7 @@
   2. On submission of an invalid form, the user is warned of the error and stays on the same page.
  
 - D. Home page
-  1. Signed in user have 'bugs' and 'features' displayed under the tagline.
+  1. Signed in users have 'bugs' and 'features' displayed under the tagline.
   2. Non signed in users have 'register' under the tagline.
   3. The graphs show the correct information.
   4. The 'See Bugs' and 'See Features' button under the description redirects to the appropriate pages.
@@ -29,13 +29,13 @@
   2. The 'View Ticket' button redirects to the appropriate bug/feature detail page.
 
 - F. Bugs detail
-  1. If the user is the ticket creator or the user is admin, the 'edit' button appears.
-  2. The 'upvote' button upvotes the ticket by one point and is disabled for that user.
+  1. If the user is the ticket creator or admin, the 'edit' button appears.
+  2. The 'upvote' button upvotes the ticket by one point and is then disabled for that user.
   3. A comment posted is displayed on the same page.
   4. The 'Edit' button redirects to the edit page.
 
 - G. Feature detail
-  1. If the user is the ticket creator or the user is admin, the 'edit' button appears.
+  1. If the user is the ticket creator or admin, the 'edit' button appears.
   2. A user is made aware that they are upvoting the same feature after the first upvote.
   3. A upvoted feature is sent to the cart.
   4. A comment posted is displayed on the same page.
@@ -54,7 +54,7 @@
   1. A succesful payment redirects the user to the homepage, and displays a message of success.
   2. On submission of an invalid form, the user is warned of the error and stays on the same page.
   3. Payment is received on stripe.
-  4. The correct feature receives one upvote point
+  4. The correct feature receives one upvote point.
 
 ### Manual Test checklist
 
@@ -70,7 +70,7 @@
 |**A. iv**|     P|P|P|P|P|P|
 |**A. v**|      P|P|P|P|P|P|
 |**A. vi**|     P|P|P|P|P|P|       
-|**A. vii**|    P|P|P|P|P|P|
+|**A. vii**|    P|P|P|P|F|P|
 |**B. i**|      P|P|P|P|P|P|
 |**B. ii**|     P|P|P|P|P|P|
 |**B. iii**|    P|P|P|P|P|P|
@@ -78,7 +78,7 @@
 |**C. ii**|     P|P|P|P|P|P|
 |**D. i**|      P|P|P|P|P|P|
 |**D. ii**|     P|P|P|P|P|P|
-|**D. iii**|    P|P|P|P|P|P|
+|**D. iii**|    P|P|P|P|**F**|P|
 |**D. iv**|     P|P|P|P|P|P|
 |**E. i**|      P|P|P|P|P|P|
 |**E. ii**|     P|P|P|P|P|P|
@@ -96,7 +96,15 @@
 |**H. iii**|    P|P|P|P|P|P|
 |**I. i**|      P|P|P|P|P|P|
 |**I. ii**|     P|P|P|P|P|P|
-|**J. i**|      P|P|P|P|P|P|
+|**J. i**|      P|P|P|P|**F**|P|
 |**J. ii**|     P|P|P|P|P|P|
-|**J. iii**|    P|P|P|P|P|P|
-|**J. iv**|     P|P|P|P|P|P|
+|**J. iii**|    P|P|P|P|**F**|P|
+|**J. iv**|     P|P|P|P|**F**|P|
+
+#### Notes:
+- Safari:
+  - I'm running safari on windows. **The last version update was back in 2012.** This would suggest that this version of browser doesn't support some css or jquery attributes the same as other browsers do.
+  - Redirection to my GitHub account doesn't work.
+  - The second part of the homepage connot be seen, most likely due to the jquery 'show fade', I have on the elements.
+  - If I tried to make payment I would get 'We were unable to take a payment with that card!' error. That would be an issue with stripe. Since payment cannot be made, I could not upvote the feature.
+  - A lot of css wasn't compatible. Forms were stretched out or squashed. The bugs and feature tickets took up the whole row instead of lining up next to each other.
