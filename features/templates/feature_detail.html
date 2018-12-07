@@ -6,7 +6,7 @@
 
         <h1 class='text-shadow'>{{items.name}}</h1>
         <div class="line "></div>
-        {% if user.username == 'admin' or user.username == items.username|slugify %}
+        {% if user.username == 'admin' or user.username|slugify == items.username|slugify %}
         <a href="{% url 'edit_feature' items.id %}" class='btn btn-primary'> Edit <i class="fa fa-pencil-square-o"
                 aria-hidden="true"></i></a>
         {% endif %}
