@@ -37,7 +37,7 @@ class TestViews(TestCase):
 
         self.assertEqual(response.status_code, 200)
 
-"""
+    """
     def test_make_a_successful_payment_and_redirect_to_feature_upvote(self):
         stripe.api_key = settings.STRIPE_SECRET
 
