@@ -12,7 +12,7 @@ class Bugs(models.Model):
     STATUS_CHOICES = ((WAITING, 'Waiting'),
                       (INPROGRESS, 'In Progress'), (COMPLETED, 'Completed'))
 
-    name = models.CharField(max_length=28, blank=False)
+    name = models.CharField(max_length=50, blank=False)
     description = models.TextField(blank=False)
     username = models.ForeignKey(User, default=None)
     created_date = models.DateTimeField(blank=True, default=None, null=True)

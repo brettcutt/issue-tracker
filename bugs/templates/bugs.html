@@ -23,7 +23,10 @@
             {% for ticket in tickets %}
             <div class="ticket">
                 <div class="ticket-header">
-                    <h4>{{ ticket.name }}</h4>
+                    {% if ticket.name|length < 25 %} <h4>{{ ticket.name }}</h4>
+                        {% else %}
+                        <p class='long-title'>{{ ticket.name }}</p>
+                        {% endif %}
 
                 </div>
                 <div class="header-line"></div>

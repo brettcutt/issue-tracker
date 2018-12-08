@@ -7,11 +7,14 @@
     <div class="wrapper margin-b-30">
         <h1 class="center text-shadow">Your Cart</h1>
         <div class="line"></div>
-        <div class="ticket-content center">
+        <div class=" container ticket-content center">
             {% for item in cart_items %}
             <div class="ticket">
                 <div class="ticket-header">
-                    <h4>{{ item.ticket.name }}</h4>
+                    {% if item.ticket.name|length < 25 %} <h4>{{ item.ticket.name }}</h4>
+                        {% else %}
+                        <p class='long-title'>{{ item.ticket.name }}</p>
+                        {% endif %}
 
                 </div>
                 <div class="header-line"></div>

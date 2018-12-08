@@ -521,6 +521,13 @@ margin-top: 100px;
     border-top-left-radius: 20px;
 }
 
+.long-title {
+    color: #fff;
+    font-weight: bold;
+    font-size: 14.5px;
+    padding: 4.6px 0;
+}
+
 .ticket-bottom {
     margin-top: 10px;
 }
@@ -758,8 +765,6 @@ td {
         margin: 0 auto;
         position: fixed;
         bottom: 0;
-        
-        
     }
     .summary-table {
         margin: 0 auto;
@@ -788,6 +793,15 @@ td {
         overflow: hidden;
         overflow-y: scroll;
         margin-top: -100px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px){
+    .card {
+        max-width: 100%;
+    }
+    .summary-table {
+        width: 60%;
     }
 }
 
