@@ -2,36 +2,43 @@
 {% load bootstrap_tags %}
 {% block content%}
 <div class="center">
+
     <div class="col-sm-10 offset-sm-1 col-md-10 offset-md-1 col-lg-6 offset-lg-3 ">
+
         {% if add_edit %}
         <h1>Edit Ticket</h1>
         {% else %}
         <h1>Add Ticket</h1>
-
         {% endif %}
-        <form enctype="multipart/form-data" method="post" action="">
+
+        <form enctype="multipart/form-data" method="post">
             {% csrf_token %}
             {{ form | as_bootstrap}}
             {% if user|slugify == 'admin' %}
-            <div id="div_id_status" class="form-group  ">
+            <div id="div_id_status" class="form-group">
+
                 <label for="id_status" class="control-label required-field ">
                     Status
                 </label>
-                <div class="">
+
+                <div>
+
                     <select name="status" class=" form-control" id="id_status">
                         <option value="Waiting" selected>Waiting</option>
                         <option value="In Progress">In Progress</option>
                         <option value="Completed">Completed</option>
-
                     </select>
+
                 </div>
             </div>
             {% endif %}
+
             {% if add_edit %}
             <button class="btn btn-primary" type='submit'>Edit <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
             {% else %}
             <button class="btn btn-primary" type='submit'>Add <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
             {% endif %}
+
         </form>
 
     </div>

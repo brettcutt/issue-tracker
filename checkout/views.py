@@ -7,14 +7,13 @@ from django.utils import timezone
 from features.models import Features
 import stripe
 
-
-# Create your views here.
-
 stripe.api_key = settings.STRIPE_SECRET
 
 
 @login_required()
 def checkout(request):
+    """Renders the checkout page. If post, payment is taken or 
+       error is returned  """
     if request.method == "POST":
 
         payment_form = MakePaymentForm(request.POST)
@@ -22,7 +21,7 @@ def checkout(request):
         if payment_form.is_valid():
             cart = request.session.get('cart', {})
             total = 0
-            
+
             for id, quantity in cart.items():
                 feature = get_object_or_404(Features, pk=id)
                 total += quantity * 10
@@ -42,10 +41,10 @@ def checkout(request):
             else:
                 messages.error(request, "Unable to take payment")
         else:
-            print(payment_form.errors)
             messages.error(
                 request, "We were unable to take a payment with that card!")
     else:
         payment_form = MakePaymentForm()
 
-    return render(request, "checkout.html", {'payment_form': payment_form, 'publishable': settings.STRIPE_PUBLISHABLE})
+    return render(request, "checkout.html", {'payment_form': payment_form,
+                                             'publishable': settings.STRIPE_PUBLISHABLE})

@@ -6,9 +6,11 @@
 
         <h1 class='text-shadow'>{{items.name}}</h1>
         <div class="line "></div>
+
         {% if user.username == 'admin' or user.username|slugify == items.username|slugify %}
-        <a href="{% url 'edit_feature' items.id %}" class='btn btn-primary'> Edit <i class="fa fa-pencil-square-o"
-                aria-hidden="true"></i></a>
+        <a href="{% url 'edit_feature' items.id %}" class='btn btn-primary'>
+            Edit <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        </a>
         {% endif %}
 
         {% if user.is_authenticated %}
@@ -18,35 +20,47 @@
             <input type="hidden" name="quantity" value="1">
 
             {% if upvoted %}
+
             <div id="repeated-upvote-btn" class='btn btn-primary'>Upvote <i class="fa fa-star" aria-hidden="true"></i></div>
+
             <div class="upvote-btn-hidden">
                 <div class="upvote-confirm">
+
                     <div class="card-header bg-dark center">
                         <h5>Add to Cart?</h5>
                     </div>
+
                     <p><b>You have upvoted this feature before. Are you sure you would like to add this to the cart
-                            again?</b></p>
+                            again?</b>
+                    </p>
+
                     <button type='submit' class='btn btn-primary'>Yes</button>
                     <div id='upvote-no' class='btn btn-primary'>No</div>
+
                 </div>
             </div>
 
             {% else %}
             <button type='submit' class='btn btn-primary'>Upvote <i class="fa fa-star" aria-hidden="true"></i></button>
-
             {% endif %}
 
         </form>
+
         {% else %}
         <button class='btn btn-primary'><b>In Cart</b></button>
         {% endif %}
+
         {% else %}
         <div class='btn btn-secondary'>Upvote <i class="fa fa-star" aria-hidden="true"></i></div>
         {% endif %}
+
         <br>
+
         <p class='inline views text-shadow'><b>Views:</b> {{items.views}} </p>
         <p class='inline upvotes text-shadow'><b>Upvotes:</b> {{items.upvotes}}</p>
+
         <br>
+
         <p class=' inline text-shadow'><b>Status:</b></p>
         {% if items.status == 'Waiting' %}
         <p class='inline status-todo'>{{ items.status }}</p>
@@ -55,22 +69,25 @@
         {% elif items.status == 'Completed' %}
         <p class='inline status-done'>{{ items.status }}</p>
         {% endif %}
+
     </div>
+
     <div class='center comments'>
         <div class="ticket-description inline">
+
             <div>
                 <img class='comment-profile-pic' src="{{MEDIA_URL}}{{items.picture}}" onerror="src='{{MEDIA_URL}}images/missing-profile-pic.png'"
                     alt="profile pic">
-
             </div>
+
             <div>
                 <p class="creator-and-date inline"><b>{{items.username}}</b> {{items.created_date}}</p>
                 {% if user.is_active and items.username == user %}
                 <p class='inline active'> Online </p>
                 {% endif %}
                 <p class='description'>{{items.description}}</p>
-
             </div>
+
         </div>
     </div>
 
@@ -78,39 +95,47 @@
         <div>
             <form method="post" class="center" action="{% url 'add_comment_features' items.id %}">
                 {% csrf_token %}
-                <div id="div_id_comment" class="form-group  ">
+
+                <div id="div_id_comment" class="form-group">
+
                     <label for="id_comment" class="text-shadow control-label required-field ">
                         <h4>Comments:</h4>
                     </label>
-                    <div class="">
+
+                    <div>
                         <textarea name="comment" cols="5" rows="4" class=" form-control" required="" id="id_comment"></textarea>
                     </div>
+
                 </div>
+
                 {% if user.is_authenticated %}
                 <button class="btn btn-primary inline" type="submit">Post</button>
                 {% else %}
                 <div class="btn btn-secondary inline">Post</div>
                 {% endif %}
+
             </form>
         </div>
 
         {% for comment in comments %}
         <div class="user-comment inline">
+
             <div>
                 <img class='comment-profile-pic' src="{{MEDIA_URL}}{{comment.picture}}" onerror="src='{{MEDIA_URL}}images/missing-profile-pic.png'"
                     alt="profile pic">
-
             </div>
+
             <div>
                 <p class="creator-and-date inline"><b>{{comment.username}}</b> {{comment.created_date}}</p>
                 {% if user.is_active and comment.username == user %}
                 <p class='inline active'> Online </p>
                 {% endif %}
                 <p class='description'>{{comment.comment}}</p>
-
             </div>
+
         </div>
         {% endfor %}
+
     </div>
 </div>
 <div class="block"></div>

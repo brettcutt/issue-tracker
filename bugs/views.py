@@ -15,7 +15,6 @@ def bugs(request):
 
 def bug_detail(request, id):
     """Renders a view of an individual ticket"""
-    test = Bugs.objects.get(id=id)
 
     try:
         user = User.objects.get(username=request.user)
@@ -33,11 +32,17 @@ def bug_detail(request, id):
     comment_form = CommentForm()
     bug.views += 1
     bug.save()
-    return render(request, "bug_detail.html", {'upvoted': upvoted, 'user': user, 'items': bug, 'comment_form': comment_form, 'comments': comments})
+    return render(request, "bug_detail.html", {'upvoted': upvoted, 
+                                               'user': user, 
+                                               'items': bug, 
+                                               'comment_form': comment_form, 
+                                               'comments': comments})
 
 
 @login_required
 def add_comment_bugs(request, id=id):
+    """Saves a posted comment  """
+
     bug = get_object_or_404(Bugs, id=id)
     pic = get_object_or_404(ProfilePicture, user=request.user)
 
@@ -56,6 +61,8 @@ def add_comment_bugs(request, id=id):
 
 @login_required
 def add_edit_bug(request, id=None):
+    """Renders the add or edit page and saves posted tickets  """
+    
     bug = get_object_or_404(Bugs, id=id) if id else None
     pic = get_object_or_404(ProfilePicture, user=request.user)
     
@@ -81,7 +88,7 @@ def add_edit_bug(request, id=None):
             if bug == None:
                 form.username = request.user
                 form.picture = pic
-                form.views = -1
+                form.views = 0
                 form.created_date = timezone.now()
                 form.waiting_date = timezone.now()
                 form.save()
@@ -100,6 +107,7 @@ def add_edit_bug(request, id=None):
 
 @login_required
 def upvote_bug(request, id=id):
+    """Adds one upvote point to the ticket  """
     bug = get_object_or_404(Bugs, id=id)
     bug.upvotes += 1
     bug.views -= 1

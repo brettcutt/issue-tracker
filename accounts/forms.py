@@ -27,15 +27,12 @@ class UserRegistrationForm(UserCreationForm):
         fields = ['email', 'username', 'password1',
                   'password2']
 
-    """ Checks the User models to find if the email already exist as it must be unique to register """
-
     def clean_email(self):
         email = self.cleaned_data.get('email')
         username = self.cleaned_data.get('username')
         if User.objects.filter(email=email).exclude(username=username):
             raise forms.ValidationError(u'Email address must be unique')
         return email
-    """ Checks that the passwords are both the same or have been entered at all"""
 
     def clean_password2(self):
         password1 = self.cleaned_data.get('password1')

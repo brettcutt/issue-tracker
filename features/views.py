@@ -11,13 +11,14 @@ from django.contrib.auth.decorators import login_required
 
 def features(request):
     """Renders a view with feature tickets"""
-    item = 1
+
     tickets = Features.objects.all().order_by('-created_date')
     return render(request, 'features.html', {'tickets': tickets})
 
 
 def feature_detail(request, id):
     """Renders a view of an individual ticket"""
+
     feature = get_object_or_404(Features, id=id)
 
     upvotes = UpvoteFeature.objects.filter(upvoted_feature=feature)
@@ -33,11 +34,16 @@ def feature_detail(request, id):
     comment_form = CommentForm()
     feature.views += 1
     feature.save()
-    return render(request, "feature_detail.html", {'upvoted': upvoted, 'items': feature, 'comment_form': comment_form, 'comments': comments})
+    return render(request, "feature_detail.html", {'upvoted': upvoted,
+                                                   'items': feature,
+                                                   'comment_form': comment_form,
+                                                   'comments': comments})
 
 
 @login_required
 def add_comment_features(request, id=id):
+    """Saves a posted comment  """
+
     feature = get_object_or_404(Features, id=id)
     pic = ProfilePicture.objects.filter(user=request.user)
     image = ''
@@ -61,6 +67,8 @@ def add_comment_features(request, id=id):
 
 @login_required
 def add_edit_feature(request, id=None):
+    """Renders the add or edit page and saves posted tickets  """
+
     feature = get_object_or_404(Features, id=id) if id else None
     pic = get_object_or_404(ProfilePicture, user=request.user)
     user = str(request.user)
@@ -98,10 +106,14 @@ def add_edit_feature(request, id=None):
     else:
         form = FeaturesForm(instance=feature)
 
-    return render(request, 'add_ticket.html', {'add_edit': add_edit, 'form': form})
+    return render(request, 'add_ticket.html', {'add_edit': add_edit,
+                                               'form': form})
+
 
 @login_required
 def upvote_feature(request):
+    """Adds one upvote point to the ticket  """
+
     cart = request.session.get('cart', {})
     upvote_list = []
 

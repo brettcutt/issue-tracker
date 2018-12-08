@@ -22,6 +22,7 @@ custom_style = Style(
 
 
 def chart_total(ticket_type):
+    """Renders graphs by a tickets status.  """
     status = ticket_type.objects.filter(status='Waiting').count()
     status1 = ticket_type.objects.filter(status='In Progress').count()
     status2 = ticket_type.objects.filter(status='Completed').count()
@@ -30,7 +31,7 @@ def chart_total(ticket_type):
                         legend_box_size=30,
                         margin=0,
                         style=custom_style,
-                        inner_radius = .5)
+                        inner_radius=.5)
 
     p_chart.add('Waiting', status)
     p_chart.add('In Progress', status1)
@@ -39,7 +40,7 @@ def chart_total(ticket_type):
 
 
 def chart_by_time(ticket_type, amount_of_days):
-
+    """Renders graphs by the amount of days in a specific ticket status """
     status = ticket_type.objects.filter(
         status='Waiting', waiting_date__gte=datetime.now() - timedelta(days=amount_of_days)).count()
     status1 = ticket_type.objects.filter(
@@ -51,10 +52,10 @@ def chart_by_time(ticket_type, amount_of_days):
                         legend_box_size=30,
                         margin=0,
                         style=custom_style,
-                        inner_radius = .5,
-                        no_data_font_size=30, 
-                        no_data_text = 'No Recorded Data',
-                        no_data_font_family= 'san-sarif')
+                        inner_radius=.5,
+                        no_data_font_size=30,
+                        no_data_text='No Recorded Data',
+                        no_data_font_family='san-sarif')
 
     p_chart.add('Waiting', status)
     p_chart.add('In Progress', status1)

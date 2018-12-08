@@ -13,7 +13,7 @@ def view_cart(request):
 
 
 def add_to_cart(request, id):
-    """ Add a quantity of the specified product to the cart"""
+    """ Add a feature ticket to the cart"""
     quantity = int(request.POST.get('quantity'))
 
     feature = get_object_or_404(Features, id=id)
@@ -24,12 +24,11 @@ def add_to_cart(request, id):
     cart[id] = cart.get(id, quantity)
     cart[id] = quantity
     request.session['cart'] = cart
-    print(cart)
     return redirect(feature_detail, id)
 
 
 def remove_ticket(request, id):
-    """Adjust the quantity of the specified product to the specified amount"""
+    """Removes a ticket from the cart page"""
     quantity = int(request.POST.get('quantity'))
     cart = request.session.get('cart', {})
 

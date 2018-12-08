@@ -2,13 +2,19 @@
 {% load bootstrap_tags %}
 {% block content%}
 <div class="container center ">
+
     <h1 class='text-shadow'>{{items.name}}</h1>
     <div class="line"></div>
+
+
     {% if user != None %}
     {% if user.username == 'admin' or user.username|slugify == items.username|slugify %}
-    <a href="{% url 'edit_bug' items.id %}" class='btn btn-primary'>Edit <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+    <a href="{% url 'edit_bug' items.id %}" class='btn btn-primary'>
+        Edit <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
     </a>
     {% endif %}
+
+
     {% if upvoted %}
     <div class='btn btn-secondary'>Upvoted <i class="fa fa-star" aria-hidden="true"></i></div>
     {% else %}
@@ -17,9 +23,12 @@
     {% else %}
     <div class='btn btn-secondary'>Upvote <i class="fa fa-star" aria-hidden="true"></i></div>
     {% endif %}
+
     <br>
+
     <p class='inline views text-shadow'><b>Views:</b> {{items.views}}</p>
     <p class='inline upvotes text-shadow'><b>Upvotes:</b> {{items.upvotes}}</p><br>
+
     <p class='inline text-shadow'><b>Status:</b> </p>
     {% if items.status == 'Waiting' %}
     <p class='inline status-todo'>{{ items.status }}</p>
@@ -28,17 +37,20 @@
     {% elif items.status == 'Completed' %}
     <p class='inline status-done'>{{ items.status }}</p>
     {% endif %}
+
+
     <div class='center comments'>
         <div class="ticket-description inline">
             <div>
                 <img class='comment-profile-pic' src="{{MEDIA_URL}}{{items.picture}}" onerror="src='{{MEDIA_URL}}images/missing-profile-pic.png'"
                     alt="profile pic">
-
-
             </div>
+
             <div>
-                <p class="creator-and-date inline"><b>{{items.username}}
-                    </b> {{items.created_date}}</p>
+                <p class="creator-and-date inline">
+                    <b>{{items.username}}</b> {{items.created_date}}
+                </p>
+
                 {% if user.is_active and items.username == user %}
                 <p class='inline active'> Online </p>
                 {% endif %}
@@ -52,6 +64,7 @@
 
     <div class="comments ">
         <div>
+
             <form method="post" class="center" action="{% url 'add_comment_bugs' items.id %}">
                 {% csrf_token %}
 
@@ -63,31 +76,40 @@
                         <textarea name="comment" cols="5" rows="4" class=" form-control" required="" id="id_comment"></textarea>
                     </div>
                 </div>
+
                 {% if user.is_authenticated %}
                 <button class="btn btn-primary inline" type="submit">Post</button>
                 {% else %}
                 <div class="btn btn-secondary inline">Post</div>
                 {% endif %}
+
             </form>
+
         </div>
 
         {% for comment in comments %}
         <div class="user-comment inline">
+
             <div>
                 <img class='comment-profile-pic' src="{{MEDIA_URL}}{{comment.picture}}" onerror="src='{{MEDIA_URL}}images/missing-profile-pic.png'"
                     alt="profile pic">
-
             </div>
+
             <div>
-                <p class="creator-and-date inline"><b>{{comment.username}}</b> {{comment.created_date}}</p>
+                <p class="creator-and-date inline">
+                    <b>{{comment.username}}</b> {{comment.created_date}}
+                </p>
+
                 {% if user.is_active and comment.username == user %}
                 <p class='inline active'> Online </p>
                 {% endif %}
                 <p class='description'>{{comment.comment}}</p>
-
             </div>
+
         </div>
+
         {% endfor %}
+
     </div>
 </div>
 <div class="block"></div>

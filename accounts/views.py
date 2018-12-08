@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import auth, messages
-# @login_required:  if the user trys to access logout through the endpoint this redirects them to the login page
+# @login_required:  if the user trys to access logout through the endpoint
+# this redirects them to the login page
 from django.contrib.auth.decorators import login_required
 from .forms import UserLoginForm, UserRegistrationForm
 from bugs.models import Comments, BugUpvote
@@ -20,7 +21,6 @@ def logout(request):
 
 def login(request):
     """login the user"""
-    """ If the user is already logged in and they try to access login through the endpoint redirect them back to index.html"""
     if request.user.is_authenticated:
         return redirect(reverse('index'))
 
@@ -35,8 +35,8 @@ def login(request):
                 auth.login(user=user, request=request)
                 return redirect(reverse('index'))
             else:
-                #messages.warning(request, "Your username or password is incorrect!")
-                login_form.add_error(None, "Your username or password is incorrect!")
+                login_form.add_error(
+                    None, "Your username or password is incorrect!")
 
     else:
         login_form = UserLoginForm()
@@ -50,9 +50,9 @@ def registration(request):
 
     if request.method == 'POST':
         registration_form = UserRegistrationForm(request.POST)
-        
+
         if registration_form.is_valid():
-            
+
             registration_form.save()
             user = auth.authenticate(username=request.POST['username'],
                                      password=request.POST['password1'])
@@ -70,11 +70,13 @@ def registration(request):
     else:
         registration_form = UserRegistrationForm()
 
-    return render(request, "registration.html", {'registration_form': registration_form})
+    return render(request, "registration.html",
+                  {'registration_form': registration_form})
 
 
 def user_profile(request):
-    """The user's profile page"""
+    """Render the user's profile page or if post, save the users profile
+       picture"""
 
     user = User.objects.get(email=request.user.email)
     bug_upvotes = BugUpvote.objects.filter(user=user).count()
@@ -88,12 +90,10 @@ def user_profile(request):
         picture.picture = 'images/missing-profile-pic.png'
         picture.save()
     if request.method == 'POST':
-        print('#1')
         pic_form = ProfilePicForm(
             request.POST, request.FILES, instance=picture)
 
         if pic_form.is_valid():
-            print('#2')
             pic_form = pic_form.save(commit=False)
             pic_form.user = request.user
             pic_form.save()
@@ -108,4 +108,10 @@ def user_profile(request):
             return redirect(reverse('profile'))
     else:
         pic_form = ProfilePicForm(instance=picture)
-    return render(request, 'profile.html', {'features_upvoted': features_upvoted, 'bug_upvotes': bug_upvotes, 'profile': user, 'pic_form': pic_form, 'picture': picture})
+
+    return render(request, 'profile.html',
+                  {'features_upvoted': features_upvoted,
+                   'bug_upvotes': bug_upvotes,
+                   'profile': user,
+                   'pic_form': pic_form,
+                   'picture': picture})

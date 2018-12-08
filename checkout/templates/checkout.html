@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load bootstrap_tags %}
 {% load static from staticfiles %}
+
 {% block head_js %}
 <script type='text/javascript' src='https://js.stripe.com/v2/'></script>
 <script type="text/javascript">
@@ -10,58 +11,72 @@
 </script>
 <script type='text/javascript' src="{% static 'js/stripe.js' %}"></script>
 {% endblock head_js %}
+
 {% block content %}
 
 <div class="test">
+
     <div class="block d-sm-none"></div>
     <div class="wrapper ">
-        <h1 class="center  margin-b-50 text-shadow">Payment Details</h1>
-        <div class="messages-status-success center">
 
+        <h1 class="center  margin-b-50 text-shadow">Payment Details</h1>
+
+        <div class="messages-status-success center">
             {% if messages %}
             {% for message in messages %}
             <p class='center'>{{ message }}</p>
             {% endfor %}
             {% endif %}
         </div>
+
         <div class="col-sm-10 offset-sm-1 col-md-10 offset-md-1 col-lg-6 offset-lg-3 ">
+
             <form role="form" method="post" id="payment-form" action="{% url 'checkout' %}">
                 {% csrf_token %}
 
                 <div class="form-group col">
+
                     <div class='margin-b-30'>
                         {{payment_form | as_bootstrap}}
-
                     </div>
-
 
                     <div class="summary">
                         <div class="card " style="max-width: 100%;">
+
                             <div class="card-header bg-dark center">
                                 <h4>Summary</h4>
                             </div>
+
                             <div class="card-body center">
+
                                 <table class='summary-table inline'>
+
                                     <tr class='bottom-border'>
                                         <th style="width: 66%">Feature Ticket</th>
                                         <th style="width: 66%">Price</th>
                                     </tr>
+
                                     {% for item in cart_items %}
                                     <tr>
                                         <td>{{ item.ticket.name }}</td>
                                         <td><i class="fa fa-usd" aria-hidden="true"></i>{{item.price}}</td>
                                     </tr>
-
                                     {% endfor %}
+
                                 </table>
+
                                 <hr class="mobile-hr">
+
                                 <p class="card-text"><b>Total: </b>
                                     <i class="fa fa-usd" aria-hidden="true"></i>{{total}}
                                 </p>
+
                                 <div style="color: red;" id="credit-card-errors" style="display:none">
                                     <div class="alert-message block-message error" id="stripe-error-message"></div>
                                 </div>
+
                             </div>
+
                             {% if total == 0 %}
                             <div class="form-group bg-dark center">
                                 <button class="inline btn " role="button">Checkout</button>
@@ -70,14 +85,16 @@
                             <div class="form-group bg-dark center">
                                 <button name='commit' type='submit' class="inline btn btn-success" id='submit_payment_btn'>Pay
                                     Now <i class="fa fa-credit-card" aria-hidden="true"></i></button>
-
                             </div>
                             {% endif %}
-                        </div>
 
+                        </div>
                     </div>
+
                 </div>
+
             </form>
+
         </div>
     </div>
 </div>

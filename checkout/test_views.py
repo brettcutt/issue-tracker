@@ -8,30 +8,35 @@ from issuetracker import settings
 import stripe
 from datetime import datetime
 
+
 class TestViews(TestCase):
     def setUp(self):
         self.user = User.objects.create(username='admin',
-                                         password='12345', 
-                                         is_active=True, 
-                                         is_staff=True, 
-                                         is_superuser=True)
+                                        password='12345',
+                                        is_active=True,
+                                        is_staff=True,
+                                        is_superuser=True)
         self.user.set_password("12345")
         self.user.save()
 
-        self.pic = ProfilePicture.objects.create(picture='missing-profile-pic.png', user=self.user)
+        self.pic = ProfilePicture.objects.create(picture='missing-profile-pic.png',
+                                                 user=self.user)
         self.pic.save()
 
         self.client = Client()
-        self.client.login(username='admin', password='12345')
+        self.client.login(username='admin',
+                          password='12345')
 
-        self.feature = Features.objects.create(name='test', description='this is a test', username=self.user)
+        self.feature = Features.objects.create(name='test',
+                                               description='this is a test',
+                                               username=self.user)
         self.feature.save()
 
         c = Client()
         session = self.client.session
         session['cart'] = {str(self.feature.id): 1}
         session.save()
- 
+
     def test_get_checkout_page(self):
         response = self.client.get('/checkout/')
 
@@ -65,10 +70,11 @@ class TestViews(TestCase):
         print(response.content) """
 
     def test_make_sure_a_unsuccessful_payment_returns_error_message(self):
-        
-        response = self.client.post('/checkout/',{'number': '4242424242424248',
-                'exp_month': '12',
-                'exp_year': '2018',
-                'cvc': '111',})
 
-        self.assertIn("We were unable to take a payment with that card!",str(response.content))
+        response = self.client.post('/checkout/', {'number': '4242424242424248',
+                                                   'exp_month': '12',
+                                                   'exp_year': '2018',
+                                                   'cvc': '111', })
+
+        self.assertIn(
+            "We were unable to take a payment with that card!", str(response.content))

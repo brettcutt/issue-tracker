@@ -3,8 +3,10 @@
 {% block content %}
 <div class="wrapper">
     <div>
+
         <h1 class="center margin-bottom-20 text-shadow">Features</h1>
         <div class="line"></div>
+
         <div class=" chart-description center">
             <p class='margin-b-50 text-shadow'><b>We spent 50% of the time developing the most upvoted Features. If
                     there is a Feature you would like to have and see developed, then you can add that Feature to your
@@ -12,26 +14,31 @@
                     at a cost of $10 per upvote.</b>
             </p>
         </div>
+
         {% if user.is_authenticated %}
         <div class='center'>
             <a class='btn btn-primary inline margin-bottom-20 add-feature-button' href="{% url 'add_feature' %}"> Add
                 Feature <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
         </div>
         {% endif %}
+
     </div>
 
     <div class='container'>
         <div class="ticket-content center">
+
             {% for ticket in tickets %}
             <div class="ticket">
+
                 <div class="ticket-header">
                     {% if ticket.name|length < 25 %} <h4>{{ ticket.name }}</h4>
                         {% else %}
                         <p class='long-title'>{{ ticket.name }}</p>
                         {% endif %}
-
                 </div>
+
                 <div class="header-line"></div>
+
                 <p class=' inline'><b>Status:</b></p>
                 {% if ticket.status == 'Waiting' %}
                 <p class='inline status-todo'>{{ ticket.status }}</p>
@@ -40,21 +47,26 @@
                 {% elif ticket.status == 'Completed' %}
                 <p class='inline status-done'>{{ ticket.status }}</p>
                 {% endif %}
+
                 <div class="short-line"></div>
+
                 <p><b>Issued:</b> {{ ticket.created_date }}</p>
                 <div class="short-line"></div>
+
                 <p>{{ ticket.description | truncatechars:40 }}</p>
                 <div class="ticket-bottom">
+
                     <form method='get' class='inline' action="{% url 'feature_detail' ticket.id %}">
                         <div class=''>
                             <button type='submit' class=' btn btn-primary inline'>View Ticket <i class="fa fa-ticket"
                                     aria-hidden="true"></i></button>
                         </div>
                     </form>
+
                 </div>
             </div>
-
             {% endfor %}
+
         </div>
     </div>
 </div>

@@ -210,6 +210,10 @@ report of all the tests.
 ##### Responsive
 - The project is responsive on all different device modes using Chrome and my own personal mobile.
 
+##### Validation
+- CSS was validated with W#C validator and returned no issues.
+- Python has been checked with pylint.
+
 ## project set up
 
 - **In the terminal command line:**

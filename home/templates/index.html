@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% include 'footer.html' %}
+
 {% block messages %}
 <div class="messages-status-success center">
-
     {% if messages %}
     {% for message in messages %}
     <p class='center'>{{ message }}</p>
@@ -18,57 +18,73 @@
     <div class="main-page center">
 
         <div class="home-content">
+
             <div class='title center'>
                 <p class="center text-shadow">Unicorn Attractor</p>
-
             </div>
+
             <div class="tagline center">
                 <p class='text-shadow'>Register and let us help you with your bug issues or feature ideas!</p>
-
             </div>
 
             <div class="register-btn inline">
+
                 {% if user.is_authenticated %}
                 <a class="btn btn-success center" href="{% url 'bugs' %}"><b>Bugs </b> <i class="fa fa-bug" aria-hidden="true"></i></a>
                 <a class="btn btn-success center" href="{% url 'features' %}"><b>Features</b></a>
                 {% else %}
                 <a class="btn btn-success center" href="{% url 'registration' %}">Register</a>
                 {% endif %}
+
             </div>
+
         </div>
+
         <div id='arrow-down' class="arrow-down center">
             <div class='inline'>
-
                 <a href='#charts'><i class="fa fa-arrow-down inline" aria-hidden="true"></i></a>
             </div>
+
             <span id="charts"></span>
         </div>
-    </div>
-    <div class='graphs-page'>
 
+    </div>
+
+    <div class='graphs-page'>
+        <!--####################################################### BUGS GRAPHS ##################################################################-->
         <div class='home-bugs'>
             <h1 class='center fade1 text-shadow'>Bugs</h1>
+
             <div class=" chart-description center fade2">
                 <p class="margin-bottom-20 text-shadow"><b>We spent 50% of our time fixing up bugs for free.
                         If you see a bug that looks all too familiar and would like that issue fixed, then upvote,
                         as we prioritized our work around the most upvotes.</b></p>
                 <a href="{% url 'bugs' %}" class="btn btn-primary fade3"><b>See Bugs <i class="fa fa-bug" aria-hidden="true"></i></b></a>
             </div>
+
             <div class="line fade4"></div>
+
             <h3 class='center fade5 margin-bottom-20 text-shadow'>Summary</h3>
+
             <div class='center fade5 margin-b-30'>
+
                 <div class="most-voted inline">
-                    <p class='text-shadow'><b><i class="fa fa-star home-star" aria-hidden="true"></i> Most upvoted Bug:
-                            <i class="fa fa-star home-star" aria-hidden="true"></i></b></p>
+                    <p class='text-shadow'><b><i class="fa fa-star home-star" aria-hidden="true">
+                            </i> Most upvoted Bug:<i class="fa fa-star home-star" aria-hidden="true"></i></b>
+                    </p>
                     <div class="short-line-white"></div>
                     <p class='text-shadow'>{{most_upvoted_bug}}</p>
                 </div>
+
             </div>
             {% include 'bug-graphs.html' %}
         </div>
 
+        <!--####################################################### FEATURES GRAPHS ##################################################################-->
         <div class="home-features">
+
             <h1 class='center fade1 text-shadow'>Features</h2>
+
                 <div class=" chart-description center fade2">
                     <p class='text-shadow'><b>The other 50% of the time is developing the most upvoted Feature. If
                             there is a Feature you would also like to have, then you can add that feature to your cart
@@ -77,16 +93,21 @@
                         </b></p>
                     <a href="{% url 'features' %}" class="fade3 btn btn-primary margin-bottom-20"><b>See Features</b></a>
                 </div>
+
                 <div class="line fade4"></div>
+
                 <h3 class='center fade5 margin-bottom-20 text-shadow'>Summary</h3>
+
                 <div class='center fade5 margin-b-30'>
+
                     <div class="most-voted inline">
-                        <p class='text-shadow'><b><i class="fa fa-star home-star" aria-hidden="true"></i> Most upvoted
-                                Feature:
-                                <i class="fa fa-star home-star" aria-hidden="true"></i></b></p>
+                        <p class='text-shadow'><b><i class="fa fa-star home-star" aria-hidden="true">
+                                </i> Most upvotedFeature:<i class="fa fa-star home-star" aria-hidden="true"></i></b>
+                        </p>
                         <div class="short-line-white"></div>
                         <p class='text-shadow'>{{most_upvoted_Feature}}</p>
                     </div>
+
                 </div>
 
                 {% include 'features-graphs.html' %}

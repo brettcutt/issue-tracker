@@ -1,23 +1,29 @@
 {% extends 'base.html' %}
 {% load static from staticfiles %}
 {% load bootstrap_tags %}
+
 {% block content %}
 <div class="test">
+
     <div class="block d-sm-none"></div>
     <div class="wrapper margin-b-30">
+
         <h1 class="center text-shadow">Your Cart</h1>
         <div class="line"></div>
         <div class=" container ticket-content center">
+
             {% for item in cart_items %}
             <div class="ticket">
+
                 <div class="ticket-header">
                     {% if item.ticket.name|length < 25 %} <h4>{{ item.ticket.name }}</h4>
                         {% else %}
                         <p class='long-title'>{{ item.ticket.name }}</p>
                         {% endif %}
-
                 </div>
+
                 <div class="header-line"></div>
+
                 <p class=' inline'><b>Status:</b></p>
                 {% if item.ticket.status == 'To Do' %}
                 <p class='inline status-todo'>{{ item.ticket.status }}</p>
@@ -26,17 +32,21 @@
                 {% elif item.ticket.status == 'Done' %}
                 <p class='inline status-done'>{{ item.ticket.status }}</p>
                 {% endif %}
+
                 <div class="short-line"></div>
                 <p><b>Issued:</b> {{ item.ticket.created_date }}</p>
                 <div class="short-line"></div>
                 <p>{{ item.ticket.description | truncatechars:40 }}</p>
+
                 <div class="ticket-bottom">
+
                     <form method='get' class='inline' action="{% url 'feature_detail' item.ticket.id %}">
                         <div class=''>
                             <button type='submit' class=' btn btn-primary inline'>View Ticket <i class="fa fa-ticket"
                                     aria-hidden="true"></i></button>
                         </div>
                     </form>
+
                     <form id="form1" class='inline' method="post" action="{% url 'remove_ticket' item.id %}">
                         {% csrf_token %}
                         <input name='quantity' type="hidden" value="0">
@@ -44,34 +54,48 @@
                             Remove <i class="fa fa-trash" aria-hidden="true"></i>
                         </button>
                     </form>
+
                 </div>
+
             </div>
             {% endfor %}
+
         </div>
     </div>
+
     <div class="summary-checkout">
+
         <div class="summary">
+
             <div class="card " style="max-width: 100%;">
+
                 <div class="card-header bg-dark center">
                     <h4>Summary</h4>
                 </div>
+
                 <div class="card-body center">
+
                     <table class='summary-table inline'>
+
                         <tr class='bottom-border'>
                             <th style="width: 66%">Feature Ticket</th>
                             <th style="width: 66%">Price</th>
                         </tr>
+
                         {% for item in cart_items %}
                         <tr>
                             <td>{{ item.ticket.name }}</td>
                             <td><i class="fa fa-usd" aria-hidden="true"></i>{{item.price}}</td>
                         </tr>
-
                         {% endfor %}
+
                     </table>
+
                     <hr class="mobile-hr">
                     <p class="card-text"><b>Total: </b><i class="fa fa-usd" aria-hidden="true"></i>{{ total }}</p>
+
                 </div>
+
                 {% if total == 0 %}
                 <div class="form-group bg-dark center">
                     <button class="inline btn " role="button">Checkout</button>
@@ -82,6 +106,7 @@
                             aria-hidden="true"></i></a>
                 </div>
                 {% endif %}
+
             </div>
 
         </div>

@@ -7,7 +7,7 @@ from graphs.graphs import BugsPieChart, BugsDailyStatus, BugsWeeklyStatus, BugsM
 
 
 def index(request):
-    """ A view that displays the index page"""
+    """ Renders the index page and graphs"""
     most_upvoted_bug = Bugs.objects.order_by('upvotes').last()
     most_upvoted_Feature = Features.objects.order_by('upvotes').last()
 
