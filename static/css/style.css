@@ -35,6 +35,9 @@ width: 120px;
 }
 
 /* DEFAULT */
+.relative {
+    position: relative;
+}
 .pos-r {
     position: relative;
 }
@@ -473,6 +476,30 @@ g.legends {
 }
 
 /* BUGS AND FEATURES */
+.back-btn {
+    position: absolute;
+    left: 195px;
+    top: 115px;
+    width: auto;
+    z-index: 0;
+}
+
+@media (max-width: 767px){
+    .back-btn {
+        position: relative;
+        display: block;
+        top: auto;
+        left: auto;
+        width: 80px;
+    }
+}
+
+@media (min-width: 768px) and (max-width:991px) {
+    .back-btn {
+        left: 130px;
+        top: 115px;
+    }
+}
 
 .add-feature-button {
     width: auto;
