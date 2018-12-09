@@ -476,6 +476,27 @@ g.legends {
 }
 
 /* BUGS AND FEATURES */
+.page-numbers li{
+    padding: 0 5px;
+}
+
+.page-numbers a {
+    color: #fff;
+    font-weight: bold;
+}
+
+.active-num{
+    color: #212529;
+    background-color: #f8f9fa;
+    display: inline-block;
+    padding: .25em .4em;
+    font-weight: 700;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+}
+
 .back-btn {
     position: absolute;
     left: 195px;
@@ -687,7 +708,7 @@ margin-bottom: 10px;
     
 }
 
-.active {
+.online {
     color: green;
 }
 

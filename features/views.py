@@ -7,6 +7,8 @@ from accounts.models import ProfilePicture
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 
 
 def features(request):
@@ -29,15 +31,29 @@ def feature_detail(request, id):
         item = str(item)
         if item == user:
             upvoted = True
-    comments = Comments.objects.filter(
-        feature_ticket=id).order_by('-created_date')
+
+    comments = Comments.objects.filter(feature_ticket=id).order_by('created_date')
+    comments_number = comments.count()
     comment_form = CommentForm()
     feature.views += 1
     feature.save()
+
+    paginator = Paginator(comments, 10)
+    page = request.GET.get('page')
+
+    if not page:
+        page = paginator.num_pages
+    try: 
+        comments = paginator.page(page)
+    except PageNotAnInteger:
+        comments = paginator.page(1)
+    except EmptyPage:
+        comments = paginator.page(paginator.num_pages)
     return render(request, "feature_detail.html", {'upvoted': upvoted,
                                                    'items': feature,
                                                    'comment_form': comment_form,
-                                                   'comments': comments})
+                                                   'comments': comments,
+                                                   'comments_number':comments_number})
 
 
 @login_required

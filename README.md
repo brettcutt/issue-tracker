@@ -364,6 +364,9 @@ report of all the tests.
 - Searching daily, weekly and monthly
    - https://stackoverflow.com/questions/7217811/query-datetime-by-todays-date-in-django 
 
+- pagination
+  - https://simpleisbetterthancomplex.com/tutorial/2016/08/03/how-to-paginate-with-django.html
+
 #### Acknowledgements
 - The slack forum.
 - My mentor Moosa Hassan.

@@ -54,7 +54,7 @@
                 </p>
 
                 {% if user.is_active and items.username == user %}
-                <p class='inline active'> Online </p>
+                <p class='inline online'> Online </p>
                 {% endif %}
 
                 <p class='description'>{{items.description}}</p>
@@ -65,6 +65,58 @@
 
 
     <div class="comments ">
+        <div class='margin-b-30'>
+            <h4 class='center'>Comments: ( {{ comments_number }} ) </h4>
+            <div class="short-line-white center"></div>
+        </div>
+        {% for comment in comments %}
+        <div class="user-comment inline">
+
+            <div>
+                <img class='comment-profile-pic' src="{{MEDIA_URL}}{{comment.picture}}" onerror="src='{{MEDIA_URL}}images/missing-profile-pic.png'"
+                    alt="profile pic">
+            </div>
+
+            <div>
+                <p class="creator-and-date inline">
+                    <b>{{comment.username}}</b> {{comment.created_date}}
+                </p>
+
+                {% if user.is_active and comment.username == user %}
+                <p class='inline online'> Online </p>
+                {% endif %}
+                <p class='description'>{{comment.comment}}</p>
+            </div>
+
+        </div>
+
+        {% endfor %}
+        <div class="page-numbers center">
+            <div class='inline'>
+                {% if comments.has_other_pages %}
+                <ul class="pagination">
+                    {% if comments.has_previous %}
+                    <li><a href="?page={{ comments.previous_page_number }}"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+                        </a></li>
+                    {% endif %}
+
+                    {% for i in comments.paginator.page_range %}
+                    {% if comments.number == i %}
+                    <li class="active-num"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                    {% else %}
+                    <li><a href="?page={{ i }}">{{ i }}</a></li>
+                    {% endif %}
+                    {% endfor %}
+
+                    {% if comments.has_next %}
+                    <li><a href="?page={{ comments.next_page_number }}"><span><i class="fa fa-arrow-right" aria-hidden="true"></i></i></a></li>
+
+                    {% endif %}
+                </ul>
+                {% endif %}
+            </div>
+        </div>
+
         <div>
 
             <form method="post" class="center" action="{% url 'add_comment_bugs' items.id %}">
@@ -72,7 +124,7 @@
 
                 <div id="div_id_comment" class="form-group  ">
                     <label for="id_comment" class="text-shadow control-label required-field ">
-                        <h4>Comments:</h4>
+                        <h6>Add comment:</h6>
                     </label>
                     <div class="">
                         <textarea name="comment" cols="5" rows="4" class=" form-control" required="" id="id_comment"></textarea>
@@ -88,29 +140,6 @@
             </form>
 
         </div>
-
-        {% for comment in comments %}
-        <div class="user-comment inline">
-
-            <div>
-                <img class='comment-profile-pic' src="{{MEDIA_URL}}{{comment.picture}}" onerror="src='{{MEDIA_URL}}images/missing-profile-pic.png'"
-                    alt="profile pic">
-            </div>
-
-            <div>
-                <p class="creator-and-date inline">
-                    <b>{{comment.username}}</b> {{comment.created_date}}
-                </p>
-
-                {% if user.is_active and comment.username == user %}
-                <p class='inline active'> Online </p>
-                {% endif %}
-                <p class='description'>{{comment.comment}}</p>
-            </div>
-
-        </div>
-
-        {% endfor %}
 
     </div>
 </div>

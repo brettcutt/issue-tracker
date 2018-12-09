@@ -5,6 +5,7 @@ from accounts.models import ProfilePicture
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def bugs(request):
@@ -28,15 +29,31 @@ def bug_detail(request, id):
     for item in upvote:
         if str(item) == str(user):
             upvoted = True
-    comments = Comments.objects.filter(ticket=id).order_by('-created_date')
+
+    comments = Comments.objects.filter(ticket=id).order_by('created_date')
+    comments_number = comments.count()
     comment_form = CommentForm()
     bug.views += 1
     bug.save()
+
+    paginator = Paginator(comments, 10)
+    page = request.GET.get('page')
+
+    if not page:
+        page = paginator.num_pages
+    try: 
+        comments = paginator.page(page)
+    except PageNotAnInteger:
+        comments = paginator.page(1)
+    except EmptyPage:
+        comments = paginator.page(paginator.num_pages)
+
     return render(request, "bug_detail.html", {'upvoted': upvoted, 
                                                'user': user, 
                                                'items': bug, 
                                                'comment_form': comment_form, 
-                                               'comments': comments})
+                                               'comments': comments,
+                                               'comments_number':comments_number})
 
 
 @login_required
