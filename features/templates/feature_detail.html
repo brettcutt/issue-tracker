@@ -47,7 +47,7 @@
         </form>
 
         {% else %}
-        <button class='btn btn-primary'><b>In Cart</b></button>
+        <a class="btn btn-primary" href='{% url "view_cart" %}'><b>In Cart <i class="fa fa-shopping-cart" aria-hidden="true"></i></b></a>
         {% endif %}
 
         {% else %}
@@ -125,6 +125,7 @@
 
                 {% if comments.has_other_pages %}
                 <ul class="pagination">
+
                     {% if comments.has_previous %}
                     <li><a href="?page={{ comments.previous_page_number }}"><i class="fa fa-arrow-left" aria-hidden="true"></i>
                         </a></li>
@@ -141,8 +142,10 @@
                     {% if comments.has_next %}
                     <li><a href="?page={{ comments.next_page_number }}"><span><i class="fa fa-arrow-right" aria-hidden="true"></i></i></a></li>
                     {% endif %}
+
                 </ul>
                 {% endif %}
+
             </div>
         </div>
 
