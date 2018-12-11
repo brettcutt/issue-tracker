@@ -112,11 +112,13 @@ their status and time.
 ##### Bug or feature detail page
 - This is the main page to view more details about a ticket.
 - Users are able to comment on a ticket and have that comment displayed on the same page.
+- If a ticket has more than 10 comments on the page, then pagination will become active. This can be seen on the 'safari test edit' ticket in features.
 - A upvote button allows the user to add one point to the tickets upvotes. A click on the feature ticket upvote button will send
 that ticket to the cart, which can later be paid for to finalize the upvote.
 - Each time a user visits a ticket, the ticket view points go up by one.
 - If the user is 'admin' or the ticket creator the edit button will show. 
 - A ticket status shows what stage that ticket is in.
+
 
 ##### Add or Edit page
 - These are the forms to add or edit the tickets.
