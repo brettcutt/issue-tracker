@@ -13,8 +13,8 @@ those results.
 
 - For testing and assessment purposes, the following username and password can be used. 
 This will give the user limited access to the admin panel and allow them to add a bug, 
-feature or comment. Also this will bring up the admin hyperlink in the nav menu, 
-that wouldn't be there for regular users.
+feature or comment. An extra admin hyperlink will be in the navigation menu, 
+that wouldn't be there for regular users. Also the test admin can change the status of their own tickets to see that functionality.
 
   - username = testadmin
   - password = testpassword

@@ -92,7 +92,7 @@ def add_edit_bug(request, id=None):
 
         if form.is_valid():
             form = form.save(commit=False)
-            if user == 'admin':
+            if user == 'admin' or user == 'testadmin':
                 form.status = request.POST.get('status')
                 if str(form.status) == 'In Progress':
 

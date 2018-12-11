@@ -14,7 +14,7 @@
         <form enctype="multipart/form-data" method="post">
             {% csrf_token %}
             {{ form | as_bootstrap}}
-            {% if user|slugify == 'admin' %}
+            {% if user|slugify == 'admin' or user|slugify == 'testadmin' %}
             <div id="div_id_status" class="form-group">
 
                 <label for="id_status" class="control-label required-field ">
