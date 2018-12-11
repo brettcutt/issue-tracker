@@ -805,7 +805,7 @@ td {
     color: #000;
 }
 .summary-table {
-    width: 30%;
+    width: 170px;
 }
 
 .summary-table td{
@@ -830,7 +830,6 @@ td {
     }
     .summary-table {
         margin: 0 auto;
-        width: 170px;
     }
 
     .card {
@@ -861,9 +860,6 @@ td {
 @media (min-width: 768px) and (max-width: 1024px){
     .card {
         max-width: 100%;
-    }
-    .summary-table {
-        width: 60%;
     }
 }
 
