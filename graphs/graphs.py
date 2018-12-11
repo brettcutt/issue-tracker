@@ -57,10 +57,15 @@ def chart_by_time(ticket_type, amount_of_days):
                         no_data_text='No Recorded Data',
                         no_data_font_family='san-sarif')
 
-    p_chart.add('Waiting', status)
-    p_chart.add('In Progress', status1)
-    p_chart.add('Completed', status2)
-    return p_chart.render()
+    if status == 0 and status1 == 0 and status2 ==0:
+        return 'No Data has been recorded for this period.'
+
+    else:
+
+        p_chart.add('Waiting', status)
+        p_chart.add('In Progress', status1)
+        p_chart.add('Completed', status2)
+        return p_chart.render()
 
 
 def BugsPieChart():
