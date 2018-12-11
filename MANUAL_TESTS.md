@@ -5,7 +5,7 @@
   2. Non signed in users navbar displays 'register' and 'login' buttons.
   3. Signed in users navbar displays 'cart', 'profile' and 'log out' buttons.
   3. Signed in admins navbar displays the additional 'admin' button.
-  4. The log out button, successfully logs out the user from their account.
+  4. The logout button, successfully logs out the user from their account.
   6. The logo redirects to the index page.
   7. The GitHub icon opens a new page to my GitHub repository and social media icons open their homepages.
 
@@ -53,7 +53,7 @@
 - J. Checkout
   1. A succesful payment redirects the user to the homepage, and displays a message of success.
   2. On submission of an invalid form, the user is warned of the error and stays on the same page.
-  3. Payment is received on stripe.
+  3. Payment is received on Stripe.
   4. The correct feature receives one upvote point.
 
 ### Manual Test checklist
@@ -105,6 +105,6 @@
 - Safari:
   - I'm running safari on windows. **The last version update was back in 2012.** This would suggest that this version of browser doesn't support some css or jquery attributes the same as other browsers do.
   - Redirection to my GitHub account doesn't work.
-  - The second part of the homepage connot be seen, most likely due to the jquery 'show fade', I have on the elements.
-  - If I tried to make payment I would get 'We were unable to take a payment with that card!' error. That would be an issue with stripe. Since payment cannot be made, I could not upvote the feature.
+  - The second part of the homepage can't be seen, most likely due to the jquery 'show fade', I have on the elements.
+  - If I tried to make payment I would get 'We were unable to take a payment with that card!' error. That would be an issue with Stripe. Since payment cannot be made, I could not upvote the feature.
   - A lot of css wasn't compatible. Forms were stretched out or squashed. The bugs and feature tickets took up the whole row instead of lining up next to each other.

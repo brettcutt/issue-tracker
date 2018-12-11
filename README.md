@@ -2,14 +2,22 @@
 [![Build Status](https://travis-ci.org/brettcutt/issue-tracker.svg?branch=master)](https://travis-ci.org/brettcutt/issue-tracker)
 
 This is the fifth and last milestone project for the Full-Stack software development course through Code Institute. For this project
-I followed the project brief. Students are required to build an app offering their own businesses services. This service includes
+I followed the project brief. Students are required to build an app offering their own business services. This service includes
 users being able to create tickets for a bug issue they have, which the company will eventually solve for free and will spend 50% of 
-their time working on. The other part of the service is a user can add new tickets for a feature idea, however only the highest paid (upvoted) 
+their time working on. The other part of the service allows a user to add new tickets for a feature idea, however only the highest paid (upvoted) 
 feature will be worked on for the other 50% of the companies time. Tickets will be required to have a status showing what stage in development
 they're up to and also allow users to comment on individual tickets.
 
-To allow the users to see what sort of progress the company makes on a daily, weekly and monthly basis, some graphs should be shown displaying
+To allow the users to see what sort of progress the company makes on a daily, weekly and monthly basis, graphs should be shown displaying
 those results.
+
+- For testing and assessment purposes, the following username and password can be used. 
+This will give the user limited access to the admin panel and allow them to add a bug, 
+feature or comment. Also this will bring up the admin hyperlink in the nav menu, 
+that wouldn't be there for regular users.
+
+  - username = testadmin
+  - password = testpassword
 
 - Heroku app:
   - https://unicorn-bug-tracker.herokuapp.com/
@@ -58,14 +66,14 @@ ___
 ## UX
 
 ### Strategy
-- As a guest, I would not except to have the same priveledges as a registered user.
+- As a guest, I would not expect to have the same privileges as a registered user.
 - As a user I'd expect to be able to register an account, which can be logged into and out of.
-- As a user I'd expect to see some sort of description as to what the company does and achieves
+- As a user I'd expect to see some sort of description as to what the company does and achieves.
 - As a user I would expect to be able to add a bug or feature ticket which describes my issue or idea.
-- As a user I'd except to see the progress of each ticket by it's status and comments.
+- As a user I'd expect to see the progress of each ticket by it's status and comments.
 - As a user I would expect to be able to upvote a bug ticket, but to keep it fair only once per user.
-- As a user, knowing a feature has the be the highest upvoted to be worked on, I'd expect to be able to pay more than one time.
-- As a user I would like to know if i've paid for a feature upvote previously before upvoting again. 
+- As a user, knowing a feature has to be the highest upvoted to be worked on, I'd expect to be able to pay more than one time.
+- As a user I would like to know if I've paid for a feature upvote previously before upvoting again. 
 
 
 
@@ -83,14 +91,14 @@ the user is directed here and can visually see a default picture is set which th
 
 ##### Header and Footer
 - The site name is displayed in the upper left hand corner of the page as a clickable logo that redirects to the home page.
-- Navigation buttons are at the upper right hand corner of the page, If admin are logged in, an option to go to the admin panel will be avaliable. 
-- On mobile the nav menu disappears and a burger menu is there in its place. When clicked the burger icon opens a menu with the navigation buttons.
+- Navigation buttons are at the upper right hand corner of the page. If admin are logged in, an option to go to the admin panel will be avaliable. 
+- On mobile the nav menu disappears and a burger menu is there in its place. When clicked, the burger icon opens a menu with the navigation buttons.
 - A GitHub icon in the footer redirects to my GitHub repository, and other social media icons redirect to their homepages.
 
 ##### Index
 - This is the home page featuring a larger title for the whole site.
 - There is a short tag line describing that the business can help the user with bug issues or features ideas.
-- Guests see a register button, where as logged in users see button to the bugs or feature pages.
+- Guests see a register button, where as logged in users see buttons to go to the bugs or feature pages.
 - A downward arrow at the bottom of the page tells the user they can scroll down or when the arrow is clicked, a jquery smooth
 scroll down will trigger.
 - Two different sections describe the idea behind bugs and features. Also graphs shows the progress of bug and feature tickets by
@@ -99,7 +107,7 @@ their status and time.
 ##### Bugs or features
 - These pages show a list of the different users bug issues or feature ideas in the form of tickets.
 - Each ticket has its own 'view ticket' button that redirect to a page with more detail about that ticket.
-- Logged in users have a 'add' button to add a new ticket to the list.
+- Logged in users have an 'add' button to add a new ticket to the list.
 
 ##### Bug or feature detail page
 - This is the main page to view more details about a ticket.
@@ -149,7 +157,7 @@ ___
   - http://getbootstrap.com/
   - 
 - **HTML 5**
-  - positioning and format of html elements.
+  - Positioning and format of html elements.
 
 - **CSS 3**
   - Styling the HTML elements.
@@ -170,7 +178,7 @@ ___
   - Used for the set up and processing of user payments.
   - https://stripe.com/au
 
-- ** Coverage**
+- **Coverage**
   - A reporting tool for python testing.
   - https://coverage.readthedocs.io/en/v4.5.x/
 
@@ -235,7 +243,7 @@ report of all the tests.
 
 - **In the terminal command line entered:**
    - `heroku login` Entered username and password.   
-   - `git init` to Intilised a git repository.
+   - `git init` to Initialise a git repository.
    - `heroku git:remote -a unicorn-bug-tracker` to link the GitHub repository to the Heroku app.
 
 - **In settings.py:**
@@ -304,7 +312,6 @@ report of all the tests.
      - `pip install Django==1.11.15`
      - `pip install django-forms-bootstrap`
      - `pip install pillow`
-     - `pip install django-forms-bootstrap`
      - `pip install pygal`
      - `pip install stripe`
 
